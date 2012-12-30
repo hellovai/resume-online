@@ -6,4 +6,5 @@ class TESTING extends CI_Controller {
 	{
 		$this->load->view("jonathan");
 	}
+	
 }

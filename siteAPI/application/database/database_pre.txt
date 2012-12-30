@@ -1,0 +1,12 @@
+users -> (id, name, email, password, phone)
+address -> (id, user_id, address, type)
+website -> (id, user_id, name, url)
+uni -> (id, user_id, name, gpa, start, end, degree, info)
+exp -> (id, user_id, positon, company, location, start, end)
+descript -> (id, exp_id, phrase)
+course -> (id, exp_id, course)
+skill_list -> (id, name)
+skill_queque -> (id, name)
+header -> (id, user_id, name)
+skills -> (id, header_id, skill_id)
+

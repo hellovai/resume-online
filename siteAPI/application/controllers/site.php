@@ -12,6 +12,7 @@ class site extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 	
+	
 }
 
 /* End of file welcome.php */
