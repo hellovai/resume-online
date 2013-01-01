@@ -1,6 +1,8 @@
-users -> (id, name, email, password, phone)
+users -> (id, name, email, password)
+
 address -> (id, user_id, address, type)
 website -> (id, user_id, name, url)
+phone -> (id, user_id, number, type)
 
 -2. coverletter -> (id, user_id, text)
 
