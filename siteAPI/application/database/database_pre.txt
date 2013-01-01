@@ -16,7 +16,7 @@ phone -> (id, user_id, number, type)
 
 3. skills -> (id, header_id, skill_id)
 	skill_list -> (id, name)
-	skill_queque -> (id, name)
+	skill_queue -> (id, name)
 	header -> (id, user_id, name)
 
 4. honors -> (id, user_id, name, desc, location, date)
