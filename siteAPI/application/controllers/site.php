@@ -9,7 +9,9 @@ class site extends CI_Controller {
 
 	public function welcome()
 	{
-		$this->load->view('welcome_message');
+		$this->load->model('test');
+		$data['values'] = $this->test->getEntries(); 
+		$this->load->view('print_stuff',$data);
 	}
 	
 	
