@@ -1,31 +1,18 @@
 CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(128), email VARCHAR(256), password VARCHAR(512), salt VARCHAR(40));
-
 CREATE TABLE address (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT,address VARCHAR(512) ,type VARCHAR(64) );
-
 CREATE TABLE website (id INT  AUTO_INCREMENT PRIMARY KEY,user_id INT ,url  VARCHAR(256) , type VARCHAR(64) );
-
 CREATE TABLE phone (id INT  AUTO_INCREMENT PRIMARY KEY,user_id INT , numbers VARCHAR(10) , type VARCHAR(64) );
-
 CREATE TABLE cover_letter (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT ,  info TEXT);
-
 CREATE TABLE reference (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT ,name  VARCHAR(128) , phone VARCHAR(10) , email VARCHAR(256) , address_id INT , company VARCHAR(512) , account_id INT );
-
-CREATE TABLE university (id INT  AUTO_INCREMENT PRIMARY KEY,  user_id INT,  name VARCHAR(128), gpa VARCHAR(10) , degree VARCHAR(256) , desc VARCHAR(512) , start INT(8) , finish INT(8) );
-
+CREATE TABLE university (id INT  AUTO_INCREMENT PRIMARY KEY,  user_id INT,  name VARCHAR(128), gpa VARCHAR(10) , degree VARCHAR(256) , description VARCHAR(512) , start INT(8) , finish INT(8) );
 CREATE TABLE courses (id INT AUTO_INCREMENT PRIMARY KEY, uni_id INT , course VARCHAR(128) );
-
 CREATE TABLE exper (id INT AUTO_INCREMENT PRIMARY KEY,user_id INT , position VARCHAR(128) , company VARCHAR(128) , location VARCHAR(128) , start INT(8) , finish INT(8) );
 CREATE TABLE descript (id INT AUTO_INCREMENT PRIMARY KEY, exp_id INT , phrase VARCHAR(512) );
-
 CREATE TABLE skills (id INT AUTO_INCREMENT PRIMARY KEY,header_id INT ,skill_id INT );
-
 CREATE TABLE skill_list (id INT AUTO_INCREMENT PRIMARY KEY,  name VARCHAR(128));
-
 CREATE TABLE skill_queue (id INT AUTO_INCREMENT PRIMARY KEY,  name VARCHAR(128));
-
 CREATE TABLE header (id INT AUTO_INCREMENT PRIMARY KEY,user_id INT ,name VARCHAR(128) );
-
-CREATE TABLE honors (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT ,name VARCHAR(128) , desc VARCHAR(256) , location VARCHAR(128), acquired INT(8) );
+CREATE TABLE honors (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, name VARCHAR(128), description VARCHAR(256), location VARCHAR(128), acquired INT(8) );
 
 
 
