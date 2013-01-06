@@ -1,56 +1,83 @@
-	::selection{ background-color: #E13300; color: white; }
-	::moz-selection{ background-color: #E13300; color: white; }
-	::webkit-selection{ background-color: #E13300; color: white; }
+body {
+	background: #b6b6b6;
+	margin: 0;
+	padding: 0;
+	font-family: arial;
+}
+#login_form {
+	width: 300px;
+	background: #f0f0f0 url(../img/login_bg.jpg) repeat-x 0 0;
+	border: 1px solid white;
+	margin: 250px auto 0;
+	padding: 1em;
+	-moz-border-radius: 3px;
+}
+h1,h2,h3,h4,h5 {
+	margin-top: 0;
+	font-family: arial black, arial;
+	text-align: center;
+}
 
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
+input[type=text], input[type=password] {
+	display: block;
+	margin: 0 0 1em 0;
+	width: 280px;
+	border: 5px;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	padding: 1em;
+}
 
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
+input[type=submit], form a {
+	border: none;
+	margin-right: 1em;
+	padding: 6px;
+	text-decoration: none;
+	font-size: 12px;
+	-moz-border-radius: 4px;
+	background: #348075;
+	color: white;
+	box-shadow: 0 1px 0 white;
+	-moz-box-shadow: 0 1px 0 white;
+	-webkit-box-shadow: 0 1px 0 white;
 
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
+}
 
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
+input[type=submit]:hover, form a:hover {
+	background: #287368;
+	cursor: pointer;
+}
 
-	#body{
-		margin: 0 15px 0 15px;
-	}
-	
-	p.footer{
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-	
-	#container{
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		-webkit-box-shadow: 0 0 8px #D0D0D0;
-	}
+
+
+
+/* Validation error messages */
+
+.error {
+	color: #393939;
+	font-size: 15px;
+}
+
+fieldset {
+	width: 300px;
+	margin: auto;
+	margin-bottom: 2em;
+	display: block;
+}
+
+/* FOR FUN */
+
+h1 {
+	text-shadow: 0 1px 0 white;
+}
+
+/* Not necessary. Just the "tutorial created by" stuff at the bottom */
+
+#tutInfo {
+	background: #e3e3e3;
+	border-top: 1px solid white;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: .7em .7em .7em 2em;
+}

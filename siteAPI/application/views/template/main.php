@@ -2,7 +2,7 @@
 
 <div id="main">
 	
-	<?php $this->load->view($content_view); ?>
+	<?php $this->load->view($context); ?>
 
 </div>
 

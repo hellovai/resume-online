@@ -1,21 +1,22 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class site extends CI_Controller {
+class Site extends CI_Controller 
+{
+	//function __construct()
+	//{
+	//	$this->Common->is_logged_in();
+	//}
 
-	public function index()
+	function members_area()
 	{
-		$this->load->view('test');
-	}
-
-	public function welcome()
-	{
-		$this->load->model('test');
-		$data['values'] = $this->test->getEntries(); 
-		$this->load->view('print_stuff',$data);
+		$this->Common->is_logged_in();
+		$data['context'] = "test";
+		$this->load->view("template/main", $data);
 	}
 	
-	
+	function another_page() // just for sample
+	{
+		echo 'good. you\'re logged in.';
+	}
+
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
