@@ -23,8 +23,8 @@ class Common extends CI_Model {
 		if(!isset($is_logged_in) || $is_logged_in != true)
 		{
 			echo 'You don\'t have permission to access this page.';
-			echo anchor('login', 'Sign in here!');	
-			die();		
+			echo anchor('login', 'Sign in here!');
+			die();	
 		}
 	}
 	

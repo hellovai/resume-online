@@ -10,9 +10,11 @@ class Membership_model extends CI_Model {
                 if($query->num_rows == 1)
                 {
                         foreach($query->result() as $user) {
-                                $salt = trim($user->password, 40);
-                                $conf = trim($salt . $this->Common->chash($salt . $this->input->post('password')), 512);
-                                if($conf = $user->password )
+                                $salt = substr($user->password, 0, 40);
+                                echo $salt . "<br>";
+                                $conf = substr($salt . $this->Common->chash($salt . $this->input->post('password')), 0, 512);
+                                echo $conf . "<br>";
+                                if($conf == $user->password )
                                         return true;
                         }
                 }
@@ -23,6 +25,8 @@ class Membership_model extends CI_Model {
         function create_member()
         {
                 $salt = $this->Common->uid(40);
+                $salt = substr($this->Common->chash($salt), 0, 40);
+                
                 $new_member_insert_data = array(
                         'name' => $this->input->post('first_name') . ' ' . $this->input->post('last_name') ,
                         'email' => $this->input->post('email_address'),
