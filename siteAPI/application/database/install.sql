@@ -10,7 +10,7 @@ KEY `last_activity_idx` (`last_activity`)
 
 /*User information*/
 
-CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(128), email VARCHAR(256), password VARCHAR(512), salt VARCHAR(40));
+CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(128), email VARCHAR(256), password VARCHAR(512));
 CREATE TABLE address (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, address VARCHAR(512) , def VARCHAR(64) );
 CREATE TABLE website (id INT  AUTO_INCREMENT PRIMARY KEY,user_id INT , url  VARCHAR(256) , def VARCHAR(64) );
 CREATE TABLE phone (id INT  AUTO_INCREMENT PRIMARY KEY,user_id INT , numbers VARCHAR(10) , def VARCHAR(64) );
@@ -39,4 +39,4 @@ CREATE TABLE docname (id INT AUTO_INCREMENT PRIMARY KEY, doc_id INT, name VARCHA
 
 CREATE TABLE cover_letter (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , info TEXT, title VARCHAR(128), created DATETIME, updated DATETIME);
 
-CREATE TABLE reference (id INT AUTO_INCREMENT PRIMARY KEY, cat_id INT ,name  VARCHAR(128) , phone VARCHAR(10) , email VARCHAR(256) , address_id INT , company VARCHAR(512) , account_id INT, order_id INT);
+CREATE TABLE reference (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , name VARCHAR(128) , phone VARCHAR(10) , email VARCHAR(256) , address_id INT , company VARCHAR(512) , account_id INT, order_id INT);
