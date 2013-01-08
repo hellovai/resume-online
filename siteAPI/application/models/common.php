@@ -2,20 +2,20 @@
 
 class Common extends CI_Model {
 	
-	
 	function __construct()
     {
         parent::__construct();
     }
 
-	function chash($str) {
+	function chash($str) 
+	{
 		return hash('sha512', $str);
 	}
 	
-	function uid($len = 10) {
+	function uid($len = 10) 
+	{
 		return $this->Basic->secure_random_bytes($len);
 	}
-	
 	
 	function is_logged_in()
 	{
@@ -30,5 +30,3 @@ class Common extends CI_Model {
 	
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

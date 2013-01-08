@@ -13,11 +13,11 @@ class Login extends CI_Controller {
 		$this->load->model('membership_model');
 		$query = $this->membership_model->validate();
 		
-		if($query) // if the user's credentials validated...
+		if($query[0]) // if the user's credentials validated...
 		{
 			$data = array(
-				'username' => $this->input->post('username'),
-				'is_logged_in' => true
+				'user_id' => $query[1],
+				'is_logged_in' => true,
 			);
 			$this->session->set_userdata($data);
 			redirect('site/members_area');
@@ -26,7 +26,7 @@ class Login extends CI_Controller {
 		{
 			$this->index();
 		}
-	}	
+	}
 	
 	function signup()
 	{
@@ -39,8 +39,8 @@ class Login extends CI_Controller {
 		$this->load->library('form_validation');
 		
 		// field name, error message, validation rules
-		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
-		$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|alpha');
+		$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|alpha');
 		$this->form_validation->set_rules('email_address', 'Email Address', 'trim|required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 		$this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
@@ -56,7 +56,7 @@ class Login extends CI_Controller {
 		{			
 			$this->load->model('membership_model');
 			
-			if($query = $this->membership_model->create_member())
+			if($this->membership_model->create_member())
 			{
 				$data['context'] = 'signup_successful';
 				$this->load->view('template/main', $data);

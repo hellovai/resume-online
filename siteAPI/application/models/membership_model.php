@@ -6,20 +6,18 @@ class Membership_model extends CI_Model {
         {
                 $this->db->where('email', $this->input->post('email'));
                 $query = $this->db->get('users');
-
+                
                 if($query->num_rows == 1)
                 {
-                        foreach($query->result() as $user) {
+                        foreach ($query->result() as $user) {
                                 $salt = substr($user->password, 0, 40);
-                                echo $salt . "<br>";
                                 $conf = substr($salt . $this->Common->chash($salt . $this->input->post('password')), 0, 512);
-                                echo $conf . "<br>";
                                 if($conf == $user->password )
-                                        return true;
+                                        return array(true, $user->id);
                         }
                 }
 
-                return false;
+                return array(false, NULL);
         }
 
         function create_member()
