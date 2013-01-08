@@ -2,11 +2,27 @@
 
 class Site extends CI_Controller 
 {
-	//function __construct()
-	//{
-	//	$this->Common->is_logged_in();
-	//}
-
+	function __construct()
+	{
+		$this->Common->is_logged_in();
+	}
+	
+	function index()
+	{
+		$this->load->model('resume_model');
+		$data['categories'] = $this->Resume_model->cat_info();
+		$this->load->model('cover_model');
+		$data['covers'] = $this->Cover_model->get_info(5);
+		$this->load->model('ref_model');
+		$data['references'] = $this->Ref_model->get_refs(5);
+		$this->load->model('documents');
+		$data['documents'] = $this->Documents->get_resumes(5);
+		
+		
+		$data['context'] = 'homepage';
+		$this->load->view('template/main', $data);
+		
+	}
 	function members_area()
 	{
 		$this->Common->is_logged_in();
@@ -14,9 +30,21 @@ class Site extends CI_Controller
 		$this->load->view("template/main", $data);
 	}
 	
-	function another_page() // just for sample
+	function save() 
 	{
-		echo 'good. you\'re logged in.';
+		$type = $this->uri->segment(2)
+		switch($type)
+		{
+			case("cover"):
+				$this->load->model('cover_model');
+				$this->Cover_model->save_title($this->input->post('cover_id'), $this->input->post('title'));
+				break;
+			case("resume"):
+				$this->load->model('resume_model');
+				$this->Resume_model->save_title($title->input->post('cat_id'), $this->input->post('title'));
+				break;
+		}
+		$this->index();
 	}
 
 }
