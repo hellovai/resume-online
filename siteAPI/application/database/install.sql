@@ -37,6 +37,6 @@ CREATE TABLE additional (id INT AUTO_INCREMENT PRIMARY KEY, cat_id INT, field VA
 CREATE TABLE document (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , filename VARCHAR(128), created DATETIME, ispublic INT, ext VARCHAR(4));
 CREATE TABLE docname (id INT AUTO_INCREMENT PRIMARY KEY, doc_id INT, name VARCHAR(256));
 
-CREATE TABLE cover_letter (id INT AUTO_INCREMENT PRIMARY KEY, cat_id INT , info TEXT, title VARCHAR(128));
+CREATE TABLE cover_letter (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , info TEXT, title VARCHAR(128), created DATETIME, updated DATETIME);
 
 CREATE TABLE reference (id INT AUTO_INCREMENT PRIMARY KEY, cat_id INT ,name  VARCHAR(128) , phone VARCHAR(10) , email VARCHAR(256) , address_id INT , company VARCHAR(512) , account_id INT, order_id INT);
