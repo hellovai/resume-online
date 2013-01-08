@@ -28,5 +28,27 @@ class Common extends CI_Model {
 		}
 	}
 	
+	function type_table($id)
+	{
+		switch ($id)
+		{
+			case 1:
+				return "uni";
+			case 2:
+				return "experience";
+			case 3:
+				return "skill_header";
+			case 4:
+				return "honors";
+			case 5:
+				return "additional";
+		}
+	}
+	
+	function user_id()
+	{
+		return $this->session->userdata('user_id');
+	}
+	
 }
 

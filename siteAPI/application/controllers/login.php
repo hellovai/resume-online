@@ -10,8 +10,8 @@ class Login extends CI_Controller {
 	
 	function validate_credentials()
 	{		
-		$this->load->model('membership_model');
-		$query = $this->membership_model->validate();
+		$this->load->model('Membership_model');
+		$query = $this->Membership_model->validate();
 		
 		if($query[0]) // if the user's credentials validated...
 		{
@@ -54,9 +54,9 @@ class Login extends CI_Controller {
 		
 		else
 		{			
-			$this->load->model('membership_model');
+			$this->load->model('Membership_model');
 			
-			if($this->membership_model->create_member())
+			if($this->Membership_model->create_member())
 			{
 				$data['context'] = 'signup_successful';
 				$this->load->view('template/main', $data);
