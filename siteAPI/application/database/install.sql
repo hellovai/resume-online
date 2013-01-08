@@ -3,11 +3,11 @@ CREATE TABLE address (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, address VA
 CREATE TABLE website (id INT  AUTO_INCREMENT PRIMARY KEY,user_id INT , url  VARCHAR(256) , def VARCHAR(64) );
 CREATE TABLE phone (id INT  AUTO_INCREMENT PRIMARY KEY,user_id INT , numbers VARCHAR(10) , def VARCHAR(64) );
 
-CREATE TABLE pdf (id INT  AUTO_INCREMENT PRIMARY KEY, user_id INT , filename VARCHAR(128), created DATETIME DEFAULT NOW() );
+CREATE TABLE pdf (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , filename VARCHAR(128), created DATETIME, ispublic INT );
 
-CREATE TABLE cat (id INT, user_id INT, type_id INT, title VARCHAR(64) )
+CREATE TABLE cat (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, type_id INT, title VARCHAR(64) );
 
-CREATE TABLE cover_letter (id INT AUTO_INCREMENT PRIMARY KEY, cat_id INT ,  info TEXT);
+CREATE TABLE cover_letter (id INT AUTO_INCREMENT PRIMARY KEY, cat_id INT , info TEXT, title VARCHAR(128));
 CREATE TABLE reference (id INT AUTO_INCREMENT PRIMARY KEY, cat_id INT ,name  VARCHAR(128) , phone VARCHAR(10) , email VARCHAR(256) , address_id INT , company VARCHAR(512) , account_id INT );
 CREATE TABLE uni (id INT  AUTO_INCREMENT PRIMARY KEY,  cat_id INT,  name VARCHAR(128), gpa VARCHAR(10) , degree VARCHAR(256) , description VARCHAR(512) , start INT(8) , finish INT(8) );
 CREATE TABLE courses (id INT AUTO_INCREMENT PRIMARY KEY, uni_id INT , course VARCHAR(128) );
