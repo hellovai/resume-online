@@ -5,20 +5,13 @@ class Membership_model extends CI_Model {
 
         function validate()
         {
-                $this->db->where('email', $this->input->post('email'));
-                $query = $this->db->get('users');
-
-                if($query->num_rows == 1)
-                {
-                        foreach ($query->result() as $user) {
-                                $salt = substr($user->password, 0, 40);
-                                $conf = substr($salt . $this->Common->chash($salt . $this->input->post('password')), 0, 512);
-                                if($conf == $user->password )
-                                	return array(true, $user->id);
-                        }
-                }
-
-                return array(false, NULL);
+        	$user_id = $this->Common->user_id($this->input->post('email'));
+            
+            if(isset($user_id) && $this->Common->check_pass($this->input->post('password'), $user_id)) {
+            	return array(true, $user_id);
+            }
+            
+            return array(false, NULL);
         }
 
         function create_member()
