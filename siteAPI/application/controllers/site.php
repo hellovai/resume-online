@@ -1,9 +1,11 @@
 <?php
 
 class Site extends CI_Controller 
-{
+{ 
+	
 	function __construct()
 	{
+		parent::__construct();
 		$this->Common->is_logged_in();
 	}
 	
@@ -21,8 +23,8 @@ class Site extends CI_Controller
 		
 		$data['context'] = 'homepage';
 		$this->load->view('template/main', $data);
-		
 	}
+	
 	function members_area()
 	{
 		$this->Common->is_logged_in();
@@ -32,7 +34,7 @@ class Site extends CI_Controller
 	
 	function save() 
 	{
-		$type = $this->uri->segment(2)
+		$type = $this->uri->segment(2);
 		switch($type)
 		{
 			case("cover"):

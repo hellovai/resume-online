@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+include (base_url() . "applications/classes.php");
 
 class Common extends CI_Model {
 	
@@ -22,14 +23,15 @@ class Common extends CI_Model {
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!isset($is_logged_in) || $is_logged_in != true)
 		{
-			echo 'You don\'t have permission to access this page.';
-			echo anchor('login', 'Sign in here!');
-			die();	
+	        redirect('welcome');
 		}
 	}
 	
 	function type_table($id)
 	{
+		if(!isset($id))
+			return "cat";
+			
 		switch ($id)
 		{
 			case 1:
@@ -60,7 +62,7 @@ class Common extends CI_Model {
 				}
             }
 		}
-		else if(isset($this->session->userdata('user_id'))) 
+		else if($this->session->userdata('user_id') > -1) 
 		{
 			return $this->session->userdata('user_id');
 		}

@@ -1,17 +1,11 @@
-//This model will get information from the resume stuff
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Resume_model extends CI_Model()
+class Resume_model extends CI_Model 
 {
-	function __construct()
-	{
-		parent::__construct();
-	}
-	
+
 	function cat_info()
 	{
-		$user_id = $this->session->userdata('user_id');
+		$user_id = $this->Common->user_id();
 		if(!isset($user_id))
 		{
 			return -1;
@@ -31,22 +25,51 @@ class Resume_model extends CI_Model()
 		return $cat_info;
 	}
 	
-	function type_count($cat_id, $type_id)
+	function type_count($cat_id, $type_id, $req_data = FALSE)
 	{
 		$table_name = $this->Common->type_table($type_id);
 		
 		$this->db->where('cat_id',$cat_id);
 		$query = $this->db->get($table_name);
 		
-		return $query->num_rows
+<<<<<<< HEAD
+		if ($req_data===FALSE)
+		{
+			return $query->num_rows;
+		}
+		return $query->result();
+=======
+		return $query->num_rows;
+>>>>>>> d3b51abb6c515dbaca9b8855ede0745cdf586e43
 	}
 	
-	function save_title($cat_id,$title)
+	function save_title($cat_id, $title)
     {
     	$data = array('title' => $title);
 		$this->db->where('id', $cat_id);
 		$this->db->update('cat', $data); 
     }
+    
+    function delete($id, $type_id=NULL)
+    {
+    	$table_name = $this->Common->type_table($type_id);
+    	$this->db->where('id', $id);
+    	$this->db->delete($table_name);
+    }
+    
+    function add($object, $type_id)
+    {
+    	$table_name = $this->Common->type_table($type_id);
+    	$this->db->insert($table_name, $object);
+    }
+    
+    function update($object, $id, $type_id)
+    {
+    	$table_name = $this->Common->type_table($type_id);
+    	$this->db->where('id', $id);
+    	$this->db->update($table_name, $object);
+    }
+    
 }
 
 
