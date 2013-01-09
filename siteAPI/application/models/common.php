@@ -2,8 +2,6 @@
 
 class Common extends CI_Model {
 	
-	$CI =& get_instance();
-	
 	function __construct()
     {
         parent::__construct();
@@ -24,11 +22,7 @@ class Common extends CI_Model {
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!isset($is_logged_in) || $is_logged_in != true)
 		{
-			$data['context'] = "not_logged_in";
-			$this->load->view('not_logged_in', $data);
-			$this->CI =& get_instance();
-	        $this->CI->output->_display();
-	        exit();
+	        redirect('welcome');
 		}
 	}
 	

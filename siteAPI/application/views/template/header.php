@@ -11,19 +11,25 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/boostrap.min.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/boostrap-responsive.min.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/cosmo.min.css" type="text/css" media="screen" />
-	
+	<link rel="stylesheet" href="<?php echo base_url();?>css/boostrap.min.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url();?>css/boostrap-responsive.min.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url();?>css/cosmo.min.css" type="text/css" media="screen" />
+	<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 	
 </head>
 <body>
-
-<?php 
-//add nav bar
-?>
-
-	<div class="navbar navbar-inverse navbar-fixed-top">
+  <!-- Navbar
+    ================================================== -->
+<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -50,12 +56,22 @@
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
-            </form>
+            	
+                <?php
+                $attributes = array('class' => "navbar-form pull-right");
+				echo form_open('login/validate_credentials',$attributes);
+				$attributes = array('name' => "email", "placeholder" => "Email", "class" => "span2"); 
+				echo form_input($attributes);
+				$attributes = array("name" => "password", "placeholder" => "Password", "class" => "span2"); 
+				echo form_password($attributes);
+				$attributes = array("name" => "submit", "value" => "Login", "class" => "btn"); 
+				echo form_submit($attributes);
+				echo form_close();
+	?>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
+
+<div class="container">
+
