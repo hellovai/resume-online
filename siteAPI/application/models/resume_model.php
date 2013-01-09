@@ -1,17 +1,11 @@
-//This model will get information from the resume stuff
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Resume_model extends CI_Model()
+class Resume_model extends CI_Model 
 {
-	function __construct()
-	{
-		parent::__construct();
-	}
-	
+
 	function cat_info()
 	{
-		$user_id = $this->session->userdata('user_id');
+		$user_id = $this->Common->user_id();
 		if(!isset($user_id))
 		{
 			return -1;
@@ -38,7 +32,7 @@ class Resume_model extends CI_Model()
 		$this->db->where('cat_id',$cat_id);
 		$query = $this->db->get($table_name);
 		
-		return $query->num_rows
+		return $query->num_rows;
 	}
 	
 	function save_title($cat_id,$title)

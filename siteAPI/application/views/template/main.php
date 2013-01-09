@@ -1,6 +1,6 @@
 <?php $this->load->view('template/header'); ?>
 
-<div id="main">
+<div class="container">
 	
 	<?php $this->load->view($context); ?>
 
