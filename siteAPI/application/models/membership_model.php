@@ -74,29 +74,26 @@ class Membership_model extends CI_Model {
             $this->db->update('users', $data);
         }
 
-        function update_address($address)
+        function update($info, $id, $name)
         {
-            $data = array('address' => $address->address, 'def' => $address->def);
-            $this->db->where('id', $address->id);
+            $this->db->where('id', $id);
             $this->db->where('user_id', $this->Common->user_id()); //don't actually need this line of code
-            $this->db->update('address', $data);
+            $this->db->update($name, $info);
+        }
+        
+        function delete($id,$name)
+        {
+            $this->db->where('id', $id);
+            $this->db->where('user_id', $this->Common->user_id()); //don't actually need this line of code
+			$this->db->delete($name); 
         }
 
-        function website($website)
+        function add($info,$name)
         {
-		    $data = array('url' => $website->url, 'def' => $website->def);
-		    $this->db->where('id', $website->id);
-		    $this->db->where('user_id', $this->Common->user_id()); //don't actually need this line of code
-		    $this->db->update('website', $data);
+			$this->db->insert($name, $info); 
         }
 
-        function phone($phone)
-        {
-		    $data = array('numbers' => $phone->numbers, 'def' => $phone->def);
-		    $this->db->where('id', $phone->id);
-		    $this->db->where('user_id', $this->Common->user_id()); //don't actually need this line of code
-		    $this->db->update('phone', $data);
-        }
+
 }
 
 
