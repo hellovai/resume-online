@@ -15,7 +15,7 @@ class Cover extends CI_Controller
 		$data['cover'] = $this->Cover_model->get_info($this->input->post('cover_id'));
 		
 		
-		$data['context'] = 'cover_letter';
+		$data['context'] = 'cover_page';
 		$this->load->view('template/main', $data);
 	}
 
@@ -28,6 +28,8 @@ class Cover extends CI_Controller
 		$data['success'] = "Your cover letter was saved!";
 		$this->index();
 	}
+	
+
 	
 	function create()
 	{

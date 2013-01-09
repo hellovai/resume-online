@@ -18,53 +18,49 @@
 	
 	<?php 
 	foreach($address as $addr)
-		{
+	{
 		echo form_open('profile/modify/address/address');
-		form_hidden('type','address');
+		form_hidden('id',$addr->id);
 		echo form_input('def', $addr->def);
 		echo form_input('address', $addr->address);
 		echo form_submit('action', 'Change');
 		echo form_submit('action', 'Delete');
 		echo form_close();
-		}
+	}
 	echo form_open('profile/modify/address/address');
 	echo form_input('def', 'Type');
 	echo form_input('address', 'Address Here');
 	echo form_submit('action', 'Add');
 	echo form_close();
 	foreach($website as $web)
-		{
+	{
 		echo form_open('profile/modify/website/url');
 		form_hidden('id',$web->id);
-		form_hidden('type','website');
 		echo form_input('def', $web->def);
 		echo form_input('url', $web->url);
 		echo form_submit('action', 'Change');
 		echo form_submit('action', 'Delete');
 		echo form_close();
-		}
+	}
 	echo form_open('profile/modify/website/url');
-	form_hidden('type','website');
 	echo form_input('def', 'Type');
 	echo form_input('website', 'Website Here');
 	echo form_submit('action', 'Add');
 	echo form_close();
 	foreach($phone as $pho) //i like to eat pho!
-		{
+	{
 		echo form_open('profile/modify/phone/numbers');
 		form_hidden('id',$pho->id);
-		form_hidden('type','address');
 		echo form_input('def', $pho->def);
 		echo form_input('numbers', $pho->numbers);
 		echo form_submit('action', 'Change');
 		echo form_submit('action', 'Delete');
 		echo form_close();
-		}
+	}
 	echo form_open('profile/modify/phone/numbers');
-	form_hidden('type','phone');
 	echo form_input('def', 'Type');
 	echo form_input('numbers', 'Number Here');
 	echo form_submit('action', 'Add');
 	echo form_close();
 	?>
-</div><!-- end login_form-->
+</div><!-- end profile_form-->
