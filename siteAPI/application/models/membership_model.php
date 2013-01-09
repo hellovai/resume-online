@@ -36,17 +36,12 @@ class Membership_model extends CI_Model {
                 return $insert;
         }
 
-        function update_user($name,$email,$password,$old_password)
+        function update_user($name,$email,$password)
         {
-                if(!$this->Common->check_pass($old_password))
-                {
-
-                                return -1;
-                        }
 
                 $data = array('email' => $email, 'name' => $name);
-                        $this->db->where('id', $this->Common->user_id());
-                        $this->db->update('users', $data);
+                $this->db->where('id', $this->Common->user_id());
+                $this->db->update('users', $data);
         }
 
         function update_address($address)
