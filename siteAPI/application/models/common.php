@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include (base_url() . "applications/classes.php");
+include (base_url() . "classes.php");
 
 class Common extends CI_Model {
 	
@@ -20,11 +20,20 @@ class Common extends CI_Model {
 	
 	function is_logged_in()
 	{
-		$is_logged_in = $this->session->userdata('is_logged_in');
-		if(!isset($is_logged_in) || $is_logged_in != true)
+		if(!$this->confirm_login())
 		{
 	        redirect('welcome');
 		}
+	}
+	
+	function confirm_login()
+	{
+		$is_logged_in = $this->session->userdata('is_logged_in');
+		if(!isset($is_logged_in) || $is_logged_in != true)
+		{
+	        return false;
+		}
+		return true;
 	}
 	
 	function type_table($id)
@@ -86,5 +95,15 @@ class Common extends CI_Model {
         return false;
 	}
 	
+	function user_info()
+    {
+		$this->db->where('id', $this->user_id()); 
+		$this->db->select('name, email');
+		$query = $this->db->get('users');  
+	
+		$user = $query->result();
+	
+		return $user[0];
+	}
 }
 
