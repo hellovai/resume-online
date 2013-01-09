@@ -45,9 +45,43 @@ class Common extends CI_Model {
 		}
 	}
 	
-	function user_id()
+	//returns -1 if nothing found
+	function user_id($email = NULL)
 	{
-		return $this->session->userdata('user_id');
+		if(isset($email))
+		{
+			$this->db->select('id');
+			$this->db->where('email', $email);
+            $query = $this->db->get('users');
+            if($query->num_rows == 1) 
+            {
+				foreach ($query->result() as $user) {
+					return $user->id;
+				}
+            }
+		}
+		else if(isset($this->session->userdata('user_id'))) 
+		{
+			return $this->session->userdata('user_id');
+		}
+		return -1;
+	}
+	
+	function check_pass($pass, $user_id = NULL) 
+	{
+		if(!isset($user_id)) $user_id = $this->Common->user_id();
+		
+		$this->db->select('password');
+		$this->db->where('id', $user_id);
+		$query = $this->db->get('users');
+		foreach($query->result() as $user) 
+		{
+			$salt = substr($user->password, 0, 40);
+        	$conf = substr($salt . $this->Common->chash($salt . $pass), 0, 512);
+        	if($conf == $user->password)
+        		return TRUE;
+        }
+        return false;
 	}
 	
 }
