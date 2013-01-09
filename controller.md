@@ -7,6 +7,8 @@ site
 		-> edit
 	-> add category
 	
+	-> Recommendations
+	
 	-> Cover letter
 		-> titles
 	

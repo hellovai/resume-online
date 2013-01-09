@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+include (base_url() . "applications/classes.php");
 
 class Common extends CI_Model {
 	
