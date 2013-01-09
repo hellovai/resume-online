@@ -7,7 +7,7 @@ class Membership_model extends CI_Model {
         {
         	$user_id = $this->Common->user_id($this->input->post('email'));
             
-            if(isset($user_id) && $this->Common->check_pass($this->input->post('password'), $user_id)) {
+            if($this->Common->check_pass($this->input->post('password'), $user_id)) {
             	return array(true, $user_id);
             }
             
