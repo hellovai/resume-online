@@ -30,13 +30,7 @@ class Membership_model extends CI_Model {
 
 		function get_info()
         {
-        	$this->db->where('id', $this->Common->user_id()); 
-        	$this->db->select('name, email');
-			$query = $this->db->get('users');  
-			
-			$user = $query->result();
-			
-            return $user[0];
+        	return $this->Common->user_info();
         }
         
         function get_address()

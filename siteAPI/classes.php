@@ -65,7 +65,7 @@ class experience
 	var $company;
 	var $location;
 	var $start;
-	var $finish);
+	var $finish;
 	var $order_id;
 	
 	function experience($details)
