@@ -1,26 +1,42 @@
 <div id="profile_form">
 
 	<h1>Change stuff, Fool!</h1>
+		<h2>Account Information</h2>
+		<br />
     <?php 
 	echo form_open('profile/update');
-	echo form_input('email', $info->email);
 	echo form_input('name', $info->name);
-	echo form_password('old_pass', '');
-	echo form_password('new_pass', '');
-	echo form_password('new_pass_confirm', '');
+	echo "<br />";
+	echo form_input('email', $info->email);
+	echo "<br />";
+	$attributes = array(
+  				"name" => "old_pass",
+  				"placeholder" => "Current Password"
+  				);
+ 	echo form_password($attributes);
+ 	echo "<br />";
+	$attributes = array(
+  				"name" => "new_pass",
+  				"placeholder" => "New Password"
+  				);
+ 	echo form_password($attributes);
+    echo "<br />";
+	$attributes = array(
+  				"name" => "new_pass_confirm",
+  				"placeholder" => "Confirm New Password"
+  				);
+ 	echo form_password($attributes);
+ 	echo "<br />";
 	echo form_submit('submit', 'Update');
 	echo form_close();
-	?>
 	
+	echo validation_errors('<p class="error">'); 
 	
-	<?php echo validation_errors('<p class="error">'); ?>
-	<?php echo $success; ?>
-	
-	<?php 
+	echo "<h2>Addresses</h2><br />";
 	foreach($address as $addr)
 	{
 		echo form_open('profile/modify/address/address');
-		form_hidden('id',$addr->id);
+		echo form_hidden('id',$addr->id);
 		echo form_input('def', $addr->def);
 		echo form_input('address', $addr->address);
 		echo form_submit('action', 'Change');
@@ -28,14 +44,23 @@
 		echo form_close();
 	}
 	echo form_open('profile/modify/address/address');
-	echo form_input('def', 'Type');
-	echo form_input('address', 'Address Here');
+	$attributes = array(
+			"name" => "def",
+			"placeholder" => "Type"
+			);
+	echo form_input($attributes);
+	$attributes = array(
+			"name" => "address",
+			"placeholder" => "Address Here"
+			);
+	echo form_input($attributes);
 	echo form_submit('action', 'Add');
 	echo form_close();
+	echo "<h2>Websites</h2><br />";
 	foreach($website as $web)
 	{
 		echo form_open('profile/modify/website/url');
-		form_hidden('id',$web->id);
+		echo form_hidden('id',$web->id);
 		echo form_input('def', $web->def);
 		echo form_input('url', $web->url);
 		echo form_submit('action', 'Change');
@@ -43,14 +68,23 @@
 		echo form_close();
 	}
 	echo form_open('profile/modify/website/url');
-	echo form_input('def', 'Type');
-	echo form_input('website', 'Website Here');
+	$attributes = array(
+			"name" => "def",
+			"placeholder" => "Type"
+			);
+	echo form_input($attributes);
+	$attributes = array(
+			"name" => "url",
+			"placeholder" => "Website Here"
+			);
+	echo form_input($attributes);
 	echo form_submit('action', 'Add');
 	echo form_close();
+	echo "<h2>Phone Numbers</h2><br />";
 	foreach($phone as $pho) //i like to eat pho!
 	{
 		echo form_open('profile/modify/phone/numbers');
-		form_hidden('id',$pho->id);
+		echo form_hidden('id',$pho->id);
 		echo form_input('def', $pho->def);
 		echo form_input('numbers', $pho->numbers);
 		echo form_submit('action', 'Change');
@@ -58,8 +92,17 @@
 		echo form_close();
 	}
 	echo form_open('profile/modify/phone/numbers');
-	echo form_input('def', 'Type');
-	echo form_input('numbers', 'Number Here');
+	$attributes = array(
+			"name" => "def",
+			"placeholder" => "Type"
+			);
+	echo form_input($attributes);
+	$attributes = array(
+			"name" => "numbers",
+			"placeholder" => "Number Here"
+			);
+	echo form_input($attributes);
+
 	echo form_submit('action', 'Add');
 	echo form_close();
 	?>

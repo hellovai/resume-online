@@ -98,12 +98,10 @@ class Common extends CI_Model {
 	function user_info()
     {
 		$this->db->where('id', $this->user_id()); 
-		$this->db->select('name, email');
+		$this->db->select('id, name, email');
 		$query = $this->db->get('users');  
 	
-		$user = $query->result();
-	
-		return $user[0];
+		return reset($query->result());
 	}
 }
 
