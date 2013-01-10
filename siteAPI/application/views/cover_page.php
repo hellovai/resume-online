@@ -45,6 +45,7 @@
 
 <div id="cover_edit" class="span8 pull-right">
 	<? if(sizeof($titles) > 0) { ?>
+<<<<<<< HEAD
     <?php
    	echo form_open('cover/save');
     echo form_hidden('id',$cover->id);
@@ -58,6 +59,20 @@
 	echo "<br />";
 	echo form_submit('submit', 'Update');
 	echo form_close();
+=======
+		<h1><?php echo $cover->title ?></h1>
+		Last edited:
+		<?php 
+		echo $cover->updated . "<br />";
+	   	echo form_open('cover/save');
+		echo form_hidden('id',$cover->id);
+		echo form_input('title', $cover->title);
+		echo "<br />";
+		echo form_textarea('info', $cover->info);
+		echo "<br />";
+		echo form_submit('submit', 'Update');
+		echo form_close();
+>>>>>>> 2bc155eba0471456a4249c02498604c4d3f10401
 	} ?>
 </div><!-- end cover_edit-->
 <div class ></div>
