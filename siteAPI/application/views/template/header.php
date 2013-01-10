@@ -11,10 +11,13 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-	<link rel="stylesheet" href="<?php echo base_url();?>css/boostrap.min.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo base_url();?>css/boostrap-responsive.min.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.min.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-responsive.min.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo base_url();?>css/cosmo.min.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui-1.9.2.min.css" type="text/css" media="screen" />
+    <script src="<?php echo base_url() ?>js/jquery-1.8.3.min.js"></script>
+    <script src="<?php echo base_url() ?>js/jquery-ui-1.9.2.min.js"></script>
 	<style type="text/css">
       body {
         padding-top: 60px;
