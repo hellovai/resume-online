@@ -10,7 +10,6 @@
 		    echo form_hidden('cover_id', $title->id);
 			echo form_submit('submit', $title->title);
 			echo form_close();
-			echo "<br />";
 		}
     }
     else
@@ -26,16 +25,17 @@
 </div><!-- end cover_titles-->
 
 <div id="cover_edit">
-	<? if(isset($cover->id)) { ?>
-	<h1><?php echo $cover->id ?></h1>
+	<? if(sizeof($titles) > 0) { ?>
+	<h1><?php echo $cover->title ?></h1>
 	Last edited:
     <?php 
     echo $cover->updated . "<br />";
-    echo $success . "<br />";
    	echo form_open('cover/save');
-    form_hidden('id',$cover->id);
+    echo form_hidden('id',$cover->id);
 	echo form_input('title', $cover->title);
+	echo "<br />";
 	echo form_textarea('info', $cover->info);
+	echo "<br />";
 	echo form_submit('submit', 'Update');
 	echo form_close();
 	} ?>
