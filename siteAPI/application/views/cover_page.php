@@ -2,13 +2,20 @@
 
 	<h1>Cover Letters</h1>
     <?php 
-    foreach($titles as $title)
+    if(sizeof($titles) > 0 )
     {
-        echo form_open('cover/index');
-        form_hidden('cover_id', $title->id);
-		echo form_submit('submit', $title->title);
-		echo form_close();
-		echo "<br />";
+		foreach($titles as $title)
+		{
+		    echo form_open('cover/index');
+		    echo form_hidden('cover_id', $title->id);
+			echo form_submit('submit', $title->title);
+			echo form_close();
+			echo "<br />";
+		}
+    }
+    else
+    {
+    	echo "You don't have any cover letters!";
     }
     echo form_open('cover/create');
 	echo form_input('title', 'Title');

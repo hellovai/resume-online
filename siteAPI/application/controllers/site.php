@@ -11,13 +11,13 @@ class Site extends CI_Controller
 	
 	function index()
 	{
-		$this->load->model('resume_model');
+		$this->load->model('Resume_model');
 		$data['categories'] = $this->Resume_model->cat_info();
-		$this->load->model('cover_model');
+		$this->load->model('Cover_model');
 		$data['covers'] = $this->Cover_model->get_info(5);
-		$this->load->model('ref_model');
+		$this->load->model('Ref_model');
 		$data['references'] = $this->Ref_model->get_refs(5);
-		$this->load->model('documents');
+		$this->load->model('Documents');
 		$data['documents'] = $this->Documents->get_resumes(5);
 		
 		
@@ -38,11 +38,11 @@ class Site extends CI_Controller
 		switch($type)
 		{
 			case("cover"):
-				$this->load->model('cover_model');
+				$this->load->model('Cover_model');
 				$this->Cover_model->save_title($this->input->post('cover_id'), $this->input->post('title'));
 				break;
 			case("resume"):
-				$this->load->model('resume_model');
+				$this->load->model('Resume_model');
 				$this->Resume_model->save_title($title->input->post('cat_id'), $this->input->post('title'));
 				break;
 		}
