@@ -33,7 +33,8 @@
     	"name" => "title",
     	"placeholder" => "New Cover Letter",
     	"style" => "width:100%",
-    	"class" => "span10"
+    	"class" => "span10",
+    	"required"=> ""
     );
 	echo form_input($attributes);
 	echo form_close();
@@ -45,15 +46,18 @@
 	<? if(sizeof($titles) > 0) { 
    	echo form_open('cover/save');
     echo form_hidden('id',$cover->id);
-    echo "<p>" . form_input('title', $cover->title, 'style="border:none"') . " Last edited: " . $cover->updated . "</p>";
+    echo form_input('title', $cover->title, 'style="border:none"');
+	echo form_submit('submit', "Update", 'class="btn btn-primary pull-right span4"');
     $attributes = array(
     	"name" => "info",
     	"value" => $cover->info,
-    	"style" => "width:100%"
+    	"class" => "pull-right",
+    	"style" => "min-width:97%;max-width:97%;",
+    	"rows" => "18"
     );    
 	echo form_textarea($attributes);
 	echo "<br />";
-	echo form_submit('submit', 'Update');
+	echo "<p class='pull-right'>Last edited: " . $cover->updated . "</p>";
 	echo form_close();
 	} ?>
 </div><!-- end cover_edit-->
