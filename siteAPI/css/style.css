@@ -1,0 +1,6 @@
+div.fixed-height {
+	min-height:100px;
+	max-height:250px;
+	padding-bottom:20px;
+	overflow-y:hidden;
+}

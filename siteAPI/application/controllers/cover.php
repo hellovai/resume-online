@@ -15,7 +15,6 @@ class Cover extends CI_Controller
 		
 		$data['cover'] = $this->Cover_model->get_info($this->input->post('cover_id'));
 		
-		
 		$data['context'] = 'cover_page';
 		$this->load->view('template/main', $data);
 	}
@@ -33,7 +32,6 @@ class Cover extends CI_Controller
 	function create()
 	{
 		$this->Cover_model->create($this->input->post('title'));
-
 		$this->index();
 	}
 

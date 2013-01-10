@@ -8,28 +8,21 @@ class Cover_model extends CI_Model {
         	$this->db->where('user_id', $this->session->userdata('user_id')); 
         	$this->db->select('id, title, updated');
         	if($max === false)
-        	{
 				$query = $this->db->get('cover_letter');  
-			}
 			else
-			{
 				$query = $this->db->get('cover_letter',$max);  
-			}
-				
-			   
+			
             return $query->result();
         }
+        
         function get_info($cover_id = false)
         {
 		
         	if(!$cover_id)
-        	{
         		$this->db->order_by("updated", "desc");
-        	}
         	else
-        	{
         		$this->db->where('id', $cover_id); 
-        	}
+
         	$this->db->where('user_id', $this->session->userdata('user_id'));
         	$this->db->select('id,title,updated,info');
         	$query = $this->db->get('cover_letter',1); 

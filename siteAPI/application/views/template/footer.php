@@ -1,5 +1,5 @@
-<br><br><br><br>
 
+    </div><!-- /container2 -->
      <!-- Footer
       ================================================== -->
       <hr>
@@ -26,11 +26,33 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?php echo base_url() ?>/js/jquery-1.8.3.min.js"></script>
-    <script src="<?php echo base_url() ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url() ?>/js/application.js"></script>
-    <script src="<?php echo base_url() ?>/js/bootswatch.js"></script>
-
-
+    <script src="<?php echo base_url() ?>js/jquery-1.8.3.min.js"></script>
+    <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>js/application.js"></script>
+    <script src="<?php echo base_url() ?>js/bootswatch.js"></script>
+    <script src="<?php echo base_url() ?>js/extras.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".fixed-height").mousemove(function(e){
+				var h = $(this).height()*1.1;
+				var offset = $(this).offset();
+				var position = (e.pageY-offset.top)/h;
+				if(position<0.40) {
+				    $(this).stop().animate({ scrollTop: 0 }, 250);
+				}
+				if(position>0.60) {
+				    $(this).stop().animate({ scrollTop: h }, 250);
+				}
+			});
+			$("i").hover(
+			  function () {
+				$(this).addClass("icon-white");
+			  },
+			  function () {
+				$(this).removeClass("icon-white");
+			  }
+			);
+    	});
+	</script>
   </body>
 </html>

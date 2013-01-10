@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>css/boostrap.min.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo base_url();?>css/boostrap-responsive.min.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo base_url();?>css/cosmo.min.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" media="screen" />
 	<style type="text/css">
       body {
         padding-top: 60px;
@@ -72,7 +73,7 @@
 							<ul class="dropdown-menu">
 						      <li><?= anchor(site_url('profile'), "Profile"); ?></li>
 						      <li><?= anchor('#', "Security Settings"); ?></li>
-						      <li><?= anchor(site_url('login/logout'), "Logout"); ?></li>
+						      <li><?= anchor(site_url('welcome/logout'), "Logout"); ?></li>
 						    </ul>
 						</li>
 					</ul>
@@ -84,4 +85,4 @@
     </div>
 
 <div class="container">
-
+	<div class="container row-fluid">

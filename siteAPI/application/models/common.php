@@ -105,5 +105,11 @@ class Common extends CI_Model {
 	
 		return $user[0];
 	}
+	
+	function logout()
+	{
+		$this->session->sess_destroy();
+		redirect(base_url());
+	}
 }
 

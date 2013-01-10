@@ -49,7 +49,7 @@ class Profile extends CI_Controller {
 			{
 				//if didn't enter new password, assign new_pass to what old_pass is (since it passed the check)
 				//this is so that the update_user function doesn't change the new pass to ''
-				$this->input->post('new_pass')=$this->input->post('old_pass');
+				$this->input->post('new_pass') = $this->input->post('old_pass');
 			}
 			
 			//if validation fails, else update user with information from post
@@ -62,7 +62,7 @@ class Profile extends CI_Controller {
 			{
 				$this->Membership_model->update_user($this->input->post('name'),$this->input->post('email'),$this->input->post('new_pass'));
 				$data['success'] = "Your data was updated!";
-				$this->index();		
+				$this->index();	
 			}
 		}
 		else

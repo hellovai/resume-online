@@ -8,6 +8,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('template/main', $data);
 	}
 	
+	public function logout()
+	{
+		$this->Common->logout();
+	}
+	
 }
 
 /* End of file welcome.php */
