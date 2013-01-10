@@ -11,3 +11,23 @@ function hoverscroll() {
         }
     });
 }
+
+function confirmDelete() {
+    $("a.confirm").on("click", function(e) {
+		var link = this;
+		
+        e.preventDefault();
+        
+        $("<div>Are you sure you want to continue?</div>").dialog({
+            buttons: {
+                "Ok": function() {
+                	window.location = link.href;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close");
+                }
+            },
+            modal: true,
+        });
+    });
+};
