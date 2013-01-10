@@ -19,10 +19,10 @@ class Cover_model extends CI_Model {
 			   
             return $query->result();
         }
-        function get_info($cover_id = NULL)
+        function get_info($cover_id = false)
         {
-
-        	if(!isset($cover_id))
+		
+        	if(!$cover_id)
         	{
         		$this->db->order_by("updated", "desc");
         	}
@@ -34,8 +34,7 @@ class Cover_model extends CI_Model {
         	$this->db->select('id,title,updated,info');
         	$query = $this->db->get('cover_letter',1); 
         	
-            
-        	return $query->result();
+			return reset($query->result());
         }
         
         function save_title($cover_id,$title)
@@ -55,7 +54,7 @@ class Cover_model extends CI_Model {
         
         function create($title)
         {
-        	$data = array('title' => $title);
+        	$data = array('title' => $title, 'user_id' => $this->Common->user_id());
 			$this->db->set('created', 'NOW()', FALSE);
 			$this->db->set('updated', 'NOW()', FALSE);
 			$this->db->insert('cover_letter', $data); 
