@@ -32,9 +32,9 @@
     $attributes = array(
     	"name" => "title",
     	"placeholder" => "New Cover Letter",
-    	"style" => "width:100%",
-    	"class" => "span10",
-    	"required"=> ""
+    	"class" => "span12",
+    	"required"=> "",
+    	"autocomplete" => "off"
     );
 	echo form_input($attributes);
 	echo form_close();
@@ -53,7 +53,8 @@
     	"value" => $cover->info,
     	"class" => "pull-right",
     	"style" => "min-width:97%;max-width:97%;",
-    	"rows" => "18"
+    	"rows" => "18",
+    	"autofocus" => ""
     );    
 	echo form_textarea($attributes);
 	echo "<br />";

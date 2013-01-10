@@ -1,10 +1,15 @@
 
     </div><!-- /container2 -->
+    
+    </div><!-- /container -->
+</div><!-- /wrap -->
      <!-- Footer
       ================================================== -->
-      <hr>
+      
 
       <footer id="footer">
+		<div class="container">
+		<hr>
         <p class="pull-right"><a href="#">Back to top</a></p>
         <div class="links">
           <a href="#" onclick="pageTracker._link(this.href); return false;">Blog</a>
@@ -17,9 +22,9 @@
           <a href="#">Donate</a>
         </div>
         Made by <a target="_blank" href="#" onclick="pageTracker._link(this.href); return false;">Team</a>. Contact him <a href="#">Email</a>.<br/>
+	    </div><!-- /container -->
       </footer>
 
-    </div><!-- /container -->
 
 
 

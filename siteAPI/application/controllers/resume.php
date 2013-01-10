@@ -84,9 +84,8 @@ class Resume extends CI_Controller
 		{
 			$info['user_id'] = $this->Common->user_id();
 			$info['type_id'] = $this->input->post('type_id');
-			$info['title'] = $this->input->post('title');
-			$info['order_id'] = $this->input->post('order_id');
-		
+			$info['title'] = $this->input->post('title');			
+			$info['order_id'] = $this->Common->next_order_id("cat");
     		$this->db->insert('cat', $info);
     		redirect('site');
     	}

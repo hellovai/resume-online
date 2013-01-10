@@ -115,5 +115,16 @@ class Common extends CI_Model {
 		$this->session->sess_destroy();
 		redirect(base_url());
 	}
+	
+	function next_order_id($table_name, $where = FALSE) 
+	{
+		$this->db->select('IFNULL( MAX(order_id), 0 )+1 AS order_id', FALSE);
+		if(!$where) 
+			$this->db->where('user_id', $this->user_id());
+		else
+			$this->db->where($where);
+		$query = $this->db->get($table_name);
+		return reset($query->result())->order_id;
+	}
 }
 

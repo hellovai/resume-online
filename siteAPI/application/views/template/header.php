@@ -41,11 +41,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?= base_url() ?>">Resume Builder</a>
+          <a class="brand" href="<?= site_url() ?>">Resume Builder</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+              <li><a href="#donate">Donate</a></li>
             </ul>
             	
                 <?php
@@ -87,5 +88,6 @@
       </div>
     </div>
 
+<div id="wrap">
 <div class="container">
 	<div class="container row-fluid">
