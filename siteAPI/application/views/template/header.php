@@ -66,14 +66,15 @@
             		<ul class="nav pull-right">
 						<li><?= anchor(site_url('site'), "Home", 'class="navbar-link"'); ?></li>
 						<li class="dropdown">
-							<?= anchor('#', $this->Common->user_info()->name . ' <b class="caret"></b>', ' class="dropdown-toggle" data-toggle="dropdown"'); ?>
+							<a href='#' class="dropdown-toggle" data-toggle="dropdown">
+								<?= $this->Common->user_info()->name ?><b class="caret"></b>
+							</a>
 							<ul class="dropdown-menu">
 						      <li><?= anchor(site_url('profile'), "Profile"); ?></li>
 						      <li><?= anchor('#', "Security Settings"); ?></li>
 						      <li><?= anchor(site_url('login/logout'), "Logout"); ?></li>
 						    </ul>
 						</li>
-						<li><?= anchor(site_url('login/logout'), '<i class="icon-off icon-white"></i>'); ?>
 					</ul>
 				</div>
 				<? } ?>

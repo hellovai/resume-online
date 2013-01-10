@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Resume_model extends CI_Model 
+class Resume_model extends CI_Model
 {
 
 	function cat_info()
@@ -32,15 +32,12 @@ class Resume_model extends CI_Model
 		$this->db->where('cat_id',$cat_id);
 		$query = $this->db->get($table_name);
 		
-<<<<<<< HEAD
 		if ($req_data===FALSE)
 		{
 			return $query->num_rows;
 		}
+		
 		return $query->result();
-=======
-		return $query->num_rows;
->>>>>>> d3b51abb6c515dbaca9b8855ede0745cdf586e43
 	}
 	
 	function save_title($cat_id, $title)
