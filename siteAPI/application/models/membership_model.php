@@ -60,9 +60,16 @@ class Membership_model extends CI_Model {
             return $query->result();
         }
 
-        function update_user($name,$email,$password)
+        function update_user($name,$email,$password = false)
         {
-            $data = array('email' => $email, 'name' => $name);
+        	if(!$password)
+            	$data = array('email' => $email, 'name' => $name);
+            else
+            {
+                $salt = $this->Common->uid(40);
+            	$salt = substr($this->Common->chash($salt), 0, 40);
+                $data = array('email' => $email, 'name' => $name,'password' => $salt . $this->Common->chash($salt . $password));
+            }
             $this->db->where('id', $this->Common->user_id());
             $this->db->update('users', $data);
         }
