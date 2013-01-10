@@ -2,6 +2,12 @@
 
 class Profile extends CI_Controller {
 	
+	function __construct()
+	{
+		parent::__construct();
+		$this->Common->is_logged_in();
+	}
+	
 	function index()
 	{
 		$this->load->model('membership_model');

@@ -2,9 +2,11 @@
 
 class Resume extends CI_Controller
 {
-	/*function __construct()
+	function __construct()
 	{
-	}*/
+		parent::__construct();
+		$this->Common->is_logged_in();
+	}
 	
 	function index()
 	{
