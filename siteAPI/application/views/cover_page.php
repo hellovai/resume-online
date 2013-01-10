@@ -26,7 +26,7 @@
 </div><!-- end cover_titles-->
 
 <div id="cover_edit">
-
+	<? if(isset($cover->id)) { ?>
 	<h1><?php echo $cover->id ?></h1>
 	Last edited:
     <?php 
@@ -38,6 +38,6 @@
 	echo form_textarea('info', $cover->info);
 	echo form_submit('submit', 'Update');
 	echo form_close();
-	?>
+	} ?>
 
 </div><!-- end cover_edit-->
