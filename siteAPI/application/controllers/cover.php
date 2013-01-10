@@ -24,15 +24,22 @@ class Cover extends CI_Controller
 		$this->Cover_model->save_text($this->input->post('id'),$this->input->post('info'));
 		$this->Cover_model->save_title($this->input->post('id'),$this->input->post('title'));
 		$data['success'] = "Your cover letter was saved!";
-		$this->index();
+		redirect('/cover/');
 	}
 	
+	function delete()
+	{
+		$cover_id = $this->uri->segment(3, "");
+		$this->Cover_model->delete($cover_id);
+		$data['success'] = "Your cover letter was deleted!";
+		redirect('/cover/');
+	}
 
 	
 	function create()
 	{
 		$this->Cover_model->create($this->input->post('title'));
-		$this->index();
+		redirect('/cover/');
 	}
 
 

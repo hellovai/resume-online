@@ -102,7 +102,7 @@ class Profile extends CI_Controller {
 
 			$this->form_validation->set_rules($col_type, $col_type, 'required');
 			
-
+			//checks to see if field is empty
 			if($this->form_validation->run() == FALSE )
 			{
 				$data['context'] = 'profile_form';

@@ -52,5 +52,12 @@ class Cover_model extends CI_Model {
 			$this->db->set('updated', 'NOW()', FALSE);
 			$this->db->insert('cover_letter', $data); 
         }
+        
+        function delete($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->where('user_id', $this->Common->user_id()); //don't actually need this line of code
+			$this->db->delete('cover_letter'); 
+        }
 
 }

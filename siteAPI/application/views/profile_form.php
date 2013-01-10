@@ -96,7 +96,7 @@
 	
 	echo validation_errors('<p class="error">'); 
 	
-	foreach($phone as $pho) //i like to eat pho!
+	foreach($phone as $pho) //i like to eat yummy pho!
 	{
 		echo form_open('profile/modify/phone/numbers');
 		echo form_hidden('id',$pho->id);
