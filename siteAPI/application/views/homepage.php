@@ -7,7 +7,7 @@
 		{
 			foreach($covers as $letter)
 			{	
-				echo form_open('cover/index');
+				echo form_open('cover/');
 				echo form_hidden('cover_id', $letter->id);
 				echo form_submit('submit', $letter->title);
 				echo form_close();
@@ -23,9 +23,9 @@
 		{
 			foreach($references as $refs)
 			{	
-				echo form_open('site/index');
+				echo form_open('reference/');
 				echo form_hidden('ref_id', $refs->id);
-				echo form_submit('submit', $refs->title);
+				echo form_submit('submit', $refs->name);
 				echo form_close();
 			}
 		}
