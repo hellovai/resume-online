@@ -54,6 +54,8 @@ class Common extends CI_Model {
 			case 5:
 				return "additional";
 		}
+		
+		return FALSE;
 	}
 	
 	//returns -1 if nothing found

@@ -23,9 +23,9 @@ class Resume extends CI_Controller
 	
 	function modify()
 	{
-		$this->load->model('resume_model');
-		$type_id = $this->input->post('type_id')
-		if($this->input->post('action')=='delete')
+		$this->load->model('Resume_model');
+		$type_id = $this->input->post('type_id');
+		if($this->input->post('action')=='Delete')
 		{
 			$this->Resume_model->delete($this->input->post('id'), $type_id);
 		}
@@ -36,36 +36,59 @@ class Resume extends CI_Controller
 				case 1:
 					$object = new uni($_POST);
 					break;
-				case 2:
+				case 1.1: 
 					$object = new courses($_POST);
 					break;
-				case 3:
+				case 2:
 					$object = new experience($_POST);
 					break;
-				case 4:
+				case 2.1:
 					$object = new descript($_POST);
 					break;
-				case 5:
+				case 3:
 					$object = new skill_header($_POST);
 					break;
-				case 6:
+				case 3.1:
 					$object = new skills($_POST);
 					break;
-				case 7:
+				case 3.2:
 					$object = new skill_list($_POST);
 					break;
-				case 8:
+				case 3.3:
 					$object = new skill_queue($_POST);
 					break;
-				case 9:
+				case 4:
 					$object = new honors($_POST);
 					break;
-				case 10:
+				case 5:
 					$object = new additional($_POST);
 					break;
 			}
 			$this->Resume_model->update($object, $this->input->post('id'), $type_id);
 		}
 		$this->index();
+	}
+	
+	function modify_cats()
+	{
+		$this->load->model('Resume_model');
+		$type_id = $this->input->post('type_id');
+		$table_name = $this->Common->type_table($type_id);
+		if(!$table_name)
+			redirect('site');
+		if($this->input->post('action')=='Delete')
+		{
+			$this->Resume_model->delete($this->input->post('id'), $type_id);
+		}
+		else if ($this->input->post('action')=='Add Category');
+		{
+			$info['user_id'] = $this->Common->user_id();
+			$info['type_id'] = $this->input->post('type_id');
+			$info['title'] = $this->input->post('title');
+			$info['order_id'] = $this->input->post('order_id');
+		
+    		$this->db->insert('cat', $info);
+    		redirect('site');
+    	}
 	}
 }
