@@ -84,6 +84,7 @@ class Profile extends CI_Controller {
 	
 	function modify()
 	{
+
 		$table_name = $this->uri->segment(3, "");
 		$col_type = $this->uri->segment(4, "");
 		if($this->input->post('action')=='Change')
@@ -97,8 +98,22 @@ class Profile extends CI_Controller {
 		}
 		else if($this->input->post('action')=='Add')
 		{
-			$info = array($col_type=>$this->input->post($col_type), 'def'=>$this->input->post('def'), 'user_id'=>$this->Common->user_id());
-			$this->Membership_model->add($info, $table_name);	
+			$this->load->library('form_validation');
+
+			$this->form_validation->set_rules($col_type, $col_type, 'required');
+			
+
+			if($this->form_validation->run() == FALSE )
+			{
+				$data['context'] = 'profile_form';
+				$data['success'] = 'You suck I hate you. Also you must enter something in.';
+				$this->load->view('template/main', $data);
+			}
+			else
+			{
+				$info = array($col_type=>$this->input->post($col_type), 'def'=>$this->input->post('def'), 'user_id'=>$this->Common->user_id());
+				$this->Membership_model->add($info, $table_name);	
+			}
 		}	
 		redirect('/profile/');
 	}

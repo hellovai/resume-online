@@ -30,25 +30,35 @@
 	echo form_submit('submit', 'Update');
 	echo form_close();
 	
-	echo validation_errors('<p class="error">'); 
+
 	
 	echo "<h2>Addresses</h2><br />";
 	foreach($address as $addr)
 	{
 		echo form_open('profile/modify/address/address');
 		echo form_hidden('id',$addr->id);
-		echo form_input('def', $addr->def);
+		$options = array(
+                  ''  => '',
+                  'Home'    => 'Home',
+                  'Permanent'   => 'Permanent',
+                  'Current' => 'Current',
+                  'Business' => 'Business'
+                );
+		echo form_dropdown('def', $options, $addr->def);
 		echo form_input('address', $addr->address);
 		echo form_submit('action', 'Change');
 		echo form_submit('action', 'Delete');
 		echo form_close();
 	}
 	echo form_open('profile/modify/address/address');
-	$attributes = array(
-			"name" => "def",
-			"placeholder" => "Type"
-			);
-	echo form_input($attributes);
+	$options = array(
+              ''  => '',
+              'Home'    => 'Home',
+              'Permanent'   => 'Permanent',
+              'Current' => 'Current',
+              'Business' => 'Business'
+            );
+	echo form_dropdown('def', $options, '');
 	$attributes = array(
 			"name" => "address",
 			"placeholder" => "Address Here"
@@ -56,10 +66,12 @@
 	echo form_input($attributes);
 	echo form_submit('action', 'Add');
 	echo form_close();
+	
 	echo "<h2>Websites</h2><br />";
 	foreach($website as $web)
 	{
 		echo form_open('profile/modify/website/url');
+		
 		echo form_hidden('id',$web->id);
 		echo form_input('def', $web->def);
 		echo form_input('url', $web->url);
@@ -81,22 +93,37 @@
 	echo form_submit('action', 'Add');
 	echo form_close();
 	echo "<h2>Phone Numbers</h2><br />";
+	
+	echo validation_errors('<p class="error">'); 
+	
 	foreach($phone as $pho) //i like to eat pho!
 	{
 		echo form_open('profile/modify/phone/numbers');
 		echo form_hidden('id',$pho->id);
-		echo form_input('def', $pho->def);
+		$options = array(
+                  ''  => '',
+                  'Home'    => 'Home',
+                  'Cell'   => 'Cell',
+                  'Fax' => 'Fax',
+                  'Business' => 'Business',
+                  'Other' => 'Other'
+                );
+		echo form_dropdown('def', $options, $pho->def);
 		echo form_input('numbers', $pho->numbers);
 		echo form_submit('action', 'Change');
 		echo form_submit('action', 'Delete');
 		echo form_close();
 	}
 	echo form_open('profile/modify/phone/numbers');
-	$attributes = array(
-			"name" => "def",
-			"placeholder" => "Type"
-			);
-	echo form_input($attributes);
+	$options = array(
+              ''  => '',
+              'Home'    => 'Home',
+              'Cell'   => 'Cell',
+              'Fax' => 'Fax',
+              'Business' => 'Business',
+              'Other' => 'Other'
+            );
+	echo form_dropdown('def', $options, '');
 	$attributes = array(
 			"name" => "numbers",
 			"placeholder" => "Number Here"
@@ -105,5 +132,6 @@
 
 	echo form_submit('action', 'Add');
 	echo form_close();
+	 
 	?>
 </div><!-- end profile_form-->
