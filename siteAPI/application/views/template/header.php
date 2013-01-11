@@ -48,13 +48,12 @@
               <li><a href="<?= site_url() . '/welcome/page/contact'?>">Contact</a></li>
               <li><a href="<?= site_url() . '/welcome/page/donate'?>">Donate</a></li>
             </ul>
-            	
-                <?php
+            	<? if(!isset($discrete))
                 if(!$this->Common->confirm_login())
                 {
 		            $attributes = array('class' => "navbar-form pull-right");
 					echo form_open('login/validate_credentials',$attributes);
-					$attributes = array('name' => "email", "placeholder" => "Email", "class" => "span2"); 
+					$attributes = array('name' => "email", "placeholder" => "Email", "class" => "span2", "autofocus" => ""); 
 					echo form_input($attributes);
 					$attributes = array("name" => "password", "placeholder" => "Password", "class" => "span2"); 
 					echo form_password($attributes);

@@ -1,8 +1,5 @@
 <div id="container">
-
 	<div id="body" class="hero-unit min-padding span 12">
-		
-		
 		<div id="signup_form" class="span4 well gray-back">
 			<h2>Sign Up Now!</h2>
 			<?php

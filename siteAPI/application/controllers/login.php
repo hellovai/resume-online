@@ -14,6 +14,7 @@ class Login extends CI_Controller {
 	function index()
 	{
 		$data['context'] = 'login_form';
+		$data['discrete'] = true;
 		$this->load->view('template/main', $data);		
 	}
 	
