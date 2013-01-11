@@ -46,7 +46,7 @@
             <ul class="nav">
               <li><a href="<?= site_url() . '/welcome/page/about'?>">About</a></li>
               <li><a href="<?= site_url() . '/welcome/page/contact'?>">Contact</a></li>
-              <li><a href="<?= site_url() . '/welcome/page/donate'?>">Donate</a></li>
+              <li><a href="<?= site_url() . '/welcome/page/contribute'?>">Contribute</a></li>
             </ul>
             	<? if(!isset($discrete))
                 if(!$this->Common->confirm_login())
