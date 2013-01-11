@@ -20,24 +20,26 @@ class Reference extends CI_Controller
 
 	function modify()
 	{
-		if($this->input->post('action')=='Update')
-		{
-			$this->Ref_model->update(
-								$this->input->post('id'),
-								$this->input->post('name'),
-								$this->input->post('email'),
-								$this->input->post('phone'),
-								$this->input->post('address'),
-								$this->input->post('company')
-								);
-			$data['success'] = "Your reference was saved!";
-		}
-		else if($this->input->post('action')=='Delete')
-		{
-			$this->Common->delete($this->input->post('id'),'reference');
-			$data['success'] = "Your reference was deleted!";
-		}
+
+		$this->Ref_model->update(
+							$this->input->post('id'),
+							$this->input->post('name'),
+							$this->input->post('email'),
+							$this->input->post('phone'),
+							$this->input->post('address'),
+							$this->input->post('company')
+							);
+		$data['success'] = "Your reference was saved!";
 		redirect('/reference/');
+	}
+	
+	function delete()
+	{
+	
+		$this->Common->delete($this->uri->segment(3),'reference');
+		$data['success'] = "Your reference was deleted!";
+		redirect('/reference/');
+	
 	}
 
 	
