@@ -70,15 +70,15 @@ class Profile extends CI_Controller {
 				else
 					$this->Membership_model->update_user($this->input->post('name'),$this->input->post('email'));
 				$data['success'] = "Your data was updated!";
-				redirect('/profile/');	
 			}
 		}
 		else
 		{
 			//enter code to tell user that old password was wrong
 			$data['success'] = "Your old password was incorrect.";
-			redirect('/profile/');
 		}
+		
+		redirect('/profile/');	
 	
 	}
 	
@@ -89,6 +89,7 @@ class Profile extends CI_Controller {
 	
 		$this->Common->delete($id,$table_name);
 	
+		redirect('/profile/');	
 	}
 	
 	function modify()
