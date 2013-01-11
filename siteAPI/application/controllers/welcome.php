@@ -24,7 +24,7 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function logout() {
-		$this->index();
+		$this->Common->logout();
 	}
 	
 }
