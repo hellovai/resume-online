@@ -26,8 +26,16 @@ height: 90%;
 }
 
 div.fixed-height {
-	min-height:100px;
+	min-height:250px;
 	max-height:250px;
 	padding-bottom:20px;
 	overflow-y:hidden;
+}
+
+.full-width {
+	width:100%;
+}
+
+i.icon {
+	margin-left:-20px;
 }
