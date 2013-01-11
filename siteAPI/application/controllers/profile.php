@@ -96,7 +96,7 @@ class Profile extends CI_Controller {
 		{
 			$this->Common->delete($this->input->post('id'),$table_name);		
 		}
-		else if($this->input->post('action')=='Add')
+		else if($this->uri->segment(5) == "add")
 		{
 			$this->load->library('form_validation');
 

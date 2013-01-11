@@ -32,10 +32,25 @@ div.fixed-height {
 	overflow-y:hidden;
 }
 
+.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
 .full-width {
 	width:100%;
 }
 
 i.icon {
 	margin-left:-20px;
+}
+
+.no-resize {
+ resize:none;
+}
+
+.hide-button {
+	color: transparent; 
+	background-color: transparent; 
+	border-color: transparent;
 }
