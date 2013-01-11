@@ -53,11 +53,5 @@ class Cover_model extends CI_Model {
 			$this->db->insert('cover_letter', $data); 
         }
         
-        function delete($id)
-        {
-            $this->db->where('id', $id);
-            $this->db->where('user_id', $this->Common->user_id());
-			$this->db->delete('cover_letter'); 
-        }
 
 }

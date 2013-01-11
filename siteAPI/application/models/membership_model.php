@@ -81,12 +81,6 @@ class Membership_model extends CI_Model {
             $this->db->update($name, $info);
         }
         
-        function delete($id,$name)
-        {
-            $this->db->where('id', $id);
-            $this->db->where('user_id', $this->Common->user_id()); //don't actually need this line of code
-			$this->db->delete($name); 
-        }
 
         function add($info,$name)
         {

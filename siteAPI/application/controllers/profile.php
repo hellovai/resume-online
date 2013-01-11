@@ -94,7 +94,7 @@ class Profile extends CI_Controller {
 		}
 		else if($this->input->post('action')=='Delete')
 		{
-			$this->Membership_model->delete($this->input->post('id'),$table_name);		
+			$this->Common->delete($this->input->post('id'),$table_name);		
 		}
 		else if($this->input->post('action')=='Add')
 		{
