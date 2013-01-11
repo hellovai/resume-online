@@ -30,7 +30,7 @@
 				 
 				</div>
 				<div id="collapse<?= $var ?>" class="accordion-body collapse">
-					<div class="accordion-inner">
+					<div class="accordion-inner well">
 						<?php
 						echo "<br />";
 						echo form_open('reference/modify');
@@ -71,7 +71,12 @@
 									);
 			 			echo form_textarea($attributes); 
 						echo "<br />";	
-						echo form_submit('submit', 'Update');
+						$attributes = array(
+							"class" => "btn btn-primary span6",
+							'name' => "submit",
+							'value' => 'Update'
+							);	
+						echo form_submit($attributes);
 						echo "<br />";
 						echo form_close();
 						?>
@@ -124,7 +129,12 @@
 				);
 	echo form_textarea($attributes); 
 	echo "<br />";
-	echo form_submit('submit', 'Create New Reference');
+    $attributes = array(
+					"class" => "btn btn-primary span6",
+					'name' => "submit",
+					'value' => 'Create New Reference'
+					);	
+	echo form_submit($attributes);
 	echo form_close();		
 	echo '</div>';
 

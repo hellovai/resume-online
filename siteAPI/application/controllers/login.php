@@ -29,11 +29,11 @@ class Login extends CI_Controller {
 				'is_logged_in' => true,
 			);
 			$this->session->set_userdata($data);
-			redirect('site/members_area');
+			redirect('site/');
 		}
 		else // incorrect username or password
 		{
-			$this->index();
+			redirect('login/');
 		}
 	}
 	

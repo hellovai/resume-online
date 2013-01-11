@@ -4,8 +4,13 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		if($this->Common->confirm_login())
+			redirect('site/');	
+
 		$data['context'] = "welcome_message";
 		$this->load->view('template/main', $data);
+
+		
 	}
 	
 	public function page()

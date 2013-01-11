@@ -45,6 +45,16 @@ i.icon {
 	margin-left:-20px;
 }
 
+.min-padding {
+	padding: 5%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.gray-back{
+background-color:#BBBBBB;
+}
+
 .no-resize {
  resize:none;
 }
@@ -77,3 +87,4 @@ i.icon {
 	font-size:250px;
 	padding-bottom:100px;
 }
+

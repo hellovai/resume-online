@@ -1,30 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-
-</head>
-<body>
-
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
 
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+	<div id="body" class="hero-unit min-padding span 12">
+		
+		
+		<div id="signup_form" class="span4 well gray-back">
+			<h2>Sign Up Now!</h2>
+			<?php
+			   
+			echo form_open('login/create_member');
+			$attributes = array(
+							'class' => "span12",
+							'name' => "first_name",
+							'value' => set_value('first_name', ''),
+							"placeholder" => "First Name",
+							"required" => ""
+							);
+			echo form_input($attributes);
+			$attributes = array(
+							'class' => "span12",
+							'name' => "last_name",
+							'value' => set_value('last_name', ''),
+							"placeholder" => "Last Name",
+							"required" => ""
+							);
+			echo form_input($attributes);
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
+			$attributes = array(
+							'class' => "span12",
+							'name' => "email_address",
+							'value' => set_value('email_address', ''),
+							"placeholder" => "Email Address",
+							"required" => ""
+							);
+			echo form_input($attributes);	
+	
+	
+			$attributes = array(
+							'class' => "span12",
+							'name' => "password",
+							'value' => set_value('password', ''),
+							"placeholder" => "Password",
+							"required" => ""
+							);
+			echo form_password($attributes);
+	
+			$attributes = array(
+							'class' => "span12",
+							'name' => "password2",
+							'value' => set_value('password2', ''),
+							"placeholder" => "Confirm Password",
+							"required" => ""
+							);
+			echo form_password($attributes);
+		   $attributes = array(
+							"class" => "btn btn-primary span12",
+							'name' => "submit",
+							'value' => 'Create Account'
+							);	
+			echo form_submit($attributes);
+			echo form_close();
+			echo validation_errors('<p class="error">'); 
+			?>
+		</div>
+		
+		<div class="span8 pull-right" style="text-align:right;">
+			<h1> Resume Builder</h1>
+			<p>With Resume Builder, you can easily make resumes, cover letters, and reference pages online for free.</p>
+			<div><img src="http://placehold.it/500x200" style='height:80%'/> </div>
+		</div>
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 	</div>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
 
-</body>
-</html>
+
