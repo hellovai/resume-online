@@ -66,7 +66,7 @@
 		<div class="span8 pull-right" style="text-align:right;">
 			<h1> Resume Builder</h1>
 			<p>With Resume Builder, you can easily make resumes, cover letters, and reference pages online for free.</p>
-			<div><img src="http://placehold.it/500x200" style='height:80%'/> </div>
+			<div><img src="http://placehold.it/500x200" class='welcome-image'/> </div>
 		</div>
 
 	</div>
