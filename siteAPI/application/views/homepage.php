@@ -3,7 +3,7 @@
 	<div class="well well-small">
 	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand" href="cover">Cover Letters</a>
+			<a class="brand full-width" href="cover">Recent Cover Letters</a>
 	  	</div>
 	</div>
 	<?php
@@ -16,7 +16,7 @@
 				$attributes = array(
 					"name" => "submit",
 					"value" => $letter->title,
-					"class" => "btn span11",
+					"class" => "btn span12",
 				);
 				echo form_submit($attributes);
 				echo anchor('cover/delete/' . $letter->id . '/site', '<i class="icon-remove icon"></i>', 'class="confirm"');
@@ -30,7 +30,7 @@
     $attributes = array(
     	"name" => "title",
     	"placeholder" => "New Cover Letter",
-    	"class" => "span11",
+    	"class" => "span12",
     	"required"=> "",
     	"autocomplete" => "off"    
     );
@@ -42,7 +42,7 @@
 	<div class="well well-small">
 	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand" href="reference">References</a>
+			<a class="brand full-width" href="reference">| References</a>
 	  	</div>
 	</div>	
 	<?php
@@ -55,7 +55,7 @@
 				$attributes = array(
 					"name" => "submit",
 					"value" => $refs->name,
-					"class" => "btn span11"
+					"class" => "btn span12"
 				);
 				echo form_submit($attributes);
 				echo form_close();
@@ -68,7 +68,7 @@
     $attributes = array(
     	"name" => "name",
     	"placeholder" => "New Reference's' Name",
-    	"class" => "span11",
+    	"class" => "span12",
     	"required"=> "",
     	"autocomplete" => "off"    
     );
@@ -82,7 +82,7 @@
 	<div class="well well-small">
 	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand" href="reference">Previous Resumes</a>
+			<a class="brand full-width" href="reference">| Previous Resumes</a>
 	  	</div>
 	</div>	
 <?
@@ -105,8 +105,9 @@
 		{
 			foreach($categories as $cat)
 			{
-				echo form_open('site/');
-				echo form_hidden('cat_id', $cat->type_id);
+				echo form_open('resume');
+				echo form_hidden('type_id', $cat->type_id);
+				echo form_hidden('cat_id', $cat->cat_id);
 				echo form_submit('submit', $cat->title);
 				echo form_close();
 			}
