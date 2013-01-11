@@ -16,7 +16,9 @@ class contact extends CI_Controller {
 		$this->email->subject('Resume Builder: ' . $this->input->post('subject'));
 		$this->email->message($this->input->post('message'));	
 
-		$this->email->send();
-		redirect('welcome')
+		if($this->email->send()) 
+		redirect('welcome');
+		else
+			show_error($this->email->print_debugger());
 	}
 }
