@@ -13,9 +13,14 @@ class Welcome extends CI_Controller {
 		
 	}
 	
-	public function logout()
+	public function page()
 	{
-		$this->Common->logout();
+		if($this->uri->segment(3) != false) {
+			$data['context'] = $this->uri->segment(3);
+			$this->load->view('template/main', $data);
+		} else {
+			redirect('404');
+		}
 	}
 	
 }

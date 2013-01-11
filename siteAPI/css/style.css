@@ -32,6 +32,11 @@ div.fixed-height {
 	overflow-y:hidden;
 }
 
+.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
 .full-width {
 	width:100%;
 }
@@ -48,5 +53,38 @@ i.icon {
 
 .gray-back{
 background-color:#BBBBBB;
+}
+
+.no-resize {
+ resize:none;
+}
+
+.hide-button {
+	color: transparent; 
+	background-color: transparent; 
+	border-color: transparent;
+}
+
+.image-404 {
+	height:90%;
+	max-height:700px;
+}
+
+.bigger-404 {
+	position:relative;
+}
+
+.box-404 {
+	position:bottom;
+	position: absolute; 
+	bottom: 0;
+	right: 10px;
+	text-align:right;
+	font-family:"wendy one";
+}
+
+.box-404 h1 {
+	font-size:250px;
+	padding-bottom:100px;
 }
 

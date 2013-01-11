@@ -101,7 +101,7 @@ class Profile extends CI_Controller {
 			$info = array($col_type=>$this->input->post($col_type), 'def'=>$this->input->post('def'));
 			$this->Membership_model->update($info, $this->input->post('id'), $table_name);
 		}
-		else if($this->input->post('action')=='Add')
+		else if($this->uri->segment(5) == "add")
 		{
 			$this->load->library('form_validation');
 
