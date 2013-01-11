@@ -64,10 +64,10 @@
 		else
 			echo "<p>No References!</p>";
 	?><hr><?
-    echo form_open('#');
+    echo form_open('reference/create');
     $attributes = array(
-    	"name" => "reference",
-    	"placeholder" => "New Reference",
+    	"name" => "name",
+    	"placeholder" => "New Reference's' Name",
     	"class" => "span11",
     	"required"=> "",
     	"autocomplete" => "off"    
