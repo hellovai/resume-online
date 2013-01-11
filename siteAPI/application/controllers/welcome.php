@@ -18,6 +18,10 @@ class Welcome extends CI_Controller {
 		}
 	}
 	
+	public function logout() {
+		$this->index();
+	}
+	
 }
 
 /* End of file welcome.php */
