@@ -1,2 +1,6 @@
-<h1>Congrats!</h1>
-<p>Your account has not been created. <?php echo anchor('login', 'Login Now');?></p>
+<h2>Congrats!</h2>
+<hr />
+
+<p>Your account has now been created. You can login at the top using your email and password. </p>
+
+
