@@ -20,7 +20,7 @@ class Resume_model extends CI_Model
 		{			
 			$cat_count = $this->type_count($info->id, $info->type_id);
 			
-			$cat_info[] = (object)array("count"=>$cat_count, "type_id"=>$info->type_id, "title"=>$info->title, "order_id"=>$info->order_id);
+			$cat_info[] = (object)array("count"=>$cat_count, "cat_id" =>$info->id, "type_id"=>$info->type_id, "title"=>$info->title, "order_id"=>$info->order_id);
 		}
 		return $cat_info;
 	}
@@ -28,16 +28,16 @@ class Resume_model extends CI_Model
 	function type_count($cat_id, $type_id, $req_data = FALSE)
 	{
 		$table_name = $this->Common->type_table($type_id);
-		if(!$table_name)
+
+		if($table_name==FALSE)
 			return FALSE;
+
 		$this->db->where('cat_id', $cat_id);		
 		$query = $this->db->get($table_name);
 		
 		if ($req_data==FALSE)
-		{
 			return $query->num_rows;
-		}
-		
+			
 		return $query->result();
 	}
 	
@@ -56,6 +56,7 @@ class Resume_model extends CI_Model
     function add($object, $type_id)
     {
     	$table_name = $this->Common->type_table($type_id);
+    	$object->order_id = $this->Common->next_order_id($table_name, array($cat_id, ));
     	$this->db->insert($table_name, $object);
     }
     

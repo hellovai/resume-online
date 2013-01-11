@@ -1,11 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+include(base_url() . 'application/libraries/uni.php');
+
+include (base_url() . "classes.php");
+
 class Common extends CI_Model {
 	
 	function __construct()
     {
         parent::__construct();
-		include (base_url() . "classes.php");
     }
 
 	function chash($str) 

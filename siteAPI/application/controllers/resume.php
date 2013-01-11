@@ -14,11 +14,16 @@ class Resume extends CI_Controller
 		$this->load->model('Resume_model');
 		$cat_id = $this->input->post('cat_id');
 		$type_id = $this->input->post('type_id');
+		$data['type'] = $this->Common->type_table($type_id);
+		$data['type_id'] = $type_id;
+		$data['cat_id'] = $cat_id;
 		$data['info'] = $this->Resume_model->type_count($cat_id, $type_id, TRUE);
-		if ($data['info'])
+		
+		if ($data['type'] != FALSE)
 			$data['context'] = 'resume_page';
 		else
 			redirect('site');
+						
 		$this->load->view('template/main', $data);
 	}
 	
@@ -27,10 +32,8 @@ class Resume extends CI_Controller
 		$this->load->model('Resume_model');
 		$type_id = $this->input->post('type_id');
 		if($this->input->post('action')=='Delete')
-		{
 			$this->Resume_model->delete($this->input->post('id'), $type_id);
-		}
-		else
+		else 
 		{
 			switch($type_id)
 			{
@@ -65,7 +68,10 @@ class Resume extends CI_Controller
 					$object = new additional($_POST);
 					break;
 			}
-			$this->Resume_model->update($object, $this->input->post('id'), $type_id);
+			if($this->input->post('action') == 'Add')
+				$this->Resume_model->add($object, $type_id);
+			else
+				$this->Resume_model->update($object, $this->input->post('id'), $type_id);
 		}
 		$this->index();
 	}
