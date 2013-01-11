@@ -3,7 +3,7 @@
 	<div class="well well-small">
 	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand full-width" href="cover" rel="tooltip" title="Click to see all your cover letters">Cover Letters</a>
+			<a class="brand full-width" href="<?= site_url('cover') ?>" rel="tooltip" title="Click to see all your cover letters">Cover Letters</a>
 	  	</div>
 	</div>
 	<?php
@@ -42,7 +42,7 @@
 	<div class="well well-small">
 	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand full-width" href="reference" rel="tooltip" title="Click to see all your references">References</a>
+			<a class="brand full-width" href="<?= site_url('reference') ?>" rel="tooltip" title="Click to see all your references">References</a>
 	  	</div>
 	</div>	
 	<?php
@@ -82,7 +82,7 @@
 	<div class="well well-small">
 	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand full-width" href="reference">| Previous Resumes</a>
+			<a class="brand full-width" href="<?= site_url('history') ?>">| Previous Resumes</a>
 	  	</div>
 	</div>	
 <?
