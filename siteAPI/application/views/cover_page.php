@@ -11,15 +11,13 @@
 		    echo form_open('cover');
 		    echo form_hidden('cover_id', $title->id);
 		    $attributes = array(
-		    	'class' => "btn span12",
+		    	'class' => "btn span10",
 		    	'name' => "submit",
 		    	'value' => $title->title,
 		    );
-		    if($title->id == $cover->id ) {
+		    if($title->id == $cover->id )
 		    	$attributes['class'] .= " btn-primary";
-		   		$attributes['disabled'] = "";
-		   	}
-			
+		   	
 			echo form_submit($attributes);
 			echo anchor('cover/delete/' . $title->id, '<i class="icon-remove icon"></i>', 'class="confirm"');
 			echo form_close();
