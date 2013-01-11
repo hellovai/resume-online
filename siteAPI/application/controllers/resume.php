@@ -11,13 +11,14 @@ class Resume extends CI_Controller
 	function index()
 	{
 		$cat_name = $this->uri->segment(2);
-		$this->load->model('resume_model');
+		$this->load->model('Resume_model');
 		$cat_id = $this->input->post('cat_id');
 		$type_id = $this->input->post('type_id');
-		
 		$data['info'] = $this->Resume_model->type_count($cat_id, $type_id, TRUE);
-		$data['context'] = 'resume_page';
-		
+		if ($data['info'])
+			$data['context'] = 'resume_page';
+		else
+			redirect('site');
 		$this->load->view('template/main', $data);
 	}
 	

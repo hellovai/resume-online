@@ -28,10 +28,12 @@ class Resume_model extends CI_Model
 	function type_count($cat_id, $type_id, $req_data = FALSE)
 	{
 		$table_name = $this->Common->type_table($type_id);
-		$this->db->where('cat_id', $cat_id);
+		if(!$table_name)
+			return FALSE;
+		$this->db->where('cat_id', $cat_id);		
 		$query = $this->db->get($table_name);
 		
-		if ($req_data===FALSE)
+		if ($req_data==FALSE)
 		{
 			return $query->num_rows;
 		}
