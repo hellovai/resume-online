@@ -1,10 +1,10 @@
 <div id="uni_edit">
 
-	<h1>Education</h1>
+	<h2>Education</h2>
+	<h3><?= $title ?></h3>
 	<br />
     <?php 
     
-    print_r($info);
     if(sizeof($info) > 0 )
     {
     	foreach($info as $cat)

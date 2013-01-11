@@ -108,7 +108,7 @@
 				echo form_open('resume');
 				echo form_hidden('type_id', $cat->type_id);
 				echo form_hidden('cat_id', $cat->cat_id);
-				echo form_submit('submit', $cat->title);
+				echo form_submit('title', $cat->title);
 				echo form_close();
 			}
 		}

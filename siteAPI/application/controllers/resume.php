@@ -17,6 +17,7 @@ class Resume extends CI_Controller
 		$data['type'] = $this->Common->type_table($type_id);
 		$data['type_id'] = $type_id;
 		$data['cat_id'] = $cat_id;
+		$data['title'] = $this->input->post('title');
 		$data['info'] = $this->Resume_model->type_count($cat_id, $type_id, TRUE);
 		
 		if ($data['type'] != FALSE)

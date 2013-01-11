@@ -1,10 +1,11 @@
 <div id="resume_page">
 
-	<h1>Editing</h1>
+	<h1>Editing Resume:</h1>
 	<br />
 	
 	<?php 
 		$data['info'] = $info;
+		$data['title'] = $title;
 		$attributes = array(
 				"name" => "type_id",
 				"value" => $type_id,
