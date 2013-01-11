@@ -1,7 +1,7 @@
 <h2>Create an Account!</h2>
 <hr />
-
-<div id="signup_form" class="span6 well">
+<div class="span3"></div>
+<div id="signup_form" class="span4 well">
 	<?php
 	   
 	echo form_open('login/create_member');
@@ -59,4 +59,5 @@
 	echo validation_errors('<p class="error">'); 
 	?>
 </div>
+<div class="span3"></div>
 
