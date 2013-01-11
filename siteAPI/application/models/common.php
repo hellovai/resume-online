@@ -1,11 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+include(base_url() . 'application/libraries/uni.php');
+
+include (base_url() . "classes.php");
+
 class Common extends CI_Model {
 	
 	function __construct()
     {
         parent::__construct();
-		include (base_url() . "classes.php");
     }
 
 	function chash($str) 
@@ -129,9 +132,12 @@ class Common extends CI_Model {
 	
     function delete($id, $table)
     {
-        $this->db->where('id', $id);
-        $this->db->where('user_id', $this->Common->user_id());
-		$this->db->delete($table); 
+    	if($id != FALSE)
+    	{
+        	$this->db->where('id', $id);
+        	$this->db->where('user_id', $this->Common->user_id());
+			$this->db->delete($table); 
+		}
     }
 }
 
