@@ -1,5 +1,5 @@
 <div id="container">
-	<div id="body" class="hero-unit min-padding span 12">
+	<div id="body" class="hero-unit min-padding span12">
 		<div id="signup_form" class="span4 well gray-back">
 			<h2>Sign Up Now!</h2>
 			<?php
@@ -60,10 +60,10 @@
 			?>
 		</div>
 		
-		<div class="span8 pull-right" style="text-align:right;">
+		<div class="span8 pull-right" style="text-align:right;height:100%">
 			<h1> Resume Builder</h1>
 			<p>With Resume Builder, you can easily make resumes, cover letters, and reference pages online for free.</p>
-			<div><img src="http://placehold.it/500x200" class='welcome-image'/> </div>
+			<div><img src="http://placehold.it/550x200" class='welcome-image'/> </div>
 		</div>
 
 	</div>

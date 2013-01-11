@@ -155,7 +155,7 @@ $phn_options = array(
 			"class" => "span10"
 			);
 		echo form_input($attributes);
-		echo "<a href=\"profile/delete/phone/$web->id\"><i class=\"icon-remove\"></i>";
+		echo "<a href=\"profile/delete/website/$web->id\"><i class=\"icon-remove\"></i></a>";
 		$attributes = array(
 			"name" => "url",
 			"value" => $web->url,
@@ -212,7 +212,7 @@ $phn_options = array(
 					echo ">$option</option>";
 				}
 			?>
-		</select><a href="profile/delete/phone/<?= $pho->id?>"><i class="icon-remove"></i>
+		</select><a href="profile/delete/phone/<?= $pho->id?>"><i class="icon-remove"></i></a>
 		
 <?		$attributes = array(
 			"name" => "numbers",
