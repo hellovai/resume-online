@@ -9,7 +9,6 @@
     	{
     		echo form_open('reference/modify');
     		echo form_hidden('id', $ref->id);
-    		echo form_hidden('order_id', $ref->order_id);
 			echo form_input('name', $ref->name);
 			echo "<br />";
 			$attributes = array(

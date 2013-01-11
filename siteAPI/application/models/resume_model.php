@@ -50,9 +50,7 @@ class Resume_model extends CI_Model
     
     function delete($id, $type_id=NULL)
     {
-    	$table_name = $this->Common->type_table($type_id);
-    	$this->db->where('id', $id);
-    	$this->db->delete($table_name);
+    	$this->Common->delete($id, $this->Common->type_table($type_id));
     }
     
     function add($object, $type_id)
