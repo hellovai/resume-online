@@ -82,19 +82,24 @@ class Profile extends CI_Controller {
 	
 	}
 	
+	function delete()
+	{
+		$table_name = $this->uri->segment(3);
+		$id = $this->uri->segment(4);
+	
+		$this->Common->delete($id,$table_name);
+	
+	}
+	
 	function modify()
 	{
 
-		$table_name = $this->uri->segment(3, "");
-		$col_type = $this->uri->segment(4, "");
+		$table_name = $this->uri->segment(3);
+		$col_type = $this->uri->segment(4);
 		if($this->input->post('action')=='Change')
 		{
 			$info = array($col_type=>$this->input->post($col_type), 'def'=>$this->input->post('def'));
 			$this->Membership_model->update($info, $this->input->post('id'), $table_name);
-		}
-		else if($this->input->post('action')=='Delete')
-		{
-			$this->Common->delete($this->input->post('id'),$table_name);		
 		}
 		else if($this->input->post('action')=='Add')
 		{

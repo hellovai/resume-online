@@ -30,7 +30,7 @@ class Cover extends CI_Controller
 	function delete()
 	{
 		$redirect = $this->uri->segment(4, "cover"); 
-		$cover_id = $this->uri->segment(3, "");
+		$cover_id = $this->uri->segment(3);
 		$this->Common->delete($cover_id, 'cover_letter');
 		$data['success'] = "Your cover letter was deleted!";
 		redirect($redirect);

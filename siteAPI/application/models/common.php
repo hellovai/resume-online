@@ -132,9 +132,12 @@ class Common extends CI_Model {
 	
     function delete($id, $table)
     {
-        $this->db->where('id', $id);
-        $this->db->where('user_id', $this->Common->user_id());
-		$this->db->delete($table); 
+    	if($id != FALSE)
+    	{
+        	$this->db->where('id', $id);
+        	$this->db->where('user_id', $this->Common->user_id());
+			$this->db->delete($table); 
+		}
     }
 }
 
