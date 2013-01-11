@@ -67,7 +67,7 @@
     echo form_open('reference/create');
     $attributes = array(
     	"name" => "name",
-    	"placeholder" => "New Reference's' Name",
+    	"placeholder" => "New Reference's Name",
     	"class" => "span12",
     	"required"=> "",
     	"autocomplete" => "off"    

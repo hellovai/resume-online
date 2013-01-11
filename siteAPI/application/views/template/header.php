@@ -41,12 +41,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?= site_url() ?>">Resume Builder</a>
+          <a class="brand" href="<?= site_url() . '/site/'?>">Resume Builder</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#donate">Donate</a></li>
+              <li><a href="<?= site_url() . '/welcome/page/about'?>">About</a></li>
+              <li><a href="<?= site_url() . '/welcome/page/contact'?>">Contact</a></li>
+              <li><a href="<?= site_url() . '/welcome/page/donate'?>">Donate</a></li>
             </ul>
             	
                 <?php
@@ -69,14 +69,14 @@
 				{ ?>
           		<div class="nav-collapse collapse">
             		<ul class="nav pull-right">
-						<li><?= anchor(site_url('site'), "Home", 'class="navbar-link"'); ?></li>
+						<!--<li><?= anchor(site_url('site'), "Home", 'class="navbar-link"'); ?></li>-->
 						<li class="dropdown">
 							<a href='#' class="dropdown-toggle" data-toggle="dropdown">
 								<?= $this->Common->user_info()->name ?><b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
 						      <li><?= anchor(site_url('profile'), "Profile"); ?></li>
-						      <li><?= anchor('#', "Security Settings"); ?></li>
+						      <li class="disabled"><?= anchor('#', "Privacy Settings",'rel="tooltip" data-placement="right" title="Coming Soon"'); ?></li>
 						      <li><?= anchor(site_url('welcome/logout'), "Logout"); ?></li>
 						    </ul>
 						</li>
