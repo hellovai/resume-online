@@ -48,7 +48,13 @@
 	<? if(sizeof($titles) > 0) { 
    	echo form_open('cover/save');
     echo form_hidden('id',$cover->id);
-    echo form_input('title', $cover->title, 'style="border:none"');
+    $attributes = array(
+    	"name" => "title",
+    	"value" => $cover->title,
+    	"style" => "border:one",
+    	"required"=> "",
+    	);
+    echo form_input($attributes);
 	echo form_submit('submit', "Update", 'class="btn btn-primary pull-right span4"');
     $attributes = array(
     	"name" => "info",
