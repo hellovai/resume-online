@@ -88,7 +88,7 @@ $phn_options = array(
 					echo ">$option</option>";
 				}
 			?>
-		</select>
+		</select><a href="profile/delete/address/<?= $addr->id?>"><i class="icon-remove"></i></a>
 		<?		
 		
 		$attributes = array(
@@ -108,7 +108,7 @@ $phn_options = array(
 		// echo form_submit($attributes); 
 		echo '<button name="action" value="Change" class="hide-button"><i class="icon-refresh"></i></button><hr />';
 		echo form_close(); ?>
-		</div><a href="profile/delete/address/<?= $addr->id?>"><i class="icon-remove icon"></i></a>
+		</div>
 	<? }
 	echo form_open('profile/modify/address/address/add');
 ?>
@@ -125,7 +125,7 @@ $phn_options = array(
 			"placeholder" => "New Address Here",
 			"required" => "",
 			"class" => "span11 no-resize",
-			"rows" => "4"
+			"rows" => "3"
 			);
 	echo form_textarea($attributes);
 	$attributes = array(
@@ -155,6 +155,7 @@ $phn_options = array(
 			"class" => "span10"
 			);
 		echo form_input($attributes);
+		echo "<a href=\"profile/delete/phone/$web->id\"><i class=\"icon-remove\"></i>";
 		$attributes = array(
 			"name" => "url",
 			"value" => $web->url,
@@ -164,9 +165,9 @@ $phn_options = array(
 		echo form_input($attributes);
 		echo '<button name="action" value="Change" class="hide-button"><i class="icon-refresh"></i></button><hr />';
 		echo form_close();
-		echo "</div><a href=\"profile/delete/website/$web->id\"><i class=\"icon-remove icon\"></i></a>";
+		echo "</div>";
 	}
-	echo form_open('profile/modify/website/url');
+	echo form_open('profile/modify/website/url/add');
 	$attributes = array(
 			"name" => "def",
 			"placeholder" => "Type",
@@ -211,7 +212,7 @@ $phn_options = array(
 					echo ">$option</option>";
 				}
 			?>
-		</select>
+		</select><a href="profile/delete/phone/<?= $pho->id?>"><i class="icon-remove"></i>
 		
 <?		$attributes = array(
 			"name" => "numbers",
@@ -222,7 +223,7 @@ $phn_options = array(
 		echo form_input($attributes);
 		echo '<button name="action" value="Change" class="hide-button"><i class="icon-refresh"></i></button><hr />';
 		echo form_close();
-		echo "</div><a href=\"profile/delete/phone/$pho->id\"><i class=\"icon-remove icon\"></i></a>";
+		echo "</div>";
 	}
 	echo form_open('profile/modify/phone/numbers/add');
 ?>
