@@ -34,7 +34,7 @@ class Reference extends CI_Controller
 		}
 		else if($this->input->post('action')=='Delete')
 		{
-			$this->Ref_model->delete($this->input->post('id'),$this->input->post('order_id'));
+			$this->Common->delete($this->input->post('id'),'reference');
 			$data['success'] = "Your reference was deleted!";
 		}
 		redirect('/reference/');

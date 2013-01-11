@@ -126,5 +126,12 @@ class Common extends CI_Model {
 		$query = $this->db->get($table_name);
 		return reset($query->result())->order_id;
 	}
+	
+    function delete($id, $table)
+    {
+        $this->db->where('id', $id);
+        $this->db->where('user_id', $this->Common->user_id());
+		$this->db->delete($table); 
+    }
 }
 

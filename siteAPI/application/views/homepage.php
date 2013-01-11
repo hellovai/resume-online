@@ -105,7 +105,7 @@
 		{
 			foreach($categories as $cat)
 			{
-				echo form_open('site/index');
+				echo form_open('site/');
 				echo form_hidden('cat_id', $cat->type_id);
 				echo form_submit('submit', $cat->title);
 				echo form_close();
