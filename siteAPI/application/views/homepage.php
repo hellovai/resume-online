@@ -108,7 +108,12 @@
 				echo form_open('resume');
 				echo form_hidden('type_id', $cat->type_id);
 				echo form_hidden('cat_id', $cat->cat_id);
-				echo form_submit('submit', $cat->title);
+				$attributes = array(
+						"name" => "action",
+						"value" => $cat->title,
+						"class" => "span4 btn "
+						);
+				echo form_submit($attributes);
 				echo form_close();
 			}
 		}
@@ -127,7 +132,12 @@
 	    echo form_open('resume/modify_cats');
 	    echo form_dropdown('type_id', $options, '');
 		echo form_input('title', 'Title');
-		echo form_submit('action', 'Add Category');
+		$attributes = array(
+					"name" => "action",
+					"value" => "Add Category",
+					"class" => "span4 btn btn-primary"
+					);
+		echo form_submit($attributes);
 		echo form_close();
 	?>
 
