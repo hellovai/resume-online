@@ -122,6 +122,7 @@ class Common extends CI_Model {
 			$this->db->where('user_id', $this->user_id());
 		else
 			$this->db->where($where);
+		
 		$query = $this->db->get($table_name);
 		return reset($query->result())->order_id;
 	}

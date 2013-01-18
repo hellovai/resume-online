@@ -1,17 +1,19 @@
 <?php
+namespace models;
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class uni
 	{
-		private $id;
-		private $cat_id;
-		private $name;
-		private $gpa;
-		private $degree;
-		private $description;
-		private $start;
-		private $finish;
-		private $order_id;
-	
+		$id;
+		$cat_id;
+		$name;
+		$gpa;
+		$degree;
+		$description;
+		$start;
+		$finish;
+		$order_id;
+		
 		public function __construct($details)
 		{
 			//parent::__construct();
@@ -34,4 +36,6 @@ class uni
 			if(isset($details['order_id']))
 				$this->order_id = $details['order_id'];		
 		}
+		
+		
 	}

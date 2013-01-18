@@ -56,7 +56,8 @@ class Resume_model extends CI_Model
     function add($object, $type_id)
     {
     	$table_name = $this->Common->type_table($type_id);
-    	$object->order_id = $this->Common->next_order_id($table_name, array($cat_id, ));
+    	    	
+    	$object->order_id = $this->Common->next_order_id($table_name, array("cat_id" => $object->cat_id) );
     	$this->db->insert($table_name, $object);
     }
     
