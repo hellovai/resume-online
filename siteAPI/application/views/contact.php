@@ -1,11 +1,15 @@
 <h2>Contact Us</h2>
 <hr />
 <div class="span5 well">
-	<p>Feel free to drop us a line at <a href="mailto:resumebuilder@gmail.com">resumebuilder@gmail.com</a> or use the form on your right to send us a message</p>
+	<p>Feel free to drop us a line at <a href="mailto:kacxdak@gmail.com">kacxdak@gmail.com</a> or use the form on your right to send us a message</p>
 	<hr />
 	<p>We try and answer each response promtly, so send use your comments, suggestions, and just general hello's!</p>
 </div>
 <div class="span6 well">
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Sorry!</strong> This feature is currently under process.
+</div>
 <?
 	echo form_open('contact/send');
 	$attributes = array(
@@ -41,6 +45,7 @@
 		"name" => "submit",
 		"value" => "Communicate My Wishes",
 		"class" => "span12 btn btn-primary",
+		"disabled" => "true"
 		);
 	echo form_submit($attributes);
 	echo form_close();

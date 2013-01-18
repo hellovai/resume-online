@@ -6,6 +6,8 @@ class Resume extends CI_Controller
 	{
 		parent::__construct();
 		$this->Common->is_logged_in();
+		$this->load->helper('directory');
+		include('./classes.php');
 	}
 	
 	function index()
