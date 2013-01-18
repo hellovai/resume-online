@@ -13,7 +13,6 @@ class Reference extends CI_Controller
 	{
 		$data['refs'] = $this->Ref_model->get_refs();
 		
-		
 		$data['context'] = 'reference_page';
 		$this->load->view('template/main', $data);
 	}
@@ -36,7 +35,9 @@ class Reference extends CI_Controller
 	function delete()
 	{
 	
-		$this->Common->delete($this->uri->segment(3),'reference');
+		//$this->Common->delete($this->uri->segment(3),'reference');
+		
+		$this->Ref_model->delete($this->uri->segment(3),$this->uri->segment(4));
 		$data['success'] = "Your reference was deleted!";
 		redirect('/reference/');
 	
@@ -53,6 +54,11 @@ class Reference extends CI_Controller
 							$this->input->post('company')
 							);
 		redirect('/reference/');
+	}
+	function swap()
+	{
+		$this->Ref_model->swap($this->uri->segment(3),$this->uri->segment(4));
+		redirect('/reference/');	
 	}
 
 
