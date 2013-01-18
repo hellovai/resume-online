@@ -108,16 +108,12 @@
 				echo form_open('resume');
 				echo form_hidden('type_id', $cat->type_id);
 				echo form_hidden('cat_id', $cat->cat_id);
-<<<<<<< HEAD
-				echo form_submit('title', $cat->title);
-=======
 				$attributes = array(
 						"name" => "action",
 						"value" => $cat->title,
 						"class" => "span4 btn "
 						);
 				echo form_submit($attributes);
->>>>>>> 86dc14d6a3c35ca9c96450c2df5bdfcdb708d379
 				echo form_close();
 			}
 		}

@@ -21,6 +21,12 @@
 						);
  			echo form_input($attributes);
 			$attributes = array(
+						"name" => "schoolname",
+						"placeholder" => "School Name",
+						"value" => $info->name
+						);
+ 			echo form_input($attributes);
+			$attributes = array(
 						"name" => "degree",
 						"placeholder" => "Degree",
 						"value" => $info->degree

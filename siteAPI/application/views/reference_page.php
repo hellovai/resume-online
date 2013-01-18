@@ -12,7 +12,7 @@
     	foreach($refs as $ref) 
     	{ ?>
     	    <div class="accordion-group">
-				<div class="accordion-heading" style="overflow: auto;width: 100%;">
+				<div class="accordion-heading span12" style="overflow: auto;">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?= $var ?>">				
 						<?php 
 						//echo '<div style="overflow: auto;width: 100%;border: 1px solid #000000;">';	
