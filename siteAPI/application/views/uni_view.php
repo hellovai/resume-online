@@ -10,38 +10,38 @@
     	foreach($info as $cat)
     	{
     		echo form_open("resume/modify");
-    		echo form_hidden('cat_id', $info->cat_id);
-    		echo form_hidden('order_id', $info->order_id);
-			echo form_input('name', $info->name);
+    		echo form_hidden('cat_id', $cat->cat_id);
+    		echo form_hidden('order_id', $cat->order_id);
+			echo form_input('name', $cat->name);
 			echo "<br />";
 			$attributes = array(
 						"name" => "gpa",
 						"placeholder" => "GPA",
-						"value" => $info->gpa
+						"value" => $cat->gpa
 						);
  			echo form_input($attributes);
 			$attributes = array(
 						"name" => "degree",
 						"placeholder" => "Degree",
-						"value" => $info->degree
+						"value" => $cat->degree
 						);
  			echo form_input($attributes);
  			$attributes = array(
 						"name" => "description",
 						"placeholder" => "Description",
-						"value" => $info->description
+						"value" => $cat->description
 						);
  			echo form_textarea($attributes);
  			$attributes = array(
 						"name" => "start",
 						"placeholder" => "Start Date",
-						"value" => $info->start
+						"value" => $cat->start
 						);
  			echo form_input($attributes);
 			$attributes = array(
 						"name" => "finish",
 						"placeholder" => "End Date",
-						"value" => $info->finish
+						"value" => $cat->finish
 						);
  			echo form_input($attributes);
  			echo form_submit('action', 'Update');
@@ -61,6 +61,20 @@
     			);
     			
 	echo form_open("resume/modify", $attributes);
+	
+	$attributes = array(
+			"name" => "type_id",
+			"value" => $type_id,
+			"type" => "hidden"
+			);
+	echo form_input($attributes);
+	$attributes = array(
+			"name" => "cat_id",
+			"value" => $cat_id,
+			"type" => "hidden"
+			);
+	echo form_input($attributes);
+	
 	$attributes = array(
 				"name" => "gpa",
 				"placeholder" => "GPA",

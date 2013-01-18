@@ -40,36 +40,47 @@ class Resume extends CI_Controller
 			switch($type_id)
 			{
 				case 1:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\uni') . '.php';
 					$object = new uni($_POST);
 					break;
 				case 1.1: 
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\courses') . '.php';
 					$object = new courses($_POST);
 					break;
 				case 2:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\experience') . '.php';
 					$object = new experience($_POST);
 					break;
 				case 2.1:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\descript') . '.php';
 					$object = new descript($_POST);
 					break;
 				case 3:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_header') . '.php';
 					$object = new skill_header($_POST);
 					break;
 				case 3.1:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skills') . '.php';
 					$object = new skills($_POST);
 					break;
 				case 3.2:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_list') . '.php';
 					$object = new skill_list($_POST);
 					break;
 				case 3.3:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_queue') . '.php';
 					$object = new skill_queue($_POST);
 					break;
 				case 4:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\honors') . '.php';
 					$object = new honors($_POST);
 					break;
 				case 5:
+					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\additional') . '.php';
 					$object = new additional($_POST);
 					break;
 			}
+			
 			if($this->input->post('action') == 'Add')
 				$this->Resume_model->add($object, $type_id);
 			else

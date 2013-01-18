@@ -5,20 +5,9 @@
 	
 	<?php 
 		$data['info'] = $info;
-		$attributes = array(
-				"name" => "type_id",
-				"value" => $type_id,
-				"type" => "hidden",
-				"form" => "add"
-				);
-		echo form_input($attributes);
-		$attributes = array(
-				"name" => "cat_id",
-				"value" => $cat_id,
-				"type" => "hidden",
-				"form" => "add"
-				);
-		echo form_input($attributes);
+		$data['type_id'] = $type_id;
+		$data['type_id'] = $cat_id;
+
 		$this->load->view($type . '_view', $data);
 
 	?>
