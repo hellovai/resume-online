@@ -4,16 +4,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class uni
 	{
-		$id;
-		$cat_id;
-		$name;
-		$gpa;
-		$degree;
-		$description;
-		$start;
-		$finish;
-		$order_id;
-		
 		public function __construct($details)
 		{
 			//parent::__construct();
@@ -36,6 +26,18 @@ class uni
 			if(isset($details['order_id']))
 				$this->order_id = $details['order_id'];		
 		}
+		
+		var $id;
+		var $cat_id;
+		var $name;
+		var $gpa;
+		var $degree;
+		var $description;
+		var $start;
+		var $finish;
+		var $order_id;
+		
+		
 		
 		
 	}

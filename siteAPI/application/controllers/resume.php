@@ -6,8 +6,7 @@ class Resume extends CI_Controller
 	{
 		parent::__construct();
 		$this->Common->is_logged_in();
-		$this->load->helper('directory');
-		include('./classes.php');
+
 	}
 	
 	function index()
@@ -41,7 +40,7 @@ class Resume extends CI_Controller
 			switch($type_id)
 			{
 				case 1:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\uni') . '.php';
+					require  APPPATH .  'models/custom/uni.php';
 					$object = new uni($_POST);
 					break;
 				case 1.1: 
@@ -110,5 +109,12 @@ class Resume extends CI_Controller
     		$this->db->insert('cat', $info);
     		redirect('site');
     	}
+	}
+	
+	function delete()
+	{
+		$this->Resume_model->delete($this->input->post('id'), $type_id);
+		$data['success'] = "Your category was deleted!";
+		redirect('/resume/');		
 	}
 }

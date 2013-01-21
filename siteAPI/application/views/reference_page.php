@@ -33,12 +33,11 @@
 						echo anchor('reference/delete/' . $ref->id . '/' . $ref->order_id, '<i class="icon-remove icon"></i>', 'class="confirm"'); 
 						echo '</div>';
 						//echo '</div>';
-						?>
-						
-					
-					
-				 
+						?>	 
 				</div>
+				
+				
+				
 				<div id="collapse<?= $var ?>" class="accordion-body collapse">
 
 					<div class="accordion-inner well span12">
