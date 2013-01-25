@@ -12,11 +12,11 @@
 		
     	foreach($info as $cat)
     	{ ?>
-    	<div class="accordion-group">
-				<div class="accordion-heading span12" style="overflow: auto;">
+    	<div class="accordion-group"> 
+				<div class="accordion-heading" style="overflow: auto;">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?= $var ?>">	
 						<div class="span9">
-							<h4><?= $ref->name ?></h4>
+							<h4><?= $cat->name ?></h4>
 						</div>
 					</a>
 					<div class="span1">
@@ -24,20 +24,16 @@
 							echo anchor('resume/swap/' . $cat->order_id . '/' . ($cat->order_id-1), '<i class="icon-chevron-up icon"></i>');?>
 					</div>
 					<div class="span1">
-						<?if($var<sizeof($refs)-1)
+						<?if($var<sizeof($info)-1)
 							echo anchor('resume/swap/' . $cat->order_id . '/' . ($cat->order_id+1), '<i class="icon-chevron-down icon"></i>'); ?>
 					 </div>
 					 <div class="span1">
-					 	<?anchor('resume/delete/' . $cat->cat_id . '/' . $cat->order_id, '<i class="icon-remove icon"></i>', 'class="confirm"'); ?>
+					 	<?= anchor('resume/delete/' . $cat->cat_id . '/' . $cat->order_id, '<i class="icon-remove icon"></i>', 'class="confirm"'); ?>
 					 </div>
 				</div>
 
 				<div id="collapse<?= $var ?>" class="accordion-body collapse">
-
-					<div class="accordion-inner well span12">
-						<div class="span3">
-						</div>
-						<div class="span6">			
+					<div class="accordion-inner">
 							<? 
 							echo form_open("resume/modify");
 							echo form_hidden('cat_id', $cat->cat_id);
@@ -53,7 +49,7 @@
 							$attributes = array(
 										"name" => "schoolname",
 										"placeholder" => "School Name",
-										"value" => $info->name
+										"value" => $cat->name
 										);
 				 			echo form_input($attributes);
 							$attributes = array(
@@ -84,8 +80,6 @@
 							echo form_submit('action', 'Delete');
 							echo form_close();
 							?>
-							<br />
-						</div>
 					</div>
 				</div>
 			</div>

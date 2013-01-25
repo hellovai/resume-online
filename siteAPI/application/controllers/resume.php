@@ -40,7 +40,7 @@ class Resume extends CI_Controller
 			switch($type_id)
 			{
 				case 1:
-					require  APPPATH .  'models/custom/uni.php';
+					require	  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\uni') . '.php';
 					$object = new uni($_POST);
 					break;
 				case 1.1: 

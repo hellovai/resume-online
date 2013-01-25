@@ -12,9 +12,10 @@ class Cover extends CI_Controller
 	function index()
 	{
 		$data['titles'] = $this->Cover_model->get_covers();
+		if($this->input->post('cover_id'))
+			$this->session->set_userdata('cover_item', $this->input->post('cover_id'));
 		
-		$data['cover'] = $this->Cover_model->get_info($this->input->post('cover_id'));
-		
+		$data['cover'] = $this->Cover_model->get_info($this->session->userdata('cover_item'));
 		$data['context'] = 'cover_page';
 		$this->load->view('template/main', $data);
 	}
@@ -35,13 +36,11 @@ class Cover extends CI_Controller
 		$data['success'] = "Your cover letter was deleted!";
 		redirect($redirect);
 	}
-
 	
 	function create()
 	{
 		$this->Cover_model->create($this->input->post('title'));
 		redirect('cover');
 	}
-
 
 }

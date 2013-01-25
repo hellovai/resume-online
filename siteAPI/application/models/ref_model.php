@@ -3,12 +3,12 @@
 class Ref_model extends CI_Model
 {
 	
-	function get_refs( $max = NULL )
+	function get_refs( $max = FALSE )
 	{
 		$this->db->where('user_id', $this->Common->user_id());
-		$this->db->order_by('order_id', 'asc');
-		$this->db->select('id, name, email, company, address, phone, order_id');
-		if(!isset($max))
+		$this->db->order_by('order_id', 'desc');
+		$this->db->select('id, name, order_id');
+		if(!$max)
 		{
 			$query = $this->db->get('reference');
 		}
@@ -18,6 +18,29 @@ class Ref_model extends CI_Model
 		}
 		
 		return $query->result();
+	}
+	
+	function ref_info ( $item_id = FALSE ) {
+		if ( $item_id != FALSE )
+			$this->db->where('id', $item_id);
+		else if(!$this->session->userdata('ref_item'))
+			$this->db->order_by('order_id', 'desc');
+		else
+			$this->db->where('id', $this->session->userdata('ref_item'));
+
+		$this->db->where('user_id', $this->Common->user_id());
+		$this->db->select('id, name, email, company, address, phone, order_id');
+		$query = $this->db->get('reference',1);
+		$item = reset($query->result());
+		
+		
+		//redundancy to assure that correct data is stored
+		if($query->num_rows() == 0)
+			$this->session->set_userdata('ref_item', false);
+		else
+			$this->session->set_userdata('ref_item', $item->id);
+		
+		return $item;
 	}
 	
     function create($name, $email, $phone, $address, $company)
@@ -34,7 +57,7 @@ class Ref_model extends CI_Model
 		$this->db->insert('reference', $data); 
     }
     
-    function update($id,$name, $email, $phone, $address, $company)
+    function update($id, $name, $email, $phone, $address, $company)
     {
     	$data = array('name' => $name, 'user_id' => $this->Common->user_id());
     	if($email)
@@ -50,11 +73,10 @@ class Ref_model extends CI_Model
         $this->db->update('reference', $data); 
     }    
     
-    function delete($id,$order_id)
+    function delete($id, $order_id)
     {
-    
-    $this->db->query("UPDATE reference SET order_id = order_id - 1 WHERE order_id > '".$order_id."' AND user_id = '".$this->Common->user_id()."'");
-    $this->Common->delete($id,'reference');  
+		$this->db->query("UPDATE reference SET order_id = order_id - 1 WHERE order_id > '".$order_id."' AND user_id = '".$this->Common->user_id()."'");
+		$this->Common->delete($id,'reference');  
     }
     
     function swap($order_id1, $order_id2)

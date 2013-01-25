@@ -21,13 +21,13 @@ function confirmDelete() {
         $("<div>Are you sure you want to continue?</div>").dialog({
             buttons: {
                 "Ok": function() {
-                	window.location = link.href;
+					window.location = link.href;
                 },
                 "Cancel": function() {
                     $(this).dialog("close");
                 }
             },
-            modal: true,
+            modal: true
         });
     });
-};
+}

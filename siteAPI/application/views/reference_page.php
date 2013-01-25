@@ -1,156 +1,103 @@
-<div id="reference_page">
-
-	<h2>References</h2>
-	<hr />
-	<br />
+<h2 class="page_header">References</h2>
+<hr>
+<div id="cover_titles" class="span3 well">
+    <div class="fixed-height row-fluid">
     <?php 
     if(sizeof($refs) > 0 )
     {
-    
-		echo '<div class="accordion span6" id="accordion2">';
-		$var=0;
-    	foreach($refs as $ref) 
-    	{ ?>
-    	    <div class="accordion-group">
-				<div class="accordion-heading span12" style="overflow: auto;">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?= $var ?>">				
-						<?php 
-						//echo '<div style="overflow: auto;width: 100%;border: 1px solid #000000;">';	
-						echo '<div class="span9"">';
-						echo "<h4>$ref->name</h4>";
-						echo '</div>';
-						echo '</a>';
-
-						echo '<div class="span1">';
-						if($var!=0)
-							echo anchor('reference/swap/' . $ref->order_id . '/' . ($ref->order_id-1), '<i class="icon-chevron-up icon"></i>'); 
-						echo '</div>';
-						echo '<div class="span1">';
-						if($var<sizeof($refs)-1)
-							echo anchor('reference/swap/' . $ref->order_id . '/' . ($ref->order_id+1), '<i class="icon-chevron-down icon"></i>'); 
-						echo '</div>';
-						echo '<div class="span1">';
-						echo anchor('reference/delete/' . $ref->id . '/' . $ref->order_id, '<i class="icon-remove icon"></i>', 'class="confirm"'); 
-						echo '</div>';
-						//echo '</div>';
-						?>	 
-				</div>
-				
-				
-				
-				<div id="collapse<?= $var ?>" class="accordion-body collapse">
-
-					<div class="accordion-inner well span12">
-						<div class="span3">
-						</div>
-						<div class="span6">
-							<?php
-							echo "<br />";
-							echo form_open('reference/modify');
-							echo form_hidden('id', $ref->id);
-							$attributes = array(
-										"name" => "name",
-										"style" => "border:none",
-										"value" => $ref->name
-										);
-				 			echo form_input($attributes);
-							echo "<br />";
-							$attributes = array(
-										"name" => "company",
-										"placeholder" => "Company Name",
-										"value" => $ref->company
-										);
-				 			echo form_input($attributes);
-							echo "<br />";
-							$attributes = array(
-										"name" => "email",
-										"placeholder" => "Email Address",
-										"value" => $ref->email
-										);
-				 			echo form_input($attributes);
-							echo "<br />";
-							$attributes = array(
-										"name" => "phone",
-										"placeholder" => "Phone Number",
-										"value" => $ref->phone
-										);
-				 			echo form_input($attributes);
-							echo "<br />";
-							$attributes = array(
-										"name" => "address",
-										"placeholder" => "Mailing Address",
-										"value" => $ref->address,
-										"rows" => 4
-										);
-				 			echo form_textarea($attributes); 
-							echo "<br />";	
-							$attributes = array(
-								"class" => "btn btn-primary span6",
-								'name' => "submit",
-								'value' => 'Update'
-								);	
-							echo form_submit($attributes);
-							echo "<br />";
-							echo form_close();
-							?>
-							<br />
-						</div>
-					</div>
-				</div>
-			</div>
-		<?php 
-		$var++;	
-    	}
-    	echo "</div>";
+		foreach($refs as $title)
+		{
+		    echo form_open('reference');
+		    echo form_hidden('ref_id', $title->id);
+		    $attributes = array(
+		    	'class' => "btn span12",
+		    	'name' => "submit",
+		    	'value' => $title->name,
+		    );
+		    if($title->id == $reference->id ) {
+		    	$attributes['class'] .= " btn-primary";
+		   		$attributes['disabled'] = "";
+		   	}
+			
+			echo form_submit($attributes);
+			echo anchor('reference/delete/' . $title->id . '/' . $title->order_id, '<i class="icon-remove icon"></i>', 'class="confirm"');
+			echo form_close();
+		}
     }
     else
     {
     	echo "<p>You don't have any references!</p>";
-    }    		
-    
-    echo '<br />';
-    echo '<div class="span5 pull-right">';
+    }
+    ?></div><hr><?
     echo form_open('reference/create');
+    $attributes = array(
+    	"name" => "name",
+    	"placeholder" => "New Reference's name",
+    	"class" => "span12",
+    	"required"=> "",
+    	"autocomplete" => "off"
+    );
+	echo form_input($attributes);
+	echo form_close();
+	?>
+
+</div><!-- end cover_titles-->
+
+<div class="span8 row-fluid"><div class="span12 row-fluid">
+<? if(sizeof($refs) > 0) { 
+   	echo form_open('reference/modify');
+	echo '<div id="cover_edit" class="span5">';
+	echo "<h5>Reference's Info</h5>";
 	$attributes = array(
 				"name" => "name",
-				"placeholder" => "Reference Name"
+				"value" => $reference->name,
+				"placeholder" => "Reference Name",
 				);
 	echo form_input($attributes);
-	echo "<br />";	
 	$attributes = array(
 				"name" => "company",
+				"value" => $reference->company,
 				"placeholder" => "Company Name"
 				);
 	echo form_input($attributes);
-	echo "<br />";
 	$attributes = array(
 				"name" => "email",
+				"value" => $reference->email,
 				"placeholder" => "Email Address"
 				);
 	echo form_input($attributes);
-	echo "<br />";
 	$attributes = array(
 				"name" => "phone",
+				"value" => $reference->phone,
 				"placeholder" => "Phone Number"
 
 				);
 	echo form_input($attributes);
-	echo "<br />";
 	$attributes = array(
 				"name" => "address",
+				"value" => $reference->address,
 				"placeholder" => "Mailing Address",
 				"rows" => 4
 				);
 	echo form_textarea($attributes); 
-	echo "<br />";
+	echo "</div>";
+	echo '<div class="span6 pull-right">';
+	echo '<h5>Personal Notes <a href="#" rel="tooltip" data-placement="top" data-original-title="Keep notes on your last communications with ' . $reference->name . '"><i class="icon-question-sign"></i></a></h5>';
+	$attributes = array(
+				"name" => "notes",
+				"value" => "Blah",
+    			"style" => "min-width:97%;max-width:97%;",
+    			"rows" => 12,
+    			"autofocus" => "",
+				);
+	echo form_textarea($attributes);
+	echo "</div></div>";
     $attributes = array(
-					"class" => "btn btn-primary span6",
-					'name' => "submit",
-					'value' => 'Create New Reference'
-					);	
+				"class" => "btn btn-primary span6 pull-right",
+				'name' => "submit",
+				'value' => 'Save Changes',
+				);	
 	echo form_submit($attributes);
-	echo form_close();		
-	echo '</div>';
-
-	?>
-</div><!-- end reference_page-->
+	echo form_close();
+} ?>
+</div>
