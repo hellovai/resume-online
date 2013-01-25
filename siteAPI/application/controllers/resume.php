@@ -6,100 +6,97 @@ class Resume extends CI_Controller
 	{
 		parent::__construct();
 		$this->Common->is_logged_in();
-
+		$this->load->model('Resume_model');
 	}
 	
 	function index()
 	{
-		$cat_name = $this->uri->segment(2);
-		$this->load->model('Resume_model');
-		$cat_id = $this->input->post('cat_id');
-		$type_id = $this->input->post('type_id');
-		$data['type'] = $this->Common->type_table($type_id);
-		$data['type_id'] = $type_id;
-		$data['cat_id'] = $cat_id;
+		$data['categories'] = $this->Resume_model->cat_info();
+		
+		if($this->input->post('cat_id') != false)
+			$this->session->set_userdata('cat_id', $this->input->post('cat_id'));
+		if($this->input->post('type_id') != false)
+			$this->session->set_userdata('type_id', $this->input->post('type_id'));
+		if($this->input->post('resume_id') != false)
+			$this->session->set_userdata('resume_item', $this->input->post('resume_id'));
+		
+		$data['type'] = $this->Common->type_table($this->session->userdata('type_id'));
+		
 		$data['title'] = $this->input->post('title');
-		$data['info'] = $this->Resume_model->type_count($cat_id, $type_id, TRUE);
+		$data['info'] = $this->Resume_model->type_count($this->session->userdata('cat_id'), $this->session->userdata('type_id'), TRUE);
 		
 		if ($data['type'] != FALSE)
 			$data['context'] = 'resume_page';
 		else
 			redirect('site');
-						
+		
 		$this->load->view('template/main', $data);
 	}
 	
 	function modify()
 	{
-		$this->load->model('Resume_model');
-		$type_id = $this->input->post('type_id');
-		if($this->input->post('action')=='Delete')
-			$this->Resume_model->delete($this->input->post('id'), $type_id);
-		else 
+		$type_id = $this->session->userdata('type_id');
+		
+		$this->load->model('Table_model');
+		switch($type_id)
 		{
-			switch($type_id)
-			{
-				case 1:
-					require	  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\uni') . '.php';
-					$object = new uni($_POST);
-					break;
-				case 1.1: 
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\courses') . '.php';
-					$object = new courses($_POST);
-					break;
-				case 2:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\experience') . '.php';
-					$object = new experience($_POST);
-					break;
-				case 2.1:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\descript') . '.php';
-					$object = new descript($_POST);
-					break;
-				case 3:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_header') . '.php';
-					$object = new skill_header($_POST);
-					break;
-				case 3.1:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skills') . '.php';
-					$object = new skills($_POST);
-					break;
-				case 3.2:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_list') . '.php';
-					$object = new skill_list($_POST);
-					break;
-				case 3.3:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_queue') . '.php';
-					$object = new skill_queue($_POST);
-					break;
-				case 4:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\honors') . '.php';
-					$object = new honors($_POST);
-					break;
-				case 5:
-					require  APPPATH .  str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\additional') . '.php';
-					$object = new additional($_POST);
-					break;
-			}
-			
-			if($this->input->post('action') == 'Add')
-				$this->Resume_model->add($object, $type_id);
-			else
-				$this->Resume_model->update($object, $this->input->post('id'), $type_id);
+			case 1:
+				$object = $this->Table_model->uni($_POST);
+				break;
+			case 1.1: 
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\courses') . '.php';
+				$object = new courses($_POST);
+				break;
+			case 2:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\experience') . '.php';
+				$object = new experience($_POST);
+				break;
+			case 2.1:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\descript') . '.php';
+				$object = new descript($_POST);
+				break;
+			case 3:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_header') . '.php';
+				$object = new skill_header($_POST);
+				break;
+			case 3.1:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skills') . '.php';
+				$object = new skills($_POST);
+				break;
+			case 3.2:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_list') . '.php';
+				$object = new skill_list($_POST);
+				break;
+			case 3.3:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_queue') . '.php';
+				$object = new skill_queue($_POST);
+				break;
+			case 4:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\honors') . '.php';
+				$object = new honors($_POST);
+				break;
+			case 5:
+				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\additional') . '.php';
+				$object = new additional($_POST);
+				break;
 		}
-		$this->index();
+		
+		if($this->input->post('action') == 'Add')
+			$this->Resume_model->add($object, $type_id);
+		else
+			$this->Resume_model->update($object, $this->session->userdata('resume_item'), $type_id);
+		
+		redirect('resume');
 	}
 	
 	function modify_cats()
 	{
-		$this->load->model('Resume_model');
 		$type_id = $this->input->post('type_id');
 		$table_name = $this->Common->type_table($type_id);
 		if(!$table_name)
 			redirect('site');
 		if($this->input->post('action')=='Delete')
-		{
 			$this->Resume_model->delete($this->input->post('id'), $type_id);
-		}
 		else if ($this->input->post('action')=='Add Category');
 		{
 			$info['user_id'] = $this->Common->user_id();
@@ -113,8 +110,22 @@ class Resume extends CI_Controller
 	
 	function delete()
 	{
-		$this->Resume_model->delete($this->input->post('id'), $type_id);
+		if($this->session->userdata('cat_id') == $this->input->post('id'))
+			$this->session->unset_userdata('cat_id');
+		$this->Resume_model->delete($this->input->post('id'), $this->session->userdata('type_id'));
 		$data['success'] = "Your category was deleted!";
-		redirect('/resume/');		
+		redirect('resume');
+	}
+	
+	function deleteitem() {
+		$this->Resume_model->deleteitem($this->uri->segment(3), $this->uri->segment(4));
+		redirect('resume');
+	}
+	
+	function view()
+	{
+		$this->session->set_userdata('cat_id', $this->uri->segment(3));
+		$this->session->set_userdata('type_id', $this->uri->segment(4));
+		redirect('resume');
 	}
 }

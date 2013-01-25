@@ -6,18 +6,18 @@ class Site extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->Common->is_logged_in();
 		$this->load->model('Resume_model');
 		$this->load->model('Cover_model');
-		$this->Common->is_logged_in();
+		$this->load->model('Ref_model');
+		$this->load->model('Documents');
 	}
 	
 	function index()
 	{
 		$data['categories'] = $this->Resume_model->cat_info();
 		$data['covers'] = $this->Cover_model->get_covers(5);
-		$this->load->model('Ref_model');
 		$data['references'] = $this->Ref_model->get_refs(5);
-		$this->load->model('Documents');
 		$data['documents'] = $this->Documents->get_resumes(5);
 		
 		$data['context'] = 'homepage';

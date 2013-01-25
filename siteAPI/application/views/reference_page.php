@@ -16,7 +16,7 @@
 		    );
 		    if($title->id == $reference->id ) {
 		    	$attributes['class'] .= " btn-primary";
-		   		$attributes['disabled'] = "";
+		   		//$attributes['disabled'] = "";
 		   	}
 			
 			echo form_submit($attributes);

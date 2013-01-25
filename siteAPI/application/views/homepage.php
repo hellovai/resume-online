@@ -121,7 +121,7 @@
 			echo "<p>Why do you have no categories...</p>";
 		
 		$options = array(
-					'' => "Select Category",
+					'\" disabled="disabled"' => "Select Category",
 					'1' => "Education",
 					'2' => "Experience",
 					'3' => "Skills",

@@ -9,13 +9,9 @@ class Ref_model extends CI_Model
 		$this->db->order_by('order_id', 'desc');
 		$this->db->select('id, name, order_id');
 		if(!$max)
-		{
 			$query = $this->db->get('reference');
-		}
 		else
-		{
 			$query = $this->db->get('reference',$max);
-		}
 		
 		return $query->result();
 	}
@@ -75,8 +71,11 @@ class Ref_model extends CI_Model
     
     function delete($id, $order_id)
     {
-		$this->db->query("UPDATE reference SET order_id = order_id - 1 WHERE order_id > '".$order_id."' AND user_id = '".$this->Common->user_id()."'");
-		$this->Common->delete($id,'reference');  
+    	if($this->Common->delete($id,'reference'))
+			$this->db->query("UPDATE reference SET order_id = order_id - 1 WHERE order_id > '".$order_id."' AND user_id = '".$this->Common->user_id()."'");
+		else
+			return FALSE;
+		return TRUE;
     }
     
     function swap($order_id1, $order_id2)

@@ -20,7 +20,7 @@ class Cover_model extends CI_Model {
         	if($cover_id != false)
         		$this->db->where('id', $cover_id);
         	else if(!$this->session->userdata('cover_item'))
-				$this->db->order_by('order_id', 'desc');
+				$this->db->order_by('updated', 'desc');
         	else
         		$this->db->where('id', $this->session->userdata('cover_item')); 
 

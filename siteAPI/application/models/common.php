@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Common extends CI_Model {
+	var $month = array("January", "February", "March", "April", "May", "June",
+	 "July", "August", "September", "October", "November",
+	 "December", "Spring", "Summer", "Fall", "Winter");
 	
 	function __construct()
     {
@@ -127,14 +130,42 @@ class Common extends CI_Model {
 		return reset($query->result())->order_id;
 	}
 	
-    function delete($id, $table)
+    function delete($id, $table, $cat_id = FALSE)
     {
     	if($id != FALSE)
     	{
         	$this->db->where('id', $id);
-        	$this->db->where('user_id', $this->Common->user_id());
+        	if(!$cat_id)
+        		$this->db->where('user_id', $this->Common->user_id());
+			else
+				$this->db->where('cat_id', $this->session->userdata('cat_id'));
 			$this->db->delete($table); 
+			if($this->db->affected_rows() > 0 )	
+				return TRUE;
 		}
+		
+		return FALSE;
     }
+    
+    function write_date($date, $month_title = "month", $year_title = "year", $span = 8) {
+    	$year_name = $date % 10000;
+    	$month_name = ($date - $year_name) / 10000;
+    	echo '<div class="span' . $span . '"><select name="' . $month_title . '" class="span6">';
+			foreach($this->month as $key=>$option) {
+				echo "<option value=\"$key\" ";
+				if($key === $month_name) echo 'selected="selected"';
+				echo ">$option</option>";
+			}
+		echo '</select>';
+		$attributes = array(
+			"name" => $year_title,
+			"value" => $year_name,
+			"class" => "span6",
+			"placeholder" => "Year"
+			);
+		echo form_input($attributes);
+		echo "</div>";
+    }
+    
 }
 
