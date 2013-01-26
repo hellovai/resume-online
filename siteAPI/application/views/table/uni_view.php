@@ -1,35 +1,37 @@
-<div id="uni_edit" class="span8">
+<? $courses = $this->Resume_model->get_courses(); ?>
+<div id="uni_edit" class="span12">
+<div class="span5">
 <?	echo form_open("resume/modify");
 	$attributes = array(
 				"name" => "name",
 				"placeholder" => "School Name",
 				"value" => $item->name,
-				"class" => "span7",
+				"class" => "span12",
 				);
 	echo form_input($attributes); 
 	$attributes = array(
 				"name" => "gpa",
 				"placeholder" => "GPA",
 				"value" => $item->gpa,
-				"class" => "span7",
+				"class" => "span12",
 				);
 	echo form_input($attributes);
 	$attributes = array(
 				"name" => "degree",
 				"placeholder" => "Degree",
 				"value" => $item->degree,
-				"class" => "span7",
+				"class" => "span12",
 				);
 	echo form_input($attributes);
 	$attributes = array(
 				"name" => "description",
 				"placeholder" => "Description",
 				"value" => $item->description,
-				"class" => "span7",
+				"class" => "span12",
 				);
 	echo form_textarea($attributes);
-	$this->Common->write_date($item->start, "start_month", "start_year", 7);
-	$this->Common->write_date($item->finish, "finish_month", "finish_year", 7);
+	$this->Common->write_date($item->start, "start_month", "start_year", 12);
+	$this->Common->write_date($item->finish, "finish_month", "finish_year", 12);
 	$attributes = array(
 				"class" => "btn btn-primary span7",
 				'name' => "action",
@@ -43,4 +45,31 @@
 #				);	
 #	echo form_submit($attributes);
 	echo form_close(); ?>
+</div>
+<div class="offset1 span6">
+	<?
+	echo form_open('resume/add_course');
+	$attributes = array(
+		    	"name" => "title",
+    			"placeholder" => "New courses's name",
+    			"class" => "span12",
+    			"required"=> "",
+				);
+	echo form_input($attributes);
+	echo form_close();
+	echo "<hr />";
+	if(sizeof($courses) > 0 ) { ?>
+	<?
+	foreach($courses as $course) {
+		$attributes = array(
+			"value" => $course->course,
+			"class" => "btn",
+			"style" => "margin:5px; padding-right:25px; cursor:default"
+		);
+		echo form_submit($attributes);
+		echo anchor('resume/deleteitem/course/' . $course->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
+	}
+	?>
+	<? } else echo "<p>You have no courses recorded!</p>"; ?>
+</div>
 </div>

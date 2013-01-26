@@ -13,11 +13,11 @@ class Resume extends CI_Controller
 	{
 		$data['categories'] = $this->Resume_model->cat_info();
 		
-		if($this->input->post('cat_id') != false)
+		if($this->input->post('cat_id') !== false)
 			$this->session->set_userdata('cat_id', $this->input->post('cat_id'));
-		if($this->input->post('type_id') != false)
+		if($this->input->post('type_id') !== false)
 			$this->session->set_userdata('type_id', $this->input->post('type_id'));
-		if($this->input->post('resume_id') != false)
+		if($this->input->post('resume_id') !== false)
 			$this->session->set_userdata('resume_item', $this->input->post('resume_id'));
 		
 		$data['type'] = $this->Common->type_table($this->session->userdata('type_id'));
@@ -43,33 +43,13 @@ class Resume extends CI_Controller
 			case 1:
 				$object = $this->Table_model->uni($_POST);
 				break;
-			case 1.1: 
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\courses') . '.php';
-				$object = new courses($_POST);
-				break;
 			case 2:
 				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\experience') . '.php';
 				$object = new experience($_POST);
 				break;
-			case 2.1:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\descript') . '.php';
-				$object = new descript($_POST);
-				break;
 			case 3:
 				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_header') . '.php';
 				$object = new skill_header($_POST);
-				break;
-			case 3.1:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skills') . '.php';
-				$object = new skills($_POST);
-				break;
-			case 3.2:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_list') . '.php';
-				$object = new skill_list($_POST);
-				break;
-			case 3.3:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_queue') . '.php';
-				$object = new skill_queue($_POST);
 				break;
 			case 4:
 				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\honors') . '.php';
@@ -118,7 +98,10 @@ class Resume extends CI_Controller
 	}
 	
 	function deleteitem() {
-		$this->Resume_model->deleteitem($this->uri->segment(3), $this->uri->segment(4));
+		if($this->uri->segment(3) == "course")
+			$this->Resume_model->delete_course($this->uri->segment(4));
+		else
+			$this->Resume_model->deleteitem($this->uri->segment(3), $this->uri->segment(4));
 		redirect('resume');
 	}
 	
@@ -126,6 +109,13 @@ class Resume extends CI_Controller
 	{
 		$this->session->set_userdata('cat_id', $this->uri->segment(3));
 		$this->session->set_userdata('type_id', $this->uri->segment(4));
+		redirect('resume');
+	}
+	
+	//functions meant for specific calls
+	function add_course() {
+		if($this->Common->type_table($this->session->userdata('type_id')) == "uni")
+			$this->Resume_model->add_course($this->input->post('title'));
 		redirect('resume');
 	}
 }

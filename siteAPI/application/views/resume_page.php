@@ -33,7 +33,7 @@
 				'name' => "submit",
 				'value' => $title_name,
 			);
-			if($title->id == $data['item']->id ) {
+			if($title->id === $data['item']->id ) {
 				$attributes['class'] .= " btn-primary";
 				//$attributes['disabled'] = "";
 			}

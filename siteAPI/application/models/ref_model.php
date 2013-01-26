@@ -51,6 +51,7 @@ class Ref_model extends CI_Model
     	if($company)
     		$data['company'] = $company;	
 		$this->db->insert('reference', $data); 
+    	$this->session->set_userdata('ref_item', $this->db->insert_id());
     }
     
     function update($id, $name, $email, $phone, $address, $company)
@@ -71,9 +72,11 @@ class Ref_model extends CI_Model
     
     function delete($id, $order_id)
     {
-    	if($this->Common->delete($id,'reference'))
+    	if($this->Common->delete($id,'reference')) {
 			$this->db->query("UPDATE reference SET order_id = order_id - 1 WHERE order_id > '".$order_id."' AND user_id = '".$this->Common->user_id()."'");
-		else
+			if($this->session->userdata('ref_item') == $id)
+				$this->session->unset_userdata('ref_item');
+		} else
 			return FALSE;
 		return TRUE;
     }

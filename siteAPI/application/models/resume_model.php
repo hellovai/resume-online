@@ -79,13 +79,14 @@ class Resume_model extends CI_Model
     	return $this->Common->delete($id, $this->Common->type_table($type_id));
     }
     
-    function deleteitem ($id, $order_id) {
+    function deleteitem ($id, $order_id = false) {
     	$table_name = $this->Common->type_table($this->session->userdata('type_id'));
+    	if($order_id === false)
+    		$order_id = $this->Common->get_order_id($id, $table_name);
+    	
     	if($this->Common->delete($id, $table_name, $this->session->userdata('cat_id'))) {
-    		$data = array('order_id' => "order_id - 1");
-			$where = "order_id > '$order_id' AND cat_id = '" . $this->session->userdata('cat_id') . "'"; 
-			$str = $this->db->update_string($table_name, $data, $where);
-			$this->db->query($str);
+			$where = "cat_id = '" . $this->session->userdata('cat_id') . "'";
+			$this->Common->fix_order_id($order_id, $table_name, $where)
 		} else
 			return FALSE;
 		return TRUE;
@@ -110,6 +111,37 @@ class Resume_model extends CI_Model
     	$this->db->update($table_name, $object);
     }
     
+    
+    //functions for specific database calls
+    function get_courses($uni_id = FALSE) {
+    	if(!$uni_id)
+    		$uni_id = $this->session->userdata("resume_item");
+    	
+    	$this->db->where('uni_id', $uni_id);
+    	$this->db->order_by('order_id', 'desc');
+    	$query = $this->db->get('courses');
+    	return $query->result(); 
+    }
+    
+    function add_course($title) {
+    	$object->uni_id = $this->session->userdata('resume_item');
+    	$object->course = $title;
+    	$object->order_id = $this->Common->next_order_id("courses", array("uni_id" => $object->uni_id));
+    	$this->db->insert("courses", $object);
+    }
+    
+    function delete_course($id) {
+    	$order_id = $this->Common->get_order_id($id, "courses");
+    	$this->db->where("uni_id", $this->session->userdata("resume_item"));
+    	$this->db->where("id", $id);
+    	$this->db->delete("courses");
+    	if($this->db->affected_rows() > 0 )	 {
+    		$where = "uni_id='" . $this->session->userdata("resume_item") . "'";
+    		$this->Common->fix_order_id($order_id, "courses", $where );
+    		return TRUE;
+    	}
+		return FALSE;
+    }
 }
 
 

@@ -33,9 +33,10 @@ class Cover_model extends CI_Model {
 			//redundancy to assure that correct data is stored
 			if($query->num_rows() == 0)
 				$this->session->set_userdata('cover_item', false);
-			else
+			else {
 				$this->session->set_userdata('cover_item', $item->id);
-		
+			}
+			
 			return $item;
 			
         }
@@ -61,6 +62,7 @@ class Cover_model extends CI_Model {
 			$this->db->set('created', 'NOW()', FALSE);
 			$this->db->set('updated', 'NOW()', FALSE);
 			$this->db->insert('cover_letter', $data); 
+    		$this->session->set_userdata('cover_item', $this->db->insert_id());
         }
         
 

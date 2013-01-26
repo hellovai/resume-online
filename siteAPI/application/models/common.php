@@ -110,7 +110,7 @@ class Common extends CI_Model {
 	
 	function logout()
 	{
-		$this->output->set_header('cache-Control: no-store, no-cache, must-revalidate');
+		$this->output->set_header('cache-Control: no-store, no-cache');
 		$this->output->set_header("cache-Control: post-check=0, pre-check=0", false);
 		$this->output->set_header("Pragma: no-cache");
 		$this->output->set_header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
@@ -167,5 +167,17 @@ class Common extends CI_Model {
 		echo "</div>";
     }
     
+    function get_order_id($id, $table) {
+    	$this->db->select('order_id');
+    	$this->db->where("id", $id);
+    	$query = $this->db->get($table);
+    	return reset($query->result())->order_id;
+    }
+    
+    function fix_order_id ($orderid, $table, $where) {
+    	$where .= " AND order_id > '$orderid'";
+    	$str = "UPDATE `$table` SET `order_id` = order_id-1 WHERE " . $where;
+		$this->db->query($str);
+    }
 }
 
