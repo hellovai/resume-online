@@ -57,6 +57,8 @@
 			  }
 			);
 			$(confirmDelete());
+			$('input[rel="tooltip"]').tooltip({trigger:'focus', placement:'right', html:'true'});
+			$('textarea[rel="tooltip"]').tooltip({trigger:'focus', placement:'right', html:'true'});
     	});
 	</script>
 	

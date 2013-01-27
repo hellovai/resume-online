@@ -30,7 +30,7 @@ class Table_model extends CI_Model {
 		if(isset($detials['current']) && $detaials['current'] == TRUE)
 			$object->finish *= -1;
 		if(isset($details['order_id']))
-			$object->order_id = $details['order_id'];	
+			$object->order_id = $details['order_id'];
 		return $object;
     }
     

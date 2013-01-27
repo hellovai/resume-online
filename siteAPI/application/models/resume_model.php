@@ -86,7 +86,7 @@ class Resume_model extends CI_Model
     	
     	if($this->Common->delete($id, $table_name, $this->session->userdata('cat_id'))) {
 			$where = "cat_id = '" . $this->session->userdata('cat_id') . "'";
-			$this->Common->fix_order_id($order_id, $table_name, $where)
+			$this->Common->fix_order_id($order_id, $table_name, $where);
 		} else
 			return FALSE;
 		return TRUE;
@@ -96,8 +96,8 @@ class Resume_model extends CI_Model
     {
     	if(!$type_id)
     		$type_id = $this->session->userdata('type_id');
-    	$object->cat_id = $this->session->userdata('cat_id');
     	
+    	$object->cat_id = $this->session->userdata('cat_id');
     	$table_name = $this->Common->type_table($type_id);
     	$object->order_id = $this->Common->next_order_id($table_name, array("cat_id" => $object->cat_id) );
     	$this->db->insert($table_name, $object);

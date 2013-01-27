@@ -147,10 +147,12 @@ class Common extends CI_Model {
 		return FALSE;
     }
     
-    function write_date($date, $month_title = "month", $year_title = "year", $span = 8) {
-    	$year_name = $date % 10000;
-    	$month_name = ($date - $year_name) / 10000;
-    	echo '<div class="span' . $span . '"><select name="' . $month_title . '" class="span6">';
+    function write_date($date, $month_title = "month", $year_title = "year", $span = 8, $tool_title) {
+		$year_name = $date % 10000;
+		$month_name = ($date - $year_name) / 10000;
+    	if($year_name == 0)
+    		$year_name = "";
+    	echo '<div class="span' . $span . '"><select name="' . $month_title . '" class="span6" >';
 			foreach($this->month as $key=>$option) {
 				echo "<option value=\"$key\" ";
 				if($key === $month_name) echo 'selected="selected"';
@@ -161,7 +163,9 @@ class Common extends CI_Model {
 			"name" => $year_title,
 			"value" => $year_name,
 			"class" => "span6",
-			"placeholder" => "Year"
+			"placeholder" => "Year",
+    		"rel" => "tooltip",
+    		"data-title" => $tool_title,
 			);
 		echo form_input($attributes);
 		echo "</div>";

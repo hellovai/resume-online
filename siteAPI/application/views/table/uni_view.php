@@ -7,6 +7,9 @@
 				"placeholder" => "School Name",
 				"value" => $item->name,
 				"class" => "span12",
+    			 "rel" => "tooltip",
+    			 "data-title" => "School Name",
+    			 "required" => "",
 				);
 	echo form_input($attributes); 
 	$attributes = array(
@@ -14,6 +17,8 @@
 				"placeholder" => "GPA",
 				"value" => $item->gpa,
 				"class" => "span12",
+    			 "rel" => "tooltip",
+    			 "data-title" => "GPA<br />Example: 3.200/4.000",
 				);
 	echo form_input($attributes);
 	$attributes = array(
@@ -21,6 +26,8 @@
 				"placeholder" => "Degree",
 				"value" => $item->degree,
 				"class" => "span12",
+    			 "rel" => "tooltip",
+    			 "data-title" => "Degree<br />Separate multiple degrees with ;",
 				);
 	echo form_input($attributes);
 	$attributes = array(
@@ -28,10 +35,13 @@
 				"placeholder" => "Description",
 				"value" => $item->description,
 				"class" => "span12",
+				"rows" => "4",
+    			 "rel" => "tooltip",
+    			 "data-title" => "Short description",
 				);
 	echo form_textarea($attributes);
-	$this->Common->write_date($item->start, "start_month", "start_year", 12);
-	$this->Common->write_date($item->finish, "finish_month", "finish_year", 12);
+	$this->Common->write_date($item->start, "start_month", "start_year", 12, "Join Year");
+	$this->Common->write_date($item->finish, "finish_month", "finish_year", 12, "(Expected) Gradution Year");
 	$attributes = array(
 				"class" => "btn btn-primary span7",
 				'name' => "action",
@@ -53,7 +63,9 @@
 		    	"name" => "title",
     			"placeholder" => "New courses's name",
     			"class" => "span12",
-    			"required"=> "",
+    			 "rel" => "tooltip",
+    			 "data-title" => "Enter a course's name",
+    			 "required"=> "",
 				);
 	echo form_input($attributes);
 	echo form_close();
