@@ -39,6 +39,14 @@ div.fixed-small-height {
 	overflow-y:hidden;
 }
 
+.hover-only-border {
+	border:none;
+}
+
+.hover-only-border:focus {
+	border:1px;
+}
+
 .disabled {
    pointer-events: none;
    cursor: default;
