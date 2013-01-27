@@ -32,6 +32,13 @@ div.fixed-height {
 	overflow-y:hidden;
 }
 
+div.fixed-small-height {
+	min-height:225px;
+	max-height:225px;
+	padding-bottom:20px;
+	overflow-y:hidden;
+}
+
 .disabled {
    pointer-events: none;
    cursor: default;
