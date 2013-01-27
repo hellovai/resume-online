@@ -1,4 +1,4 @@
-<div id="uni_edit" class="span12">
+<div id="honors_edit" class="span12">
 <div class="span5">
 <?	echo form_open("resume/modify");
 	$attributes = array(

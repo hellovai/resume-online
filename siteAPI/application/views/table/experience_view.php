@@ -1,5 +1,5 @@
 <? $phrases = $this->Resume_model->get_phrases(); ?>
-<div id="uni_edit" class="span12">
+<div id="experience_edit" class="span12">
 <div class="span5">
 <?	echo form_open("resume/modify");
 	$attributes = array(
@@ -62,19 +62,24 @@
 	echo form_input($attributes);
 	echo form_close();
 	echo "<hr />";
-	if(sizeof($phrases) > 0 ) {
-	foreach($phrases as $phrase) {
-		$attributes = array(
-			"name" => "phrase",
-			"value" => $phrase->phrase,
-			"class" => "hover-only-border span12",
-			//"style" => "margin:5px; padding-right:25px; cursor:default",
-			"rows" => 2
-		);
-		echo form_textarea($attributes);
-		echo anchor('resume/deleteitem/phrase/' . $phrase->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
-		echo "<br />";
-	}
- } else echo "<p>You have no phrases recorded!</p>"; ?>
+	if(sizeof($phrases) > 0 ) 
+	{
+		foreach($phrases as $phrase) 
+		{
+		echo form_open('resume/update_phrase/' . $phrase->id);
+			$attributes = array(
+				"name" => "phrase",
+				"value" => $phrase->phrase,
+				"class" => "hover-only-border span12",
+				//"style" => "margin:5px; padding-right:25px; cursor:default",
+			);
+			echo form_input($attributes);
+			echo anchor('resume/deleteitem/phrase/' . $phrase->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
+			echo "<br />";
+		echo form_close();
+		}
+	} 
+	else 
+		echo "<p>You have no phrases recorded!</p>"; ?>
 </div>
 </div>

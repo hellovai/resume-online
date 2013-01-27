@@ -29,10 +29,11 @@ class Reference extends CI_Controller
 							$this->input->post('email'),
 							$this->input->post('phone'),
 							$this->input->post('address'),
-							$this->input->post('company')
+							$this->input->post('company'),
+							$this->input->post('notes')
 							);
 
-		$this->index();
+		redirect('/reference/');
 	}
 	
 	function delete()
@@ -53,7 +54,8 @@ class Reference extends CI_Controller
 							$this->input->post('email'),
 							$this->input->post('phone'),
 							$this->input->post('address'),
-							$this->input->post('company')
+							$this->input->post('company'),
+							$this->input->post('notes')
 							);
 		redirect('/reference/');
 	}

@@ -55,6 +55,8 @@ class Common extends CI_Model {
 				return "additional";
 			case "cat":
 				return "cat";
+			case "descript":
+				return "descript";
 		}
 		
 		return FALSE;
