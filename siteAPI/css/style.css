@@ -47,6 +47,23 @@ div.fixed-small-height {
 	border:1px;
 }
 
+.btn-icon {
+	position:relative;
+}
+
+.btn-icon a.linked {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.btn-top {
+	z-index:100;
+	position:relative;
+}
+
 .disabled {
    pointer-events: none;
    cursor: default;

@@ -50,9 +50,7 @@
 			{
 				foreach($categories as $cat)
 				{
-					echo form_open('resume');
-					echo form_hidden('type_id', $cat->type_id);
-					echo form_hidden('cat_id', $cat->cat_id);
+					echo form_open('resume/view/' . $cat->cat_id . '/' . $cat->type_id);
 					$attributes = array(
 							"name" => "action",
 							"value" => $cat->title,
