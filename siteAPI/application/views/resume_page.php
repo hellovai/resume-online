@@ -60,14 +60,20 @@
     
     ?></div><hr><?
     echo form_open('resume/modify');
-    $attributes = array(
-    	"name" => "title",
-    	"placeholder" => "New item's name",
-    	"class" => "span12",
-    	"required"=> "",
-    	"autocomplete" => "off"
-    );
-	echo form_input($attributes);
+		$attributes = array(
+			"name" => "title",
+			"placeholder" => "New item's name",
+			"class" => "span12",
+			"required"=> "",
+			"autocomplete" => "off"
+		);
+		if($this->session->userdata('type_id') != 5)
+			echo form_input($attributes);
+		else  {
+			$attributes['class'] .= " btn btn-primary";
+			$attributes['value'] = "Add Item";
+			echo form_submit($attributes);
+		}
 	echo form_hidden('action','Add');
 	echo form_close();
 	?>
