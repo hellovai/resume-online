@@ -1,15 +1,15 @@
 <br />
 <div class="span12 row-fluid">
 <? foreach($categories as $category) {
-			$attributes = array(
-				"value" => $category->title,
-				"class" => "btn",
-				"style" => "margin:5px; padding-right:25px; cursor:default"
-			);
-			if($category->cat_id == $this->session->userdata("cat_id")) $attributes['class'].=" btn-primary";
-			echo form_submit($attributes);
-			echo anchor('resume/delete/' . $category->cat_id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
-	} ?>
+			$class = "btn btn-icon";
+			if($category->cat_id == $this->session->userdata("cat_id")) $class .=" btn-primary";
+?>
+			<button class="<?=$class?>" style="margin:5px; padding-right:25px">
+				<a class="linked" href='resume/view/<?= $category->cat_id ?>/<?= $category->type_id ?>'></a>
+				<?= $category->title ?>
+			</button>
+<?			echo anchor('resume/delete/' . $category->cat_id ,'<i class="icon-remove btn-top" style="margin-left:-30px;"></i>', 'class="confirm"');
+			} ?>
 <hr />
 	<div class="span3 well">
 	<div class="fixed-height row-fluid">
