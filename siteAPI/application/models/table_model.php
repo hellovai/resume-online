@@ -45,6 +45,8 @@ class Table_model extends CI_Model {
 			$object->company = $details['company'];
 		if(isset($details['location']))
 			$object->location = $details['location'];
+		if(isset($details['position']))
+			$object->position = $details['position'];
 		if(isset($details['start_month']) && isset($details['start_year']))
 			$object->start = $details['start_month'] * 10000 + ($details['start_year'] % 10000);
 		if(isset($details['finish_month']) && isset($details['finish_year']))

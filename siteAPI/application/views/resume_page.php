@@ -25,7 +25,19 @@
 		{
 			echo form_open('resume');
 		    echo form_hidden('resume_id', $title->id);
-		    $title_name = $title -> name;
+			switch($this->session->userdata("type_id"))
+			{
+				case 1:
+				case 3:
+				case 4:
+		    		$title_name = $title -> name;
+					break;
+				case 2:
+					$title_name = $title -> company;
+					break;
+				case 5:
+					$title_name = "Item " . $title ->order_id;
+			}
 		    if(strlen($title_name) > 20 )
 		    	$title_name = substr($title_name,0,16) . "...";
 			$attributes = array(

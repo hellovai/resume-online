@@ -1,5 +1,5 @@
 <div id="homepage" class="row-fluid">
-	
+
 	<div class="well well-small span3" style="width:20%">
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
@@ -64,7 +64,7 @@
 			}
 			else
 				echo "<p>Your resume is empty!</p>";
-		
+
 			$options = array(
 						'1' => "Education",
 						'2' => "Experience",
@@ -73,18 +73,6 @@
 						'5' => "Additional Categories"
 						);
 
-	    echo form_open('resume/modify_cats');
-	    echo form_dropdown('type_id', $options, '');
-		$attributes = array(
-			"name" => "title",
-			"placeholder" => "Title",
-			"required"=> "",
-			);
-		echo form_input($attributes);
-		$attributes = array(
-					"name" => "action",
-					"value" => "Add Category",
-					"class" => "span4 btn btn-primary"
 			echo form_open('resume/modify_cats');
 			?>
 			</div><hr /><div class="btn-group" data-toggle="buttons-radio">

@@ -142,6 +142,35 @@ class Resume_model extends CI_Model
     	}
 		return FALSE;
     }
+    function get_phrases($exp_id = FALSE) {
+    	if(!$exp_id)
+    		$exp_id = $this->session->userdata("resume_item");
+    	
+    	$this->db->where('exp_id', $exp_id);
+    	$this->db->order_by('order_id', 'desc');
+    	$query = $this->db->get('descript');
+    	return $query->result(); 
+    }
+    
+    function add_phrase($title) {
+    	$object->exp_id = $this->session->userdata('resume_item');
+    	$object->phrase = $title;
+    	$object->order_id = $this->Common->next_order_id("descript", array("exp_id" => $object->exp_id));
+    	$this->db->insert("descript", $object);
+    }
+    
+    function delete_phrase($id) {
+    	$order_id = $this->Common->get_order_id($id, "descript");
+    	$this->db->where("exp_id", $this->session->userdata("resume_item"));
+    	$this->db->where("id", $id);
+    	$this->db->delete("descript");
+    	if($this->db->affected_rows() > 0 )	 {
+    		$where = "exp_id='" . $this->session->userdata("resume_item") . "'";
+    		$this->Common->fix_order_id($order_id, "descript", $where );
+    		return TRUE;
+    	}
+		return FALSE;
+    }
 }
 
 

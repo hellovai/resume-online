@@ -96,6 +96,8 @@ class Resume extends CI_Controller
 	function deleteitem() {
 		if($this->uri->segment(3) == "course")
 			$this->Resume_model->delete_course($this->uri->segment(4));
+		else if($this->uri->segment(3) == "phrase")
+			$this->Resume_model->delete_phrase($this->uri->segment(4));
 		else
 			$this->Resume_model->deleteitem($this->uri->segment(3), $this->uri->segment(4));
 		redirect('resume');
@@ -110,8 +112,13 @@ class Resume extends CI_Controller
 	
 	//functions meant for specific calls
 	function add_course() {
-		if($this->Common->type_table($this->session->userdata('type_id')) == "uni")
+		if($this->session->userdata('type_id') == 1) // 1 is uni
 			$this->Resume_model->add_course($this->input->post('title'));
+		redirect('resume');
+	}
+	function add_phrase() {
+		if($this->session->userdata('type_id') == 2 ) // 2 is experience
+			$this->Resume_model->add_phrase($this->input->post('phrase'));
 		redirect('resume');
 	}
 }
