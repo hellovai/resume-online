@@ -172,7 +172,22 @@ class Resume_model extends CI_Model
 		return FALSE;
     }
 
+    function get_skills($header_id = FALSE) {
+    	if(!$header_id)
+    		$header_id = $this->session->userdata("resume_item");
+    	
+    	$this->db->where('header_id', $header_id);
+    	$this->db->order_by('order_id', 'asc');
+    	$query = $this->db->get('skills');
+    	return $query->result(); 
+    }
 
+    function add_skill($skill) {
+    	$object->header_id = $this->session->userdata('resume_item');
+    	$object->phrase = $title;
+    	$object->order_id = $this->Common->next_order_id("skills", array("header_id" => $object->header_id));
+    	$this->db->insert("skills", $object);
+    }
 
 }
 

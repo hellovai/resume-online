@@ -139,4 +139,9 @@ class Resume extends CI_Controller
 			$this->Resume_model->update(array('phrase' => $this->input->post('phrase')), $this->uri->segment(3), "descript");
 		redirect('resume');
 	}
+	function add_skill() {
+		if($this->session->userdata('type_id') == 3) // 3 is skills
+			$this->Resume_model->add_skill($this->input->post('skill'));
+		redirect('resume');
+	}
 }

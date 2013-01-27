@@ -71,6 +71,8 @@
 				"name" => "phrase",
 				"value" => $phrase->phrase,
 				"class" => "hover-only-border span12",
+				"rel" => "tooltip",
+    			 "data-title" => "Press Enter to update",
 				//"style" => "margin:5px; padding-right:25px; cursor:default",
 			);
 			echo form_input($attributes);

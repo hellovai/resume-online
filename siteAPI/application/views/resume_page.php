@@ -75,7 +75,7 @@
 	<div class="span8">
 	<?
 	if(sizeof ($info) > 0)
-		$this->load->view('table/' . $type . '_view', $data);
+		$this->load->view('table/' . $this->Common->type_table( $this->session->userdata("type_id") ) . '_view', $data);
 	?>
 	</div>
 </div>
