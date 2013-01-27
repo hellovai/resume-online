@@ -131,7 +131,12 @@
 		
 	    echo form_open('resume/modify_cats');
 	    echo form_dropdown('type_id', $options, '');
-		echo form_input('title', 'Title');
+		$attributes = array(
+			"name" => "title",
+			"placeholder" => "Title",
+			"required"=> "",
+			);
+		echo form_input($attributes);
 		$attributes = array(
 					"name" => "action",
 					"value" => "Add Category",

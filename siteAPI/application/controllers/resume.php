@@ -44,20 +44,16 @@ class Resume extends CI_Controller
 				$object = $this->Table_model->uni($_POST);
 				break;
 			case 2:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\experience') . '.php';
-				$object = new experience($_POST);
+				$object = $this->Table_model->experience($_POST);
 				break;
 			case 3:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\skill_header') . '.php';
-				$object = new skill_header($_POST);
+				$object = $this->Table_model->skill_header($_POST);
 				break;
 			case 4:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\honors') . '.php';
-				$object = new honors($_POST);
+				$object = $this->Table_model->honors($_POST);
 				break;
 			case 5:
-				require  APPPATH . str_replace('\\', DIRECTORY_SEPARATOR, 'models\\custom\\additional') . '.php';
-				$object = new additional($_POST);
+				$object = $this->Table_model->additional($_POST);
 				break;
 		}
 		
