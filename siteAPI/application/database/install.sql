@@ -39,4 +39,4 @@ CREATE TABLE docname (id INT AUTO_INCREMENT PRIMARY KEY, doc_id INT, name VARCHA
 
 CREATE TABLE cover_letter (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , info TEXT, title VARCHAR(128), created DATETIME, updated DATETIME);
 
-CREATE TABLE reference (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , name VARCHAR(128) , phone VARCHAR(10) , email VARCHAR(256) , address VARCHAR(512) , company VARCHAR(512) , account_id INT, order_id INT);
+CREATE TABLE reference (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT , name VARCHAR(128) , phone VARCHAR(10) , email VARCHAR(256) , address VARCHAR(512) , company VARCHAR(512) , account_id INT, order_id INT, past_info VARCHAR(1024));

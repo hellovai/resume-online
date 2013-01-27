@@ -25,7 +25,7 @@ class Ref_model extends CI_Model
 			$this->db->where('id', $this->session->userdata('ref_item'));
 
 		$this->db->where('user_id', $this->Common->user_id());
-		$this->db->select('id, name, email, company, address, phone, order_id');
+		$this->db->select('id, name, email, company, address, phone, order_id, past_info');
 		$query = $this->db->get('reference',1);
 		$item = reset($query->result());
 		
@@ -39,7 +39,7 @@ class Ref_model extends CI_Model
 		return $item;
 	}
 	
-    function create($name, $email, $phone, $address, $company)
+    function create($name, $email, $phone, $address, $company, $notes)
     {
     	$data = array('name' => $name, 'user_id' => $this->Common->user_id(), 'order_id' => $this->Common->next_order_id('reference',false));
     	if($email)
@@ -49,12 +49,14 @@ class Ref_model extends CI_Model
     	if($address)
 			$data['address'] = $address;  	
     	if($company)
-    		$data['company'] = $company;	
+    		$data['company'] = $company;
+    	if($notes)
+    		$data['past_info'] = $notes;	
 		$this->db->insert('reference', $data); 
     	$this->session->set_userdata('ref_item', $this->db->insert_id());
     }
     
-    function update($id, $name, $email, $phone, $address, $company)
+    function update($id, $name, $email, $phone, $address, $company, $notes)
     {
     	$data = array('name' => $name, 'user_id' => $this->Common->user_id());
     	if($email)
@@ -64,7 +66,9 @@ class Ref_model extends CI_Model
     	if($address)
 			$data['address'] = $address;  	
     	if($company)
-    		$data['company'] = $company;	
+    		$data['company'] = $company;
+    	if($notes)
+    		$data['past_info'] = $notes;	
     	$this->db->where('id', $id);
     	$this->db->where('user_id', $this->Common->user_id()); //don't actually need this line of code
         $this->db->update('reference', $data); 

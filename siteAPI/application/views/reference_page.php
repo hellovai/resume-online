@@ -85,7 +85,8 @@
 	echo '<h5>Personal Notes <a href="#" rel="tooltip" data-placement="top" data-original-title="Keep notes on your last communications with ' . $reference->name . '"><i class="icon-question-sign"></i></a></h5>';
 	$attributes = array(
 				"name" => "notes",
-				"value" => "Blah",
+				"placeholder" => "Type your notes here",
+				"value" => $reference->past_info,
     			"style" => "min-width:97%;max-width:97%;",
     			"rows" => 12,
     			"autofocus" => "",

@@ -77,5 +77,20 @@ class Table_model extends CI_Model {
 			$object->order_id = $details['order_id'];
 		return $object;
     }
+    function additional($details) {
+    	$details = (array) $details;
+    	
+		if(isset($details['id']))
+			$object->id = $details['id'];
+		if(isset($details['cat_id']))
+			$object->cat_id = $details['cat_id'];
+		//if(isset($details['title']))
+		//	$object->name = $details['title'];
+		if(isset($details['field']))
+			$object->field = $details['field'];
+		if(isset($details['order_id']))
+			$object->order_id = $details['order_id'];
+		return $object;
+    }
     
 }
