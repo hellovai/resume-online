@@ -55,5 +55,27 @@ class Table_model extends CI_Model {
 			$object->order_id = $details['order_id'];
 		return $object;
     }
+
+    function honors($details) {
+    	$details = (array) $details;
+    	
+		if(isset($details['id']))
+			$object->id = $details['id'];
+		if(isset($details['cat_id']))
+			$object->cat_id = $details['cat_id'];
+		if(isset($details['title']))
+			$object->name = $details['title'];
+		if(isset($details['name']))
+			$object->name = $details['name'];
+		if(isset($details['description']))
+			$object->description = $details['description'];
+		if(isset($details['location']))
+			$object->location = $details['location'];
+		if(isset($details['start_month']) && isset($details['start_year']))
+			$object->acquired = $details['start_month'] * 10000 + ($details['start_year'] % 10000);
+		if(isset($details['order_id']))
+			$object->order_id = $details['order_id'];
+		return $object;
+    }
     
 }

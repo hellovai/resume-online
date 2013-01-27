@@ -147,7 +147,7 @@ class Resume_model extends CI_Model
     		$exp_id = $this->session->userdata("resume_item");
     	
     	$this->db->where('exp_id', $exp_id);
-    	$this->db->order_by('order_id', 'desc');
+    	$this->db->order_by('order_id', 'asc');
     	$query = $this->db->get('descript');
     	return $query->result(); 
     }
