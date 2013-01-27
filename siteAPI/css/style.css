@@ -155,4 +155,5 @@ background-color:#BBBBBB;
 [class*=" new-icon-"] {
     background-position: 5px center !important;
     background-repeat:no-repeat;
+    padding-left:20px;
 }

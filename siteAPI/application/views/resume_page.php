@@ -1,7 +1,7 @@
 <br />
 <div class="span12 row-fluid">
 <? foreach($categories as $category) {
-			$class = "btn btn-icon";
+			$class = "btn btn-icon new-icon-" . $category->type_id;
 			if($category->cat_id == $this->session->userdata("cat_id")) $class .=" btn-primary";
 ?>
 			<button class="<?=$class?>" style="margin:5px; padding-right:25px">
