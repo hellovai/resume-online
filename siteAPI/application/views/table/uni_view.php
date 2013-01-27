@@ -70,18 +70,17 @@
 	echo form_input($attributes);
 	echo form_close();
 	echo "<hr />";
-	if(sizeof($courses) > 0 ) { ?>
-	<?
-	foreach($courses as $course) {
-		$attributes = array(
-			"value" => $course->course,
-			"class" => "btn",
-			"style" => "margin:5px; padding-right:25px; cursor:default"
-		);
-		echo form_submit($attributes);
-		echo anchor('resume/deleteitem/course/' . $course->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
-	}
-	?>
-	<? } else echo "<p>You have no courses recorded!</p>"; ?>
+	if(sizeof($courses) > 0 ) {
+		foreach($courses as $course) {
+			$attributes = array(
+				"value" => $course->course,
+				"class" => "btn",
+				"style" => "margin:5px; padding-right:25px; cursor:default"
+			);
+			echo form_submit($attributes);
+			echo anchor('resume/deleteitem/course/' . $course->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
+		}
+	} else 
+		echo "<p>You have no courses recorded!</p>"; ?>
 </div>
 </div>

@@ -1,14 +1,15 @@
 <br />
 <div class="span12 row-fluid">
-<ul class="nav nav-pills">
-<? foreach($categories as $category ) { ?>
-  <li <? if($category->cat_id == $this->session->userdata("cat_id")) echo 'class="active"'; ?>>
-    <a href="resume/view/<? echo $category->cat_id . '/' . $category->type_id; ?>">
-    	<?= $category->title ?>
-    </a>
-  </li>
-<? } ?>
-</ul>
+<? foreach($categories as $category) {
+			$attributes = array(
+				"value" => $category->title,
+				"class" => "btn",
+				"style" => "margin:5px; padding-right:25px; cursor:default"
+			);
+			if($category->cat_id == $this->session->userdata("cat_id")) $attributes['class'].=" btn-primary";
+			echo form_submit($attributes);
+			echo anchor('resume/delete/' . $category->cat_id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
+	} ?>
 <hr />
 	<div class="span3 well">
 	<div class="fixed-height row-fluid">

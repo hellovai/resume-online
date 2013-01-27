@@ -40,8 +40,6 @@ class Common extends CI_Model {
 	
 	function type_table($id)
 	{
-		if(!isset($id))
-			return "cat";
 			
 		switch ($id)
 		{
@@ -55,6 +53,8 @@ class Common extends CI_Model {
 				return "honors";
 			case 5:
 				return "additional";
+			case "cat":
+				return "cat";
 		}
 		
 		return FALSE;

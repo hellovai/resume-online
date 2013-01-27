@@ -70,14 +70,19 @@ class Ref_model extends CI_Model
         $this->db->update('reference', $data); 
     }    
     
-    function delete($id, $order_id)
+    function delete($id, $order_id = FALSE)
     {
+    	if($order_id === false)
+    		$order_id = $this->Common->get_order_id($id, "reference");
+    	
     	if($this->Common->delete($id,'reference')) {
-			$this->db->query("UPDATE reference SET order_id = order_id - 1 WHERE order_id > '".$order_id."' AND user_id = '".$this->Common->user_id()."'");
+    		$where = "user_id = " . $this->session->userdata('user_id');
+    		$this->Common->fix_order_id($order_id, "reference", $where);
 			if($this->session->userdata('ref_item') == $id)
 				$this->session->unset_userdata('ref_item');
-		} else
+		} else {
 			return FALSE;
+		}
 		return TRUE;
     }
     
