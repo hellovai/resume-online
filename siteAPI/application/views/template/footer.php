@@ -48,6 +48,17 @@
 				    $(this).stop().animate({ scrollTop: h }, 250);
 				}
 			});
+			$(".fixed-small-height").mousemove(function(e){
+				var h = $(this).height()*1.1;
+				var offset = $(this).offset();
+				var position = (e.pageY-offset.top)/h;
+				if(position<0.10) {
+				    $(this).stop().animate({ scrollTop: 0 }, 250);
+				}
+				if(position>0.90) {
+				    $(this).stop().animate({ scrollTop: h }, 250);
+				}
+			});
 			$("i").hover(
 			  function () {
 				$(this).addClass("icon-white");
@@ -59,6 +70,10 @@
 			$(confirmDelete());
 			$('input[rel="tooltip"]').tooltip({trigger:'focus', placement:'right', html:'true'});
 			$('textarea[rel="tooltip"]').tooltip({trigger:'focus', placement:'right', html:'true'});
+			$('button[rel="tooltip"]').tooltip({trigger:'hover', placement:'top', html:'true'});
+			$('div.btn-group button[type=button]').click(function(){
+				$("#status").attr('value', $(this).attr('value'));
+			});
     	});
 	</script>
 	
