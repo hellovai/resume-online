@@ -49,9 +49,9 @@ class Resume_model extends CI_Model
     }
     
     function type_info($item_id = FALSE) {
-		if ( $item_id != FALSE )
+		if ( $item_id !== FALSE )
 			$this->db->where('id', $item_id);
-		else if(!$this->session->userdata('resume_item'))
+		else if($this->session->userdata('resume_item') === FALSE)
 			$this->db->order_by('order_id', 'desc');
 		else
 			$this->db->where('id', $this->session->userdata('resume_item'));
@@ -87,7 +87,7 @@ class Resume_model extends CI_Model
     	if($this->Common->delete($id, $table_name, $this->session->userdata('cat_id'))) {
 			$where = "cat_id = '" . $this->session->userdata('cat_id') . "'";
 			$this->Common->fix_order_id($order_id, $table_name, $where);
-		} else
+		} else 
 			return FALSE;
 		return TRUE;
     }

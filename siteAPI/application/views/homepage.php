@@ -59,6 +59,7 @@
 							"class" => "span12 btn "
 							);
 					echo form_submit($attributes);
+					echo anchor('resume/delete/' . $cat->cat_id . '/site', '<i class="icon-remove icon"></i>', 'class="confirm"');
 					echo form_close();
 				}
 			}
@@ -115,6 +116,7 @@
 						"class" => "btn span12"
 					);
 					echo form_submit($attributes);
+					echo anchor('reference/delete/' . $refs->id . '/site', '<i class="icon-remove icon"></i>', 'class="confirm"');
 					echo form_close();
 				}
 			}

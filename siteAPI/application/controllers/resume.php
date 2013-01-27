@@ -20,12 +20,21 @@ class Resume extends CI_Controller
 		if($this->input->post('resume_id') !== false)
 			$this->session->set_userdata('resume_item', $this->input->post('resume_id'));
 		
+		if($this->session->userdata('cat_id') == false) {
+			$item = reset($this->Resume_model->cat_info());
+			if(isset($item->cat_id)) {
+				$this->session->set_userdata('type_id', $item->type_id);
+				$this->session->set_userdata('cat_id', $item->cat_id);
+			} else {
+				redirect('site');
+			}
+		}
+		
 		$data['type'] = $this->Common->type_table($this->session->userdata('type_id'));
 		
-		$data['title'] = $this->input->post('title');
 		$data['info'] = $this->Resume_model->type_count($this->session->userdata('cat_id'), $this->session->userdata('type_id'), TRUE);
 		
-		if ($data['type'] != FALSE)
+		if ($data['type'] != FALSE || $data['type'] != "cat")
 			$data['context'] = 'resume_page';
 		else
 			redirect('site');
@@ -90,18 +99,22 @@ class Resume extends CI_Controller
 	
 	function delete()
 	{
-		if($this->session->userdata('cat_id') == $this->input->post('id'))
+		$redirect = $this->uri->segment(4,"resume");
+		if($this->session->userdata('cat_id') == $this->uri->segment(3)) {
 			$this->session->unset_userdata('cat_id');
-		$this->Resume_model->delete($this->input->post('id'), $this->session->userdata('type_id'));
+			$this->session->unset_userdata('type_id');
+			$this->session->unset_userdata('resume_item');
+		}
+		$this->Resume_model->delete($this->uri->segment(3), "cat");
 		$data['success'] = "Your category was deleted!";
-		redirect('resume');
+		redirect($redirect);
 	}
 	
 	function deleteitem() {
 		if($this->uri->segment(3) == "course")
 			$this->Resume_model->delete_course($this->uri->segment(4));
 		else
-			$this->Resume_model->deleteitem($this->uri->segment(3), $this->uri->segment(4));
+			$this->Resume_model->deleteitem($this->uri->segment(3));
 		redirect('resume');
 	}
 	

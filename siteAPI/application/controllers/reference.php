@@ -38,11 +38,10 @@ class Reference extends CI_Controller
 	function delete()
 	{
 	
-		//$this->Common->delete($this->uri->segment(3),'reference');
-		
-		$this->Ref_model->delete($this->uri->segment(3), $this->uri->segment(4));
+		$redirect = $this->uri->segment(4,'reference');
+		$this->Ref_model->delete($this->uri->segment(3));
 		$data['success'] = "Your reference was deleted!";
-		redirect('/reference/');
+		redirect($redirect);
 	
 	}
 
