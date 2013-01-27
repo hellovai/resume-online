@@ -51,12 +51,9 @@
 				foreach($categories as $cat)
 				{
 					echo form_open('resume/view/' . $cat->cat_id . '/' . $cat->type_id);
-					$attributes = array(
-							"name" => "action",
-							"value" => $cat->title,
-							"class" => "span12 btn "
-							);
-					echo form_submit($attributes);
+					echo '<button class="span12 btn new-icon-'.$cat->type_id.'" style="margin-left:0px">';
+					echo $cat->title;
+					echo '</button>';
 					echo anchor('resume/delete/' . $cat->cat_id . '/site', '<i class="icon-remove icon"></i>', 'class="confirm"');
 					echo form_close();
 				}
@@ -76,7 +73,7 @@
 			?>
 			</div><hr /><div class="btn-group" data-toggle="buttons-radio">
 			<? foreach($options as $key=>$option_name) { ?>
-			  <button type="button" class="btn" style="width:20%" value="<?= $key ?>" rel="tooltip" data-title="<?= $option_name ?>"><i class="icon-<?= $option_name ?>"></i></button>
+			  <button type="button" class="btn" style="width:20%" value="<?= $key ?>" rel="tooltip" data-title="<?= $option_name ?>"><i class="icon-<?= $key ?>"></i></button>
 			<? } ?>
 			  <input type="hidden" name="type_id" id="status" value="" required />
 			</div>
