@@ -42,7 +42,7 @@
 	<div class="well well-small span3">
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
-				<a class="brand full-width" href="#" >Resume</a>
+				<a class="brand full-width" href="<?= site_url('resume') ?>" >Resume</a>
 		  	</div>
 		</div>
 		<div class="fixed-small-height">

@@ -39,14 +39,6 @@ div.fixed-small-height {
 	overflow-y:hidden;
 }
 
-.hover-only-border {
-	border:none;
-}
-
-.hover-only-border:focus {
-	border:1px;
-}
-
 .btn-icon {
 	position:relative;
 }
@@ -155,5 +147,5 @@ background-color:#BBBBBB;
 [class*=" new-icon-"] {
     background-position: 5px center !important;
     background-repeat:no-repeat;
-    padding-left:20px;
+    padding-left:25px;
 }
