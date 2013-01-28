@@ -39,14 +39,6 @@ div.fixed-small-height {
 	overflow-y:hidden;
 }
 
-.hover-only-border {
-	border:none;
-}
-
-.hover-only-border:focus {
-	border:1px;
-}
-
 .btn-icon {
 	position:relative;
 }

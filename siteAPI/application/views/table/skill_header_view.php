@@ -1,14 +1,14 @@
 <? $skills = $this->Resume_model->get_skills(); ?>
 <div id="skills_edit" class="span12">
-<div class="span5">
+<div class="span12">
 <?	echo form_open("resume/modify");
 	$attributes = array(
 				"name" => "name",
 				"placeholder" => "Skill List Name",
 				"value" => $item->name,
-				"class" => "span12",
+				"class" => "span5 hover-only-border",
     			 "rel" => "tooltip",
-    			 "data-title" => "Press Enter to update",
+    			 "data-title" => "Skills Header. Press Enter to update",
     			 "required" => "",
 				);
 	echo form_input($attributes); 
