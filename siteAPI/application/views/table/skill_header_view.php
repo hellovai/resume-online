@@ -30,12 +30,12 @@
 	if(sizeof($skills) > 0 ) {
 		foreach($skills as $skill) {
 			$attributes = array(
-				"value" => $skill->course,
+				"value" => $this->Resume_model->get_skill_name($skill->skill_id),
 				"class" => "btn",
 				"style" => "margin:5px; padding-right:25px; cursor:default"
 			);
 			echo form_submit($attributes);
-			echo anchor('resume/deleteitem/course/' . $course->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
+			echo anchor('resume/deleteitem/skill/' . $skill->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');
 		}
 	} else 
 		echo "<p>You have no skills recorded!</p>"; ?>

@@ -183,11 +183,56 @@ class Resume_model extends CI_Model
     }
 
     function add_skill($skill) {
-    	$object->header_id = $this->session->userdata('resume_item');
-    	$object->phrase = $title;
-    	$object->order_id = $this->Common->next_order_id("skills", array("header_id" => $object->header_id));
-    	$this->db->insert("skills", $object);
+    	
+		$this->db->where('name', $skill);
+    	$query = $this->db->get('skill_list',1);
+		$item = reset($query->result());
+		if(isset($item->id))
+			$object1->skill_id = $item->id;
+		else
+		{
+			$this->db->where('name', $skill);
+    		$query = $this->db->get('skill_queue',1);
+			$item = reset($query->result());
+			if(isset($item->id))
+				$object1->skill_id = $item->id * -1;
+			else
+			{
+				$object->name = $skill;
+				$this->db->insert("skill_queue", $object);
+				$object1->skill_id = $this->db->insert_id() * -1;
+			}
+		}
+    	$object1->order_id = $this->Common->next_order_id("skills", array("header_id" => $object->header_id));
+		$object1->header_id = $this->session->userdata('resume_item');
+    	$this->db->insert("skills", $object1);
     }
+
+    function delete_skill($id) {
+    	$order_id = $this->Common->get_order_id($id, "skills");
+    	$this->db->where("header_id", $this->session->userdata("resume_item"));
+    	$this->db->where("id", $id);
+    	$this->db->delete("skills");
+    	if($this->db->affected_rows() > 0 )	 {
+    		$where = "header_id='" . $this->session->userdata("resume_item") . "'";
+    		$this->Common->fix_order_id($order_id, "skills", $where );
+    		return TRUE;
+    	}
+		return FALSE;
+    }
+
+	function get_skill_name($skill_id){
+		$this->db->where('id', abs($skill_id));
+
+		
+		if($skill_id > 0)
+			$query = $this->db->get('skill_list');
+		else
+			$query = $this->db->get('skill_queue');
+		$item = reset($query->result());
+
+		return $item->name;
+	}
 
 }
 

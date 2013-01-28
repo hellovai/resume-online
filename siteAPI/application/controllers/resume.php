@@ -111,6 +111,8 @@ class Resume extends CI_Controller
 			$this->Resume_model->delete_course($this->uri->segment(4));
 		else if($this->uri->segment(3) == "phrase")
 			$this->Resume_model->delete_phrase($this->uri->segment(4));
+		else if($this->uri->segment(3) == "skill")
+			$this->Resume_model->delete_skill($this->uri->segment(4));
 		else
 			$this->Resume_model->deleteitem($this->uri->segment(3));
 		redirect('resume');
