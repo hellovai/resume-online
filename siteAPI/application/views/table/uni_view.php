@@ -74,8 +74,7 @@
 		foreach($courses as $course) {
 			$attributes = array(
 				"value" => $course->course,
-				"class" => "btn",
-				"style" => "margin:5px; padding-right:25px; cursor:default"
+				"class" => "btn info_btn",
 			);
 			echo form_submit($attributes);
 			echo anchor('resume/deleteitem/course/' . $course->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');

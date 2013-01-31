@@ -17,12 +17,14 @@
 
 	echo form_open('resume/add_skill');
 	$attributes = array(
+				"id" => "quickfind",
 		    	"name" => "skill",
     			"placeholder" => "New skill",
     			"class" => "span12",
     			 "rel" => "tooltip",
     			 "data-title" => "Enter a skill",
     			 "required"=> "",
+    			 "autofocus" => "",
 				);
 	echo form_input($attributes);
 	echo form_close();
@@ -31,8 +33,7 @@
 		foreach($skills as $skill) {
 			$attributes = array(
 				"value" => $this->Resume_model->get_skill_name($skill->skill_id),
-				"class" => "btn",
-				"style" => "margin:5px; padding-right:25px; cursor:default"
+				"class" => "btn info_btn",
 			);
 			echo form_submit($attributes);
 			echo anchor('resume/deleteitem/skill/' . $skill->id ,'<i class="icon-remove" style="margin-left:-25px;"></i>');

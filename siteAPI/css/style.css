@@ -56,6 +56,17 @@ div.fixed-small-height {
 	position:relative;
 }
 
+.info_btn {
+	margin:5px; 
+	padding-right:25px; 
+	cursor:default !important; 
+	margin-left:10px
+}
+
+.info_btn:hover {
+	color:black;
+}
+
 .disabled {
    pointer-events: none;
    cursor: default;

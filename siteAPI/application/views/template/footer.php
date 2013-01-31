@@ -74,6 +74,21 @@
 			$('div.btn-group button[type=button]').click(function(){
 				$("#status").attr('value', $(this).attr('value'));
 			});
+			$("#quickfind").autocomplete({
+				source: function( request, response ) {
+					 $.ajax({
+					 url: "<?= site_url("search") ?>",
+					 dataType: "json",
+					 data: {
+							term: $("#quickfind").val()
+							},
+					 success: function(data) {
+							response(data);
+								}
+					  });
+				},
+				minLength: 0,
+			});
     	});
 	</script>
 	
