@@ -20,7 +20,7 @@ class Resume_model extends CI_Model
 		{			
 			$cat_count = $this->type_count($info->id, $info->type_id);
 			
-			$cat_info[] = (object)array("count"=>$cat_count, "cat_id" =>$info->id, "type_id"=>$info->type_id, "title"=>$info->title, "order_id"=>$info->order_id);
+			$cat_info[] = (object) array("count"=>$cat_count, "cat_id" =>$info->id, "type_id"=>$info->type_id, "title"=>$info->title, "order_id"=>$info->order_id);
 		}
 		return $cat_info;
 	}
@@ -183,7 +183,6 @@ class Resume_model extends CI_Model
     }
 
     function add_skill($skill) {
-    	
 		$this->db->where('name', $skill);
     	$query = $this->db->get('skill_list',1);
 		$item = reset($query->result());

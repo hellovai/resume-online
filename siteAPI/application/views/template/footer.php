@@ -87,7 +87,7 @@
 								}
 					  });
 				},
-				minLength: 0,
+				minLength: 1,
 			});
     	});
 	</script>

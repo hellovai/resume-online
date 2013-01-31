@@ -41,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?= site_url() . '/site/'?>">Resume Builder</a>
+          <a class="brand" href="<?= site_url('site') ?>">Resume Builder</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="<?= site_url() . '/welcome/page/about'?>">About</a></li>

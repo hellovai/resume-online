@@ -151,7 +151,7 @@
 	 	} else 
 	 		echo "<p>No previously generated Resume's!</p>"?>
 	 	</div><hr><?
-		echo form_open('#');
+		echo form_open('generate');
 		$attributes = array(
 			"name" => "action",
 			"value" => "Generate Resume",
