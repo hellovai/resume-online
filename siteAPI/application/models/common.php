@@ -173,6 +173,14 @@ class Common extends CI_Model {
 		echo "</div>";
     }
     
+    function html_date ($date) {
+    	$year = $date % 10000;
+    	if($year == 0)
+    		return;
+    	$month = $this->month[($date - $year) / 10000];
+    	return $month . " " . $year;
+    }
+    
     function get_order_id($id, $table) {
     	$this->db->select('order_id');
     	$this->db->where("id", $id);

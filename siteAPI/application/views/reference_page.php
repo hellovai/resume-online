@@ -20,7 +20,7 @@
 		   	}
 			
 			echo form_submit($attributes);
-			echo anchor('reference/delete/' . $title->id . '/' . $title->order_id, '<i class="icon-remove icon"></i>', 'class="confirm"');
+			echo anchor('reference/delete/' . $title->id , '<i class="icon-remove icon"></i>', 'class="confirm"');
 			echo form_close();
 		}
     }

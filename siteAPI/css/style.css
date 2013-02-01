@@ -51,6 +51,11 @@ div.fixed-small-height {
     bottom: 0px;
 }
 
+.tab-icon {
+	padding-left:45px;
+	float:right;
+}
+
 .btn-top {
 	z-index:100;
 	position:relative;

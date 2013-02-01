@@ -232,7 +232,50 @@ class Resume_model extends CI_Model
 
 		return $item->name;
 	}
-
+	
+	//write functions to display data in html
+	function write_uni($item) {
+		$data['name'] = $item -> name;
+		$data['date'] = $item -> finish;
+		$data['degree'] = $item -> degree;
+		$data['description'] = $item -> description;
+		$data['gpa'] = $item -> gpa;
+		$data['courses'] = $this->get_courses($item->id);
+		$this->load->view('table/uni_item', $data);
+	}
+	function write_skill_header($item) {
+		$data['title'] = $item->name;
+		$data['skills'] = $this->get_skills($item->id);
+		$this->load->view('table/skill_header_item', $data);
+	}
+	function write_experience($item) {
+		$data['company'] = $item->company;
+		$data['position'] = $item->position;
+		$data['finish'] = $item->finish;
+		$data['start'] = $item->start;
+		$data['location'] = $item->location;
+		$data['phrases'] = $this->get_phrases($item->id);
+		$this->load->view('table/experience_item', $data);
+	}
+	function write_additional($item) {
+		$data['field'] = $item->field;
+		$this->load->view('table/additional_item', $data);
+	}
+	function write_honors($item) {
+		$data['name'] = $item->name;
+		$data['award'] = $item -> description;
+		$data['location'] = $item -> location;
+		$data['date'] = $item -> acquired;
+		$data['num_set'] = 0;
+		if(strlen($data['award']) >0 )
+			$data['num_set']++;
+		if(strlen($data['name']) >0 )
+			$data['num_set']++;
+		if(strlen($data['location']) >0 )
+			$data['num_set']++;
+		
+		$this->load->view('table/honors_item', $data);
+	}
 }
 
 
