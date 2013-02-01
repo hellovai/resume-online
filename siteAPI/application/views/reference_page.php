@@ -1,14 +1,18 @@
 <h2 class="page_header">References</h2>
 <hr>
 <div id="cover_titles" class="span3 well">
-    <div class="fixed-height row-fluid">
+    <div class="fixed-height row-fluid disable-links disable-btn">
     <?php 
     if(sizeof($refs) > 0 )
     {
+		echo '<ul id = "sortable" rel = "reference">';
 		foreach($refs as $title)
 		{
+			echo "<li id = \"listItem_$title->id\">";
+			
 		    echo form_open('reference');
 		    echo form_hidden('ref_id', $title->id);
+			echo '<i class="icon-move handle"></i>';
 		    $attributes = array(
 		    	'class' => "btn span12",
 		    	'name' => "submit",
@@ -22,7 +26,9 @@
 			echo form_submit($attributes);
 			echo anchor('reference/delete/' . $title->id , '<i class="icon-remove icon"></i>', 'class="confirm"');
 			echo form_close();
+			echo "</li>";
 		}
+		echo '</ul>';
     }
     else
     {

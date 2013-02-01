@@ -33,6 +33,7 @@
 <body>
   <!-- Navbar
     ================================================== -->
+<div id="imgay" style="display:none;"></div>
 <div class="navbar navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">

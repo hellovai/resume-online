@@ -1,5 +1,5 @@
 DirectoryIndex index.php
-RewriteEngine on
+RewriteEngine off
 RewriteCond $1 !^(index\.php|images|css|js|robots\.txt|favicon\.ico)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
