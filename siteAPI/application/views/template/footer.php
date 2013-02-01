@@ -1,4 +1,3 @@
-
     </div><!-- /container2 -->
     
     </div><!-- /container -->
@@ -89,6 +88,14 @@
 				},
 				minLength: 1,
 			});
+			$("#sortable").sortable({ 
+		        handle : '.handle', 
+		        update : function () { 
+		            var order = $('#sortable').sortable('serialize'); 
+					var table_name = $(this).attr('rel');
+		            $("#imgay").load("<?= site_url("dragdrop/sort_me") ?>/"+table_name+"?"+order); 
+		        } 
+        	}); 
     	});
 	</script>
 	
