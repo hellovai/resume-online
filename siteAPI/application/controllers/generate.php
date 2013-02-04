@@ -6,11 +6,17 @@ class Generate extends CI_Controller {
 	{
 		parent::__construct();
 		$this->Common->is_logged_in();
-		$this->load->model('Resume_model');
+		$this->load->model('Resume_model');        
+		$this->load->model('Membership_model');	
 	}
 	
 	function index()
 	{
+		$data['info'] = $this->Membership_model->get_info();
+		$data['address'] = $this->Membership_model->get_address();
+		$data['website'] = $this->Membership_model->get_website();		
+		$data['phone'] = $this->Membership_model->get_phone();
+		
 		$category = $this->Resume_model->cat_info();
 		$data['category'] = $category;
 		$data['details'] = array();
@@ -21,6 +27,10 @@ class Generate extends CI_Controller {
 		
 		$data['context'] = "generate";
 		$this->load->view('template/main', $data);
+	}
+	
+	function preview() {
+		print_r($_POST);
 	}
 	
 }

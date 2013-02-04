@@ -3,8 +3,8 @@
 	<font class="hideme">
 	<? foreach($skills as $skill) { 
 		$attributes = array(
-			"name" => "newsletter",
-			"value" => "accept",
+			"name" => "skill[]",
+			"value" => $skill->id,
 			"checked" => TRUE,
 			"class" => "pull-left",
 			"style" => ""

@@ -1,3 +1,4 @@
+<? echo form_open('generate/preview'); ?>
 <div class="tabbable span6">
 	<a href="#" class="pull-right" rel="tooltip" data-original-title="Empty sections will be disabled!" data-placement="right"><i class="icon-question-sign"></i></a><br />
 	<ul class="nav nav-pills">
@@ -13,7 +14,50 @@
 	<hr />
 	<div class="tab-content">
 			<div class="tab-pane active" id="tabprofile">
-				<p>Put profile info here</p>
+				<p>Name: <b><?= $info->name ?></b></p>
+				<p>Email: <b><?= $info->email ?></b></p>
+				<p>Address:	<? if(sizeof($address) == 0) echo "None on record"; else echo "<br />"; ?><?
+					foreach($address as $addr) {
+							$data = array(
+								'name'        => 'profile_addr[]',
+								'id'          => 'profile_addr',
+								'value'       => $addr->id,
+								'checked'     => TRUE,
+								'style'       => 'margin:10px',
+								);
+								echo form_radio($data);
+								echo "$addr->address ( $addr->def ) <br />";
+					}
+				?> 
+				</p>
+				<p>Phone:	<? if(sizeof($phone) == 0) echo "None on record"; else echo "<br />"; ?><?
+					foreach($phone as $phn) {
+							$data = array(
+								'name'        => 'profile_phn[]',
+								'id'          => 'profile_phn[]',
+								'value'       => $phn->id,
+								'checked'     => TRUE,
+								'style'       => 'margin:10px',
+								);
+								echo form_radio($data);
+								echo "$phn->numbers ( $phn->def ) <br />";
+					}
+				?> 
+				</p>
+				<p>Website:	<? if(sizeof($website) == 0) echo "None on record"; else echo "<br />"; ?><?
+					foreach($website as $web) {
+							$data = array(
+								'name'        => 'profile_web[]',
+								'id'          => 'profile_web',
+								'value'       => $web->id,
+								'checked'     => TRUE,
+								'style'       => 'margin:10px',
+								);
+								echo form_checkbox($data);
+								echo "$web->url ( $web->def )<br />";
+					}
+				?>
+				</p>
 			</div>
 		<?	foreach($category as $cat) { ?>
 			<div class="tab-pane" id="tab<?= $cat->cat_id ?>" style="overflow:hidden">
@@ -22,8 +66,8 @@
 					foreach($items as $item) {
 					echo '<div class="span12">';
 					$attributes = array(
-						"name" => "newsletter",
-						"value" => "accept",
+						"name" => "category_".$cat->cat_id."[]",
+						"value" => $item->id,
 						"checked" => TRUE,
 						"class" => "pull-left",
 						"style" => ""
@@ -36,4 +80,21 @@
 			</div>
 		<? } ?>
 	</div>
+</div>
+<div class="span5">
+	<? 
+		$attributes = array(
+		"name" => "submit",
+		"value" => "Generate",
+		"class" => "span12 btn btn-primary",
+		
+		
+		
+		
+		
+		
+		);
+	echo form_submit($attributes);
+	echo form_close();
+	?>
 </div>
