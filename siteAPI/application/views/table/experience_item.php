@@ -5,7 +5,7 @@
 	<font class="pull-right"><?= $this->Common->html_date($start) ?> - <?= $this->Common->html_date($finish) ?> </font><br />
 	<? foreach($phrases as $phrase) { 
 		$attributes = array(
-			"name" => "phrase[]",
+			"name" => "phrase_".$id."[]",
 			"value" => $phrase->id,
 			"checked" => FALSE,
 			"class" => "pull-left",

@@ -3,7 +3,7 @@
 	<font class="hideme">
 	<? foreach($skills as $skill) { 
 		$attributes = array(
-			"name" => "skill[]",
+			"name" => "skill_".$id."[]",
 			"value" => $skill->id,
 			"checked" => TRUE,
 			"class" => "pull-left",

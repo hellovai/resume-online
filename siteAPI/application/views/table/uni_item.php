@@ -7,7 +7,7 @@
 	<? if(strlen($description) > 0 ) { ?><?= $description ?><br /><? } ?>
 	<? foreach($courses as $course) { 
 		$attributes = array(
-			"name" => "course[]",
+			"name" => "course_".$id."[]",
 			"value" => $course->id,
 			"checked" => FALSE,
 			"class" => "pull-left",

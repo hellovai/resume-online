@@ -3,7 +3,7 @@
 class Resume_model extends CI_Model
 {
 
-	function cat_info()
+	function cat_info($index = false)
 	{
 		$user_id = $this->Common->user_id();
 		if(!isset($user_id))
@@ -19,8 +19,10 @@ class Resume_model extends CI_Model
 		foreach($query->result() as $info)
 		{			
 			$cat_count = $this->type_count($info->id, $info->type_id);
-			
-			$cat_info[] = (object) array("count"=>$cat_count, "cat_id" =>$info->id, "type_id"=>$info->type_id, "title"=>$info->title, "order_id"=>$info->order_id);
+			if(!$index)
+				$cat_info[] = (object) array("count"=>$cat_count, "cat_id" =>$info->id, "type_id"=>$info->type_id, "title"=>$info->title, "order_id"=>$info->order_id);
+			else
+				$cat_info[$info->id] = (object) array("count"=>$cat_count, "type_id"=>$info->type_id, "title"=>$info->title, "order_id"=>$info->order_id);
 		}
 		return $cat_info;
 	}
@@ -235,6 +237,7 @@ class Resume_model extends CI_Model
 	
 	//write functions to display data in html
 	function write_uni($item) {
+		$data['id'] = $item->id;
 		$data['name'] = $item -> name;
 		$data['date'] = $item -> finish;
 		$data['degree'] = $item -> degree;
@@ -244,11 +247,13 @@ class Resume_model extends CI_Model
 		$this->load->view('table/uni_item', $data);
 	}
 	function write_skill_header($item) {
+		$data['id'] = $item->id;
 		$data['title'] = $item->name;
 		$data['skills'] = $this->get_skills($item->id);
 		$this->load->view('table/skill_header_item', $data);
 	}
 	function write_experience($item) {
+		$data['id'] = $item->id;
 		$data['company'] = $item->company;
 		$data['position'] = $item->position;
 		$data['finish'] = $item->finish;
