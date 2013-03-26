@@ -1,5 +1,5 @@
-<?php $this->load->view('template/header'); ?>
+<?php 
 
-<?php $this->load->view($context); ?>
-
-<?php $this->load->view('template/footer'); ?>
+$this->load->view('template/header'); 
+$this->load->view($context); 
+$this->load->view('template/footer');
